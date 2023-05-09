@@ -36,8 +36,8 @@ Program a complete e-commerce website that sells books using Java Servlet, JSP a
 
 UDEMY Course Name: Java Servlet, JSP and Hibernate: Build eCommerce Website
 
-Created by: Engineering.Org.In
+Created by: Nam Ha Minh
 
 Last updated: 08/2022
 
-URL: https://www.udemy.com/course/java-servlet-jsp-and-hibernate-build-a-complete-website/#instructor-1
+URL: https://www.udemy.com/course/java-servlet-jsp-and-hibernate-build-a-complete-website/
