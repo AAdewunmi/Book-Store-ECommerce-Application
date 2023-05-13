@@ -32,6 +32,8 @@ Program a complete e-commerce website that sells books using Java Servlet, JSP a
 
 ## 6. When will the project be complete? 
 
+The project is completed after all MVP's are implemented.
+
 ## 7. Adapted from: 
 
 UDEMY Course Name: Java Servlet, JSP and Hibernate: Build eCommerce Website

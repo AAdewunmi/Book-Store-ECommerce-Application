@@ -9,8 +9,8 @@ public class UsersTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Users user1 = new Users();
-		user1.setEmail("drade@google.com");
-		user1.setFullName("Dr. Ade Adewunmi");
+		user1.setEmail("mark.zuck@facebook.com");
+		user1.setFullName("Mark Zuck");
 		user1.setPassword("helloworld");
 		
 		EntityManagerFactory entityManagerFactory = 
