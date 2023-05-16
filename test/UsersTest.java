@@ -1,3 +1,4 @@
+
 import com.bookstore.entity.Users;
 
 import jakarta.persistence.EntityManager;
@@ -9,9 +10,9 @@ public class UsersTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Users user1 = new Users();
-		user1.setEmail("mark.zuck@facebook.com");
-		user1.setFullName("Mark Zuck");
-		user1.setPassword("helloworld");
+		user1.setEmail("bill.gates@microsoft.com");
+		user1.setFullName("Bill Gates");
+		user1.setPassword("wordwordword");
 		
 		EntityManagerFactory entityManagerFactory = 
 		Persistence.createEntityManagerFactory("Book-Store-ECommerce-Application");
