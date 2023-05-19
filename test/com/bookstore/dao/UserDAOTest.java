@@ -2,6 +2,7 @@ package com.bookstore.dao;
 
 import static org.junit.Assert.*;
 
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -39,6 +40,20 @@ public class UserDAOTest {
 	public void testCreateUsersFieldsNotSet() {
 		Users user1 = new Users();
 		user1 = userDAO.create(user1);
+	}
+	
+	@Test
+	public void testUpdateUsers() {
+		Users user = new Users();
+		user.setUserId(1);
+		user.setEmail("drade@google.com");
+		user.setFullName("Dr. Ade Adewunmi");
+		user.setPassword("okokobioko");
+		
+		user = userDAO.update(user);
+		String expectedString = "okokobioko";
+		String actualString = user.getPassword();
+		assertEquals(expectedString, actualString);
 	}
 	
 	@AfterClass
