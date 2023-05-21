@@ -7,9 +7,8 @@
 <title>Login</title>
 </head>
 <body>
-	<div align="center">
-		<h1>This is header: Logo, Search, Menu</h1>
-	</div>
+	
+	<jsp:directive.include file="header.jsp"/>
 	<div align="center">
 		<h2>Please login: </h2>
 		<form action="">
@@ -18,8 +17,8 @@
 			<input type="submit" value="Login">
 		</form>
 	</div>
-	<div align="center">
-		<h4>This is footer: Copyright, About, Contact</h4>
-	</div>
+	
+	<jsp:directive.include file="footer.jsp"/>
+
 </body>
 </html>
