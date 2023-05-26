@@ -9,14 +9,4 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <description></description>
-    <display-name>AdminHomeServlet</display-name>
-    <servlet-name>AdminHomeServlet</servlet-name>
-    <servlet-class>com.bookstore.controller.admin.AdminHomeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminHomeServlet</servlet-name>
-    <url-pattern>/admin/</url-pattern>
-  </servlet-mapping>
 </web-app>
