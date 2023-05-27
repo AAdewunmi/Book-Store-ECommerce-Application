@@ -26,4 +26,10 @@ public class JpaDAO<E>{
 		entityManager.getTransaction().commit();
 		return entity;
 	}
+	
+	public E find(Class<E> type, Object id) {
+		E entity = entityManager.find(type, id);
+		entityManager.refresh(entity);
+		return entity;
+	}
 }
