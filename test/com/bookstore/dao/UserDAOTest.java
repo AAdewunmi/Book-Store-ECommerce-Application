@@ -56,6 +56,16 @@ public class UserDAOTest {
 		assertEquals(expectedString, actualString);
 	}
 	
+	@Test
+	public void testGetUsersFound() {
+		Integer userId = 1;
+		Users user = userDAO.get(userId);
+		if (user != null) {
+			System.out.println(user.getEmail());
+		}
+		assertNotNull(user);
+	}
+	
 	@AfterClass
 	public static void tearDownClass() {
 		entityManager.close();
