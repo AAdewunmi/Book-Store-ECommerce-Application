@@ -66,6 +66,13 @@ public class UserDAOTest {
 		assertNotNull(user);
 	}
 	
+	@Test
+	public void testGetUsersNotFound() {
+		Integer userId = 99;
+		Users user = userDAO.get(userId);
+		assertNull(user);
+	}
+	
 	@AfterClass
 	public static void tearDownClass() {
 		entityManager.close();
