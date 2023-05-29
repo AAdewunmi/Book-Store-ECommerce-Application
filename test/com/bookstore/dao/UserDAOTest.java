@@ -11,6 +11,7 @@ import com.bookstore.entity.Users;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceException;
 
@@ -75,10 +76,16 @@ public class UserDAOTest {
 	
 	@Test
 	public void testDeleteUsers() {
-		Integer userId = 5;
+		Integer userId = 7;
 		userDAO.delete(userId);
 		Users user = userDAO.get(userId);
 		assertNull(user);
+	}
+	
+	@Test(expected = EntityNotFoundException.class)
+	public void testDeleteNonExistUsers() {
+		Integer userId = 55;
+		userDAO.delete(userId);
 	}
 	
 	@AfterClass
