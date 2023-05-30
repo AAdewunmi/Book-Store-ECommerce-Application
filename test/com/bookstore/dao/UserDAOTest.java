@@ -99,6 +99,12 @@ public class UserDAOTest {
 		assertTrue(listUsers.size() > 0);
 	}
 	
+	@Test
+	public void testCount() {
+		long totalUsers = userDAO.count();
+		assertEquals(5, totalUsers);
+	}
+	
 	@AfterClass
 	public static void tearDownClass() {
 		entityManager.close();
