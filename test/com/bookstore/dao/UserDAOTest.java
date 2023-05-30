@@ -2,6 +2,8 @@ package com.bookstore.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -86,6 +88,15 @@ public class UserDAOTest {
 	public void testDeleteNonExistUsers() {
 		Integer userId = 55;
 		userDAO.delete(userId);
+	}
+	
+	@Test
+	public void testListAll() {
+		List<Users> listUsers = userDAO.listAll();
+		for (Users users : listUsers) {
+			System.out.println(users.getEmail());
+		}
+		assertTrue(listUsers.size() > 0);
 	}
 	
 	@AfterClass
