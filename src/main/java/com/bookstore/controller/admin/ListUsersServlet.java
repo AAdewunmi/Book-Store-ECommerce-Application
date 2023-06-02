@@ -10,6 +10,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class ListUsersServlet
  */
+@WebServlet("/admin/list_users")
 public class ListUsersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
