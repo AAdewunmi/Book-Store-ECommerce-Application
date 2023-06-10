@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
-import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -16,6 +15,8 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceException;
+
+
 
 public class UserDAOTest {
 	private static EntityManagerFactory entityManagerFactory;

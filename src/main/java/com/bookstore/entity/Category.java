@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import java.util.Set;
 import java.util.HashSet;
 import jakarta.persistence.*;
+
 @Entity
 @Table(name = "category", catalog = "bookstoredb")
 public class Category implements java.io.Serializable {
