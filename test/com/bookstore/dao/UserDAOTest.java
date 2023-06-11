@@ -33,9 +33,9 @@ public class UserDAOTest {
 	@Test
 	public void testCreateUsers() {
 		Users user1 = new Users();
-		user1.setEmail("mike.bloomberg@bloomberg.com");
-		user1.setFullName("Mike Bloomberg");
-		user1.setPassword("moneymoneymoney");
+		user1.setEmail("boris.johnson@brexit.uk");
+		user1.setFullName("Boris Johnson");
+		user1.setPassword("politics");
 		user1 = userDAO.create(user1);
 		assertTrue(user1.getUserId() > 0);
 	}
