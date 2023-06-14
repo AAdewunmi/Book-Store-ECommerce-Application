@@ -21,17 +21,17 @@
 				</tr>
 				<tr>
 					<td align="right">Full Name: </td>
-					<td align="left"><input type="text" name="fullname" size="20"></td>
+					<td align="left"><input type="text" id="fullname" name="fullname" size="20"></td>
 				</tr>
 				<tr>
 					<td align="right">Password: </td>
-					<td align="left"><input type="password" name="password" size="20"></td>
+					<td align="left"><input type="password" id="password" name="password" size="20"></td>
 				</tr>
 				<tr><td>&nbsp<td></tr>
 				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" value="Save">
-						<input type="button" value="Cancel">
+						<input type="button" value="Cancel" onclick="javascript:history.go(-1);">
 					</td>
 				</tr>
 			</table>
@@ -42,11 +42,24 @@
 <script type="text/javascript">
 	function validateFormInput(){
 		var fieldEmail = document.getElementById("email");
+		var fieldfullName = document.getElementById("fullname");
+		var fieldPassword = document.getElementById("password");
 		if(fieldEmail.value.length == 0){
 			alert("Email is required!");
 			fieldEmail.focus();
 			return false;
 		}
+		if(fieldfullName.value.length == 0){
+			alert("Full Name is required!");
+			fieldfullName.focus();
+			return false;
+		}
+		if(fieldPassword.value.length == 0){
+			alert("Password is required!");
+			fieldPassword.focus();
+			return false;
+		}
+		return true;
 	}
 </script>
 </html>
