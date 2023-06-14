@@ -17,7 +17,7 @@ Program a complete e-commerce website that sells books using Java Servlet, JSP a
 - JSP Standard Tag Library (JSTL)
 - Apache Tomcat
 - Hibernate framework with JPA
-- HTML & CSS & Bootstrap
+- HTML & CSS & Bootstrap & JavaScript
 - JavaScript & jQuery
 - MySQL Database
 - Maven
