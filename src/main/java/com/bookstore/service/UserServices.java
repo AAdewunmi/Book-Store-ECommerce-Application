@@ -29,5 +29,10 @@ public class UserServices {
 		List<Users> listUsers = userDAO.listAll();
 		return listUsers;
 	}
+	
+	public void createUser(String email, String password, String fullname) {
+		Users newUser = new Users(email, password, fullname);
+		userDAO.create(newUser);
+	}
 
 }
