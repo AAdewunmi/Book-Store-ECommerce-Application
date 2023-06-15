@@ -22,18 +22,11 @@ public class CreateUserServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		response.getWriter().println("Email: " + email);
 		
-		String password = request.getParameter("password");
-		response.getWriter().println("Password: " + password);
-		
-		String fullname = request.getParameter("fullname");
-		response.getWriter().println("Fullname: " + fullname);
 		
 		UserServices userServices = new UserServices();
-		userServices.createUser(email, password, fullname);
-				
+		userServices.createUser(request, response);
+		userServices.listUser(request, response);		
 	}
 
 }

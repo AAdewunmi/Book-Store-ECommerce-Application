@@ -8,9 +8,12 @@ import com.bookstore.entity.Users;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.List;
 
 public class UserServices {
 	
@@ -25,12 +28,22 @@ public class UserServices {
 		this.userDAO = new UserDAO(entityManager);
 	}
 	
-	public List<Users> listUser() {
+	public void listUser(HttpServletRequest request, HttpServletResponse response) 
+	throws ServletException, IOException{
 		List<Users> listUsers = userDAO.listAll();
-		return listUsers;
+		request.setAttribute("listUsers", listUsers);
+		String listPage = "user_list.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
+		requestDispatcher.forward(request, response);
 	}
 	
-	public void createUser(String email, String password, String fullname) {
+	public void createUser(HttpServletRequest request, HttpServletResponse response) 
+	throws ServletException, IOException{
+		
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		String fullname = request.getParameter("fullname");
+		
 		Users newUser = new Users(email, password, fullname);
 		userDAO.create(newUser);
 	}
