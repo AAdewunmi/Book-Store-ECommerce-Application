@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title> Evergreen Bookstore Administration </title>
 </head>
 <body>
-
+	<jsp:directive.include file="header.jsp"/>
+	
+	<div align="center">
+		<h3> ${message}</h3>
+	</div>
+	
+	
+	<jsp:directive.include file="footer.jsp"/>
 </body>
 </html>
