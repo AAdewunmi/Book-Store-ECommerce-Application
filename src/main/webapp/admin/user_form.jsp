@@ -1,65 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title> Create New User </title>
+<title>Create New User</title>
 </head>
 <body>
-	<jsp:directive.include file="header.jsp"/>
+	<jsp:directive.include file="header.jsp" />
+
 	<div align="center">
-		<h2> Create New User </h2>
+		<c:if test="${user != null}">
+			<h2>Edit User</h2>
+		</c:if>
+		<c:if test="${user == null}">
+			<h2>Create New User</h2>
+		</c:if>
 	</div>
-	
+
 	<div align="center">
-		<form action="create_user" method="post" onsubmit="return validateFormInput()">
+		<form action="create_user" method="post"
+			onsubmit="return validateFormInput()">
 			<table>
 				<tr>
-					<td align="right">Email: </td>
-					<td align="left"><input type="text" id="email" name="email" size="20"></td>
+					<td align="right">Email:</td>
+					<td align="left"><input type="text" id="email" name="email"
+						size="20" value="${user.email}"></td>
 				</tr>
 				<tr>
-					<td align="right">Full Name: </td>
-					<td align="left"><input type="text" id="fullname" name="fullname" size="20"></td>
+					<td align="right">Full Name:</td>
+					<td align="left"><input type="text" id="fullname"
+						name="fullname" size="20" value="${user.fullName}"></td>
 				</tr>
 				<tr>
-					<td align="right">Password: </td>
-					<td align="left"><input type="password" id="password" name="password" size="20"></td>
+					<td align="right">Password:</td>
+					<td align="left"><input type="password" id="password"
+						name="password" size="20" value="${user.password}"></td>
 				</tr>
-				<tr><td>&nbsp<td></tr>
+				<tr>
+					<td>&nbsp<td>
+				</tr>
 				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" value="Save">
-						<input type="button" value="Cancel" onclick="javascript:history.go(-1);">
+						<input type="button" value="Cancel"
+						onclick="javascript:history.go(-1);">
 					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	<jsp:directive.include file="footer.jsp"/>
+	
+	<jsp:directive.include file="footer.jsp" />
 </body>
 <script type="text/javascript">
-	function validateFormInput(){
+	function validateFormInput() {
 		var fieldEmail = document.getElementById("email");
 		var fieldfullName = document.getElementById("fullname");
 		var fieldPassword = document.getElementById("password");
-		if(fieldEmail.value.length == 0){
+		if (fieldEmail.value.length == 0) {
 			alert("Email is required!");
 			fieldEmail.focus();
 			return false;
 		}
-		if(fieldfullName.value.length == 0){
+		if (fieldfullName.value.length == 0) {
 			alert("Full Name is required!");
 			fieldfullName.focus();
 			return false;
 		}
-		if(fieldPassword.value.length == 0){
+		if (fieldPassword.value.length == 0) {
 			alert("Password is required!");
 			fieldPassword.focus();
 			return false;
 		}
 		return true;
 	}
-</script>
-</html>
+</script></html>
