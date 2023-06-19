@@ -20,8 +20,12 @@
 	</div>
 
 	<div align="center">
-		<form action="create_user" method="post"
-			onsubmit="return validateFormInput()">
+		<c:if test="${user != null}">
+			<form action="update_user" method="post" onsubmit="return validateFormInput()">
+		</c:if>
+		<c:if test="${user == null}">
+			<form action="create_user" method="post" onsubmit="return validateFormInput()">
+		</c:if>
 			<table>
 				<tr>
 					<td align="right">Email:</td>
