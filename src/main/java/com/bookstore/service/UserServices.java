@@ -83,4 +83,16 @@ public class UserServices {
 		requestDispatcher.forward(request, response);
 	}
 
+	public void updateUser() throws ServletException, IOException {
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		String email = request.getParameter("email");
+		String fullName = request.getParameter("fullname");
+		String password = request.getParameter("password");
+		System.out.println(userId + " : "  +  email + ", " + fullName + ", " + password);
+		Users users = new Users(userId, email, password, fullName);
+		userDAO.update(users);
+		String message = "User has been updated successfully!";
+		listUser(message);
+	}
+
 }
