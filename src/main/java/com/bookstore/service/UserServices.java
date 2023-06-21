@@ -88,11 +88,22 @@ public class UserServices {
 		String email = request.getParameter("email");
 		String fullName = request.getParameter("fullname");
 		String password = request.getParameter("password");
-		System.out.println(userId + " : "  +  email + ", " + fullName + ", " + password);
-		Users users = new Users(userId, email, password, fullName);
-		userDAO.update(users);
-		String message = "User has been updated successfully!";
-		listUser(message);
+		
+		Users userById = userDAO.get(userId);
+		Users userByEmail = userDAO.findByEmail(email);
+		
+		if (userByEmail != null && userByEmail.getUserId() != userById.getUserId()) {
+			String message = "Could not update user. User with email " + email + " already exists!";
+			request.setAttribute("message", message);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+		}else {
+			System.out.println(userId + " : "  +  email + ", " + fullName + ", " + password);
+			Users users = new Users(userId, email, password, fullName);
+			userDAO.update(users);
+			String message = "User has been updated successfully!";
+			listUser(message);
+		}
 	}
 
 }
