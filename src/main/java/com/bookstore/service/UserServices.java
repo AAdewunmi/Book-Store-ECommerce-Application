@@ -75,10 +75,14 @@ public class UserServices {
 	public void editUser() throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("id"));
 		Users user = userDAO.get(userId);
-		
 		String editPage = "user_form.jsp";
-		request.setAttribute("user", user);
-		
+		if (user.equals(null)) {
+			editPage = "message.jsp";
+			String errorMessage = "Could not find user with ID " + userId;
+			request.setAttribute("message", errorMessage);
+		} else {
+			request.setAttribute("user", user);	
+		}
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
 		requestDispatcher.forward(request, response);
 	}
