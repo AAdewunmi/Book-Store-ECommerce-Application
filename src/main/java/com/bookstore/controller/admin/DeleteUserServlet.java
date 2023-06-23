@@ -1,6 +1,9 @@
 package com.bookstore.controller.admin;
 
 import java.io.IOException;
+
+import com.bookstore.service.UserServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,12 +16,11 @@ public class DeleteUserServlet extends HttpServlet {
        
     public DeleteUserServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		UserServices userServices = new UserServices(request, response);
+		userServices.deleteUser();
 	}
 
 }
