@@ -76,7 +76,7 @@ public class UserServices {
 		int userId = Integer.parseInt(request.getParameter("id"));
 		Users user = userDAO.get(userId);
 		String editPage = "user_form.jsp";
-		if (user.equals(null)) {
+		if (user == null) {
 			editPage = "message.jsp";
 			String errorMessage = "Could not find user with ID " + userId;
 			request.setAttribute("message", errorMessage);
@@ -112,9 +112,17 @@ public class UserServices {
 
 	public void deleteUser() throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("id"));
-		userDAO.delete(userId);
+		Users user = userDAO.get(userId);
 		String message = "User has been deleted successfully!";
-		listUser(message);
+		
+		if (user == null) {
+			message = "Could not find user with ID " + userId + ", or it might have been deleted by another admin";
+			request.setAttribute("message", message);
+			request.getRequestDispatcher("message.jsp").forward(request, response);
+		} else {
+			userDAO.delete(userId);
+			listUser(message);
+		}
 	}
 
 }
