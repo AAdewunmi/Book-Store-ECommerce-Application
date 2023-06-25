@@ -112,13 +112,14 @@ public class UserServices {
 
 	public void deleteUser() throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("id"));
-		Users user = userDAO.get(userId);
+		//Users user = userDAO.get(userId);
 		String message = "User has been deleted successfully!";
 		
-		if (user == null) {
-			message = "Could not find user with ID " + userId + ", or it might have been deleted by another admin";
+		if (userId == 1) {
+			message = "The default admin user account cannot be deleted.";
 			request.setAttribute("message", message);
 			request.getRequestDispatcher("message.jsp").forward(request, response);
+			return;
 		} else {
 			userDAO.delete(userId);
 			listUser(message);
