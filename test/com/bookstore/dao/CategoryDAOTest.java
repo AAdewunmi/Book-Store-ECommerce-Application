@@ -32,7 +32,9 @@ public class CategoryDAOTest {
 
 	@Test
 	public void testCreateCategory() {
-		
+		Category newCategory = new Category("Java");
+		Category category = categoryDAO.create(newCategory);
+		assertTrue(category != null && category.getCategoryId() > 0);
 	}
 
 	@Test
