@@ -26,7 +26,8 @@ public class CategoryDAOTest {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		
+		entityManager.clear();
+		entityManagerFactory.close();
 	}
 
 	@Test
