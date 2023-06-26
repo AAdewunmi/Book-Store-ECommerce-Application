@@ -19,7 +19,9 @@ public class CategoryDAOTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		
+		entityManagerFactory = Persistence.createEntityManagerFactory("Book-Store-ECommerce-Application");
+		entityManager = entityManagerFactory.createEntityManager();
+		categoryDAO = new CategoryDAO(entityManager);
 	}
 
 	@AfterClass
