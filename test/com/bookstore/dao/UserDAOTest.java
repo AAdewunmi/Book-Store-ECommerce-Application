@@ -16,26 +16,22 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceException;
 
-
-
-public class UserDAOTest {
-	private static EntityManagerFactory entityManagerFactory;
-	private static EntityManager entityManager;
+public class UserDAOTest extends BaseDAOTest{
+	
 	private static UserDAO userDAO;
 
 	@BeforeClass
 	public static void setUpClass() throws Exception {
-		entityManagerFactory = Persistence.createEntityManagerFactory("Book-Store-ECommerce-Application");
-		entityManager = entityManagerFactory.createEntityManager();
+		BaseDAOTest.setUpBeforeClass();
 		userDAO = new UserDAO(entityManager);
 	}
 
 	@Test
 	public void testCreateUsers() {
 		Users user1 = new Users();
-		user1.setEmail("boris.johnson@brexit.uk");
-		user1.setFullName("Boris Johnson");
-		user1.setPassword("politics");
+		user1.setEmail("nigel.farage@brexit.uk");
+		user1.setFullName("Niger Farage");
+		user1.setPassword("politicspolitics");
 		user1 = userDAO.create(user1);
 		assertTrue(user1.getUserId() > 0);
 	}
@@ -114,9 +110,8 @@ public class UserDAOTest {
 	}
 	
 	@AfterClass
-	public static void tearDownClass() {
-		entityManager.close();
-		entityManagerFactory.close();
+	public static void tearDownClass() throws Exception {
+		BaseDAOTest.tearDownAfterClass();
 	}
 
 }
