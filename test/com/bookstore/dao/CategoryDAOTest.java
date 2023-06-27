@@ -11,28 +11,26 @@ import com.bookstore.entity.Category;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import net.bytebuddy.implementation.bind.annotation.Super;
 
-public class CategoryDAOTest {
-	private static EntityManagerFactory entityManagerFactory;
-	private static EntityManager entityManager;
+public class CategoryDAOTest extends BaseDAOTest{
+	
 	private static CategoryDAO categoryDAO;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		entityManagerFactory = Persistence.createEntityManagerFactory("Book-Store-ECommerce-Application");
-		entityManager = entityManagerFactory.createEntityManager();
+		BaseDAOTest.setUpBeforeClass();
 		categoryDAO = new CategoryDAO(entityManager);
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		entityManager.clear();
-		entityManagerFactory.close();
+		BaseDAOTest.tearDownAfterClass();
 	}
 
 	@Test
 	public void testCreateCategory() {
-		Category newCategory = new Category("Java");
+		Category newCategory = new Category("Advanced Java");
 		Category category = categoryDAO.create(newCategory);
 		assertTrue(category != null && category.getCategoryId() > 0);
 	}
