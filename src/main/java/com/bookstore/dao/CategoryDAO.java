@@ -20,9 +20,9 @@ public class CategoryDAO extends JpaDAO<Category> implements GenericDAO<Category
 	}
 
 	@Override
-	public Category update(Category t) {
+	public Category update(Category category) {
 		// TODO Auto-generated method stub
-		return null;
+		return super.update(category);
 	}
 
 	@Override
