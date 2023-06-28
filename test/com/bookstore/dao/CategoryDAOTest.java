@@ -45,7 +45,9 @@ public class CategoryDAOTest extends BaseDAOTest{
 
 	@Test
 	public void testGet() {
-		fail("Not yet implemented");
+		Integer categoryId = 2;
+		Category category = categoryDAO.get(categoryId);
+		assertNotNull(category);
 	}
 
 	@Test
