@@ -51,8 +51,11 @@ public class CategoryDAOTest extends BaseDAOTest{
 	}
 
 	@Test
-	public void testDeleteObject() {
-		fail("Not yet implemented");
+	public void testDeleteCategory() {
+		Integer categoryId = 3;
+		categoryDAO.delete(categoryId);
+		Category category = categoryDAO.get(categoryId);
+		assertNull(category);
 	}
 
 	@Test
