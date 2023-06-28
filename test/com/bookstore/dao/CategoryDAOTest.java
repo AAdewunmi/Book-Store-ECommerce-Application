@@ -37,7 +37,10 @@ public class CategoryDAOTest extends BaseDAOTest{
 
 	@Test
 	public void testUpdateCategory() {
-		fail("Not yet implemented");
+		Category newCategory = new Category("Spring Java");
+		newCategory.setCategoryId(1);
+		Category category = categoryDAO.update(newCategory);
+		assertEquals(newCategory.getName(), category.getName());
 	}
 
 	@Test
