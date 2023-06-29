@@ -21,6 +21,9 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "category", catalog = "bookstoredb")
+@NamedQueries({
+	@NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c ORDER BY c.name")
+})
 public class Category implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
