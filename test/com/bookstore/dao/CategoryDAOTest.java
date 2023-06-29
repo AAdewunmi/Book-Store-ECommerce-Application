@@ -2,6 +2,8 @@ package com.bookstore.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -60,7 +62,8 @@ public class CategoryDAOTest extends BaseDAOTest{
 
 	@Test
 	public void testListAll() {
-		fail("Not yet implemented");
+		List<Category> listCategoryCategories = categoryDAO.listAll();
+		assertTrue(listCategoryCategories.size() > 0);
 	}
 
 	@Test
