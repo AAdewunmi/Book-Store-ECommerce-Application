@@ -34,8 +34,7 @@ public class CategoryDAO extends JpaDAO<Category> implements GenericDAO<Category
 
 	@Override
 	public List<Category> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return super.findWithNamedQuery("Category.findAll");
 	}
 
 	@Override
