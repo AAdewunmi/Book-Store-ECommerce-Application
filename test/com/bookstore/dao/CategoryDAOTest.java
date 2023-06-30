@@ -68,7 +68,8 @@ public class CategoryDAOTest extends BaseDAOTest{
 
 	@Test
 	public void testCount() {
-		fail("Not yet implemented");
+		long totalCategories = categoryDAO.count();
+		assertEquals(2, totalCategories);
 	}
 
 }
