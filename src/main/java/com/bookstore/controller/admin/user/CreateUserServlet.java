@@ -1,4 +1,4 @@
-package com.bookstore.controller.admin;
+package com.bookstore.controller.admin.user;
 
 import java.io.IOException;
 
@@ -10,18 +10,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/edit_user")
-public class EditUserServlet extends HttpServlet {
+
+@WebServlet("/admin/create_user")
+public class CreateUserServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-       
-    public EditUserServlet() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CreateUserServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserServices userServices = new UserServices(request, response);
-		userServices.editUser();
+		userServices.createUser();
+				
 	}
 
 }
