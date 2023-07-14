@@ -17,6 +17,10 @@ public abstract class BaseServlet extends HttpServlet {
 		entityManager = entityManagerFactory.createEntityManager();
 	}
 	
-	
+	@Override
+	public void destroy() {
+		entityManager.close();
+		entityManagerFactory.close();
+	}
 
 }
