@@ -1,14 +1,22 @@
 package com.bookstore.controller.admin;
 
-import jakarta.servlet.annotation.WebServlet;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 
-@WebServlet("/")
-public final class BaseServlet extends HttpServlet {
+public abstract class BaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public BaseServlet() {
-        super();
-    }
+	protected EntityManagerFactory entityManagerFactory;
+	protected EntityManager entityManager;
+	
+	@Override
+	public void init() throws ServletException {
+		entityManagerFactory = Persistence.createEntityManagerFactory("Book-Store-ECommerce-Application");
+		entityManager = entityManagerFactory.createEntityManager();
+	}
+	
+	
 
 }
