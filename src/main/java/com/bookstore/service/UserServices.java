@@ -23,11 +23,11 @@ public class UserServices {
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	public UserServices(HttpServletRequest request, HttpServletResponse response) {
+	public UserServices(EntityManager entityManager,
+			HttpServletRequest request, HttpServletResponse response) {
 		super();
-		entityManagerFactory = Persistence.createEntityManagerFactory("Book-Store-ECommerce-Application");
-		entityManager = entityManagerFactory.createEntityManager();
 		this.userDAO = new UserDAO(entityManager);
+		this.entityManager = entityManager;
 		this.request = request;
 		this.response = response;
 	}
