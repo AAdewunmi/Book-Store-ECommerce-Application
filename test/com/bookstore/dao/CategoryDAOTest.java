@@ -74,7 +74,7 @@ public class CategoryDAOTest extends BaseDAOTest{
 	// Implement testFindByName() method
 	@Test
 	public void testFindByName() {
-		String nameString = "Spring Java";
+		String nameString = "Java";
 		Category category = categoryDAO.findByName(nameString);
 		assertNotNull(category);
 	}
