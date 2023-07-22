@@ -27,15 +27,19 @@ public class CategoryServices {
 		categoryDAO = new CategoryDAO(entityManager);
 	}
 
-	public void listCategory() throws ServletException, IOException {
+	public void listCategory(String message) throws ServletException, IOException {
 		List<Category> listCategory = categoryDAO.listAll();
 		request.setAttribute("listCategory", listCategory);
+		if (message != null) {
+			request.setAttribute("message", message);
+		}
 		String listPage = "category_list.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
 		requestDispatcher.forward(request, response);
 	}
 	
-	// Implement createCategory() method
+	
+	
 	public void createCategory() throws ServletException, IOException {
 		String name = request.getParameter("name");
 		Category existCategory = categoryDAO.findByName(name);
@@ -48,7 +52,8 @@ public class CategoryServices {
 		} else {
 			Category newCategory = new Category(name);
 			categoryDAO.create(newCategory);
-			listCategory();
+			String messageString = "New category created successfully!";
+			listCategory(messageString);
 		}
 		
 	}
