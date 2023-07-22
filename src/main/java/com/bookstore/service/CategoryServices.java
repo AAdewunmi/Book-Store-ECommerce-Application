@@ -38,7 +38,9 @@ public class CategoryServices {
 		requestDispatcher.forward(request, response);
 	}
 	
-	
+	public void listCategory() throws ServletException, IOException {
+		listCategory(null);
+	}
 	
 	public void createCategory() throws ServletException, IOException {
 		String name = request.getParameter("name");
