@@ -35,6 +35,22 @@ public class CategoryServices {
 		requestDispatcher.forward(request, response);
 	}
 	
-	
+	// Implement createCategory() method
+	public void createCategory() throws ServletException, IOException {
+		String name = request.getParameter("name");
+		Category existCategory = categoryDAO.findByName(name);
+		if (existCategory != null) {
+			String message = "Could not create category. "
+				+ "A category with name " + name + " already exists!";
+			request.setAttribute("message", message);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+		} else {
+			Category newCategory = new Category(name);
+			categoryDAO.create(newCategory);
+			listCategory();
+		}
+		
+	}
 
 }
