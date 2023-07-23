@@ -59,5 +59,20 @@ public class CategoryServices {
 		}
 		
 	}
+	
+	public void editCategory() throws ServletException, IOException {
+		Integer categoryId=Integer.parseInt(request.getParameter("id"));
+		Category category=categoryDAO.get(categoryId);
+		String editPage="category_form.jsp";
+		if(category==null) {
+			editPage="message.jsp";
+			String errorMessage="Could not find a category with id:"+categoryId;
+			request.setAttribute("message", errorMessage);
+		}else {
+			request.setAttribute("category", category);
+		}
+		RequestDispatcher requestDispatcher=request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);
+	}
 
 }
