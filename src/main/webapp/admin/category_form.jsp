@@ -29,7 +29,7 @@
 	<div align="center">
 		<c:if test="${category != null}">
 			<form action="update_category" method="post" onsubmit="return validateFormInput()">
-			<input type="hidden" name="userId" value=${category.categoryId}>
+			<input type="hidden" name="categoryId" value=${category.categoryId}>
 		</c:if>
 		<c:if test="${category == null}">
 			<form action="create_category" method="post" onsubmit="return validateFormInput()">

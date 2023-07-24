@@ -1,6 +1,7 @@
 package com.bookstore.controller.admin.category;
 
 import com.bookstore.controller.admin.BaseServlet;
+import com.bookstore.service.CategoryServices;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,12 +17,13 @@ public class UpdateCategoryServlet extends BaseServlet {
 
     
     public UpdateCategoryServlet() {
-       
+       super();
     }
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		CategoryServices categoryServices = new CategoryServices(entityManager, request, response);
+		categoryServices.updateCategory();
 	}
 
 }
