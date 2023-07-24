@@ -75,4 +75,22 @@ public class CategoryServices {
 		requestDispatcher.forward(request, response);
 	}
 
+	public void updateCategory() throws ServletException, IOException {
+		Integer categoryId=Integer.parseInt(request.getParameter("categoryId"));
+		String categoryName = request.getParameter("name");
+		Category categoryById = categoryDAO.get(categoryId);
+		Category categoryByName = categoryDAO.findByName(categoryName);
+		if ((categoryByName != null) && (categoryById.getCategoryId() != categoryByName.getCategoryId())) {
+			String message = "Could not update category. " + " A category with name " + categoryName + " already exists!.";
+			request.setAttribute("message", message);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+		}else {
+			categoryById.setName(categoryName);
+			categoryDAO.update(categoryById);
+			String message = "Category has been updated successfully.";
+			listCategory(message);
+		}
+	}
+
 }
