@@ -2,7 +2,7 @@ package com.bookstore.controller.admin.user;
 
 import java.io.IOException;
 
-import com.bookstore.controller.admin.BaseServlet;
+import com.bookstore.controller.BaseServlet;
 import com.bookstore.service.UserServices;
 
 import jakarta.servlet.ServletException;
