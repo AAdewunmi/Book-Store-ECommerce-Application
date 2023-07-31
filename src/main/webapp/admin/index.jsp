@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title> Evergreen Bookstore Administration </title>
+<meta charset="UTF-8" http-equiv="Content-Style-Type" content="text/css">
+	<title> Evergreen Bookstore Administration </title>
+	<style><%@include file="../css/style.css"%></style>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp"/>
