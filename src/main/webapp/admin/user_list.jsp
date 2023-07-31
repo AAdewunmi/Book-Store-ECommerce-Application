@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title> Manage Users - Evergreen Bookstore Administration </title>
+<style><%@include file="../css/style.css"%></style>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp"/>
