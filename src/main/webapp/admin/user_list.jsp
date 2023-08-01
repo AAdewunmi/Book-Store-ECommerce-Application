@@ -10,7 +10,7 @@
 <body>
 	<jsp:directive.include file="header.jsp"/>
 	<div align="center">
-		<h2> User Management Dashboard </h2>
+		<h2 class="pageheading"> User Management Dashboard </h2>
 		<h3><a href="user_form.jsp"> Create New User</a></h3>
 	</div>
 	
