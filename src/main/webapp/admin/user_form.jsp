@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Create New User</title>
+<style><%@include file="../css/style.css"%></style>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
