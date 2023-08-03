@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Create New User</title>
 <style><%@include file="../css/style.css"%></style>
+<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
