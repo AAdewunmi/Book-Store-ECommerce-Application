@@ -5,7 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style><%@include file="../css/style.css"%></style>
+	<style><%@include file="../css/style.css"%></style>
+	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
+    <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
 <title>
 	<c:if test="${category!=nll}">
 		Edit Category
@@ -32,11 +34,11 @@
 
 	<div align="center">
 		<c:if test="${category != null}">
-			<form action="update_category" method="post" onsubmit="return validateFormInput()">
+			<form action="update_category" method="post" id="categoryForm">
 			<input type="hidden" name="categoryId" value=${category.categoryId}>
 		</c:if>
 		<c:if test="${category == null}">
-			<form action="create_category" method="post" onsubmit="return validateFormInput()">
+			<form action="create_category" method="post" id="categoryForm">
 		</c:if>
 			<table class="form">
 				<tr>
@@ -59,15 +61,18 @@
 	</div>
 	
 	<jsp:directive.include file="footer.jsp" />
+	
 </body>
-<script type="text/javascript">
-	function validateFormInput() {
-		var fieldName = document.getElementById("name");
-		if (fieldName.value.length == 0) {
-			alert("Category name is required!");
-			fieldName.focus();
-			return false;
-		}
-		return true;
-	}
-</script></html>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#categoryForm").validate({
+			rules:{
+				name: "required",
+			},
+			messages:{
+				name: "Please enter category name",
+			}
+		});
+	});
+	</script>
+</html>
