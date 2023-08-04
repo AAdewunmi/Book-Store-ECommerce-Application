@@ -69,14 +69,20 @@
 	$(document).ready(function(){
 		$("#userForm").validate({
 			rules:{
-				email: "required",
+				email: {
+					required: true,
+					email: true,
+				},
 				fullname: "required",
-				password: "required"
+				password: "required",
 			},
 			messages:{
-				email: "Please enter email",
+				email: {
+					required: "Please enter email",
+					email: "Please enter a valid email address",
+				},
 				fullname: "Please enter full name",
-				password: "Enter password"
+				password: "Enter password",
 			}
 		});
 	});
