@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<style><%@include file="../css/style.css"%></style>
 <title> Evergreen Bookstore Administration </title>
 </head>
 <body>

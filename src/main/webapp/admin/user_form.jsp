@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Create New User</title>
-<style><%@include file="../css/style.css"%></style>
-<script type="text/javascript" src="../js/jquery-3.7.0.min.js"></script>
-<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
+	<style><%@include file="../css/style.css"%></style>
+	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
+    <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -26,11 +26,11 @@
 
 	<div align="center">
 		<c:if test="${user != null}">
-			<form action="update_user" method="post" onsubmit="return validateFormInput()">
+			<form action="update_user" method="post" id="userForm">
 			<input type="hidden" name="userId" value=${user.userId}>
 		</c:if>
 		<c:if test="${user == null}">
-			<form action="create_user" method="post" onsubmit="return validateFormInput()">
+			<form action="create_user" method="post"id="userForm">
 		</c:if>
 			<table class="form">
 				<tr>
@@ -63,27 +63,23 @@
 	</div>
 	
 	<jsp:directive.include file="footer.jsp" />
-</body>
-<script type="text/javascript">
-	function validateFormInput() {
-		var fieldEmail = document.getElementById("email");
-		var fieldfullName = document.getElementById("fullname");
-		var fieldPassword = document.getElementById("password");
-		if (fieldEmail.value.length == 0) {
-			alert("Email is required!");
-			fieldEmail.focus();
-			return false;
-		}
-		if (fieldfullName.value.length == 0) {
-			alert("Full Name is required!");
-			fieldfullName.focus();
-			return false;
-		}
-		if (fieldPassword.value.length == 0) {
-			alert("Password is required!");
-			fieldPassword.focus();
-			return false;
-		}
-		return true;
-	}
-</script></html>
+	</body>
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$("#userForm").validate({
+			rules:{
+				email: "required",
+				fullname: "required",
+				password: "required"
+			},
+			messages:{
+				email: "Please enter email",
+				fullname: "Please enter full name",
+				password: "Enter password"
+			}
+		});
+	});
+	</script>
+
+</html>
