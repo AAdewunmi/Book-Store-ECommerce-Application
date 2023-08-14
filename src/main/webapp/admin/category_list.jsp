@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title> Manage Categories - Evergreen Bookstore Administration </title>
 <style><%@include file="../css/style.css"%></style>
+<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
+<script src="<c:url value="../js/jquery.validate.min.js" />"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp"/>
@@ -35,7 +37,7 @@
 	 				<td>${cat.name}</td>
 	 				<td>
 	 					<a href="edit_category?id=${cat.categoryId}">Edit</a> &nbsp;
-	 					<a href="javascript:confirmDelete(${cat.categoryId})">Delete</a>
+	 					<a href="javascript:void(0);" class="deleteLink" id="${cat.categoryId}">Delete</a>
 	 				</td>
  				</tr>
 			</c:forEach>
@@ -43,11 +45,16 @@
 	</div>
 	<jsp:directive.include file="footer.jsp"/>
 	<script type="text/javascript">
-		function confirmDelete(categoryId){
-			if(confirm('Are you sure you want to delete category with ID ' + categoryId + ' ?')){
-				window.location = 'delete_category?id=' + categoryId;
-			}
-		}
+	$(document).ready(function(){
+		$(".deleteLink").each(function(){
+			$(this).on("click", function(){
+				categoryId = $(this).attr("id");
+				if(confirm('Are you sure you want to delete category with ID ' + categoryId + ' ?')){
+					window.location = 'delete_category?id=' + categoryId;
+				}
+			});
+		});
+	});
 	</script>
 </body>
 </html>
