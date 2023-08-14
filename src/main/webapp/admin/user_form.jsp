@@ -54,7 +54,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<button type="submit">Save</button> &nbsp;&nbsp;&nbsp;
-						<button onclick="javascript:history.go(-1);">Cancel</button>
+						<button id="buttonCancel">Cancel</button>
 						
 					</td>
 				</tr>
@@ -85,6 +85,9 @@
 				password: "Enter password",
 			}
 		});
+	});
+	$("#buttonCancel").click(function(){
+		history.go(-1);
 	});
 	</script>
 
