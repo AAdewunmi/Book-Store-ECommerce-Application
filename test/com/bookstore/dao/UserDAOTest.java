@@ -109,6 +109,14 @@ public class UserDAOTest extends BaseDAOTest{
 		assertNotNull(users);
 	}
 	
+	@Test
+	public void testCheckLoginSuccess() {
+		String email = "sergio.brin@google.com";
+		String password = "goog";
+		boolean loginResult = userDAO.checkLogin(email, password);
+		assertTrue(loginResult);
+	}
+	
 	@AfterClass
 	public static void tearDownClass() throws Exception {
 		BaseDAOTest.tearDownAfterClass();
