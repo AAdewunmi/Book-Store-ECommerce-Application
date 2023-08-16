@@ -11,7 +11,8 @@ import jakarta.persistence.*;
 @NamedQueries({
 @NamedQuery(name = "Users.findAll", query = "Select u FROM Users u ORDER BY u.fullName"),
 @NamedQuery(name = "Users.findByEmail", query = "Select u FROM Users u WHERE u.email = :email"),
-@NamedQuery(name="Users.countAll", query = "SELECT Count(*) FROM Users u")
+@NamedQuery(name = "Users.countAll", query = "SELECT Count(*) FROM Users u"),
+@NamedQuery(name = "Users.checkLogin", query = "SELECT u FROM Users u WHERE u.email = :email AND password :pass"),
 		})
 @Table(name = "users", catalog = "bookstoredb")
 public class Users implements java.io.Serializable {
