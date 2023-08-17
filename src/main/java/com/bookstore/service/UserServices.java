@@ -125,5 +125,16 @@ public class UserServices {
 			listUser(message);
 		}
 	}
+	
+	public void login() {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		boolean loginResult = userDAO.checkLogin(email, password);
+		if (loginResult) {
+			System.out.println(email + " is authenticated!");
+		}else {
+			System.out.println(email + " authenticated failed!");
+		}
+	}
 
 }
