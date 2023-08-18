@@ -131,12 +131,14 @@ public class UserServices {
 		String password = request.getParameter("password");
 		boolean loginResult = userDAO.checkLogin(email, password);
 		if (loginResult) {
-			System.out.println(email + " is authenticated!");
 			request.getSession().setAttribute("useremail", email);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/");
 			dispatcher.forward(request, response);
 		}else {
-			System.out.println(email + " authenticated failed!");
+			String message = "Login Failed!";
+			request.setAttribute("message", message);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 
