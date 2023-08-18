@@ -126,12 +126,15 @@ public class UserServices {
 		}
 	}
 	
-	public void login() {
+	public void login() throws ServletException, IOException {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		boolean loginResult = userDAO.checkLogin(email, password);
 		if (loginResult) {
 			System.out.println(email + " is authenticated!");
+			request.getSession().setAttribute("useremail", email);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/");
+			dispatcher.forward(request, response);
 		}else {
 			System.out.println(email + " authenticated failed!");
 		}
