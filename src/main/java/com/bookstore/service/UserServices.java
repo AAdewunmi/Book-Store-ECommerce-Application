@@ -2,12 +2,11 @@ package com.bookstore.service;
 
 import java.util.List;
 
+import com.bookstore.dao.HashGenerator;
 import com.bookstore.dao.UserDAO;
 import com.bookstore.entity.Users;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,8 +16,6 @@ import java.io.IOException;
 
 public class UserServices {
 	
-	private EntityManagerFactory entityManagerFactory;
-	private EntityManager entityManager;
 	private UserDAO userDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
@@ -27,7 +24,6 @@ public class UserServices {
 			HttpServletRequest request, HttpServletResponse response) {
 		super();
 		this.userDAO = new UserDAO(entityManager);
-		this.entityManager = entityManager;
 		this.request = request;
 		this.response = response;
 	}
@@ -81,6 +77,7 @@ public class UserServices {
 			String errorMessage = "Could not find user with ID " + userId;
 			request.setAttribute("message", errorMessage);
 		} else {
+			user.setPassword(null);
 			request.setAttribute("user", user);	
 		}
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
@@ -102,9 +99,15 @@ public class UserServices {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
 			requestDispatcher.forward(request, response);
 		}else {
-			System.out.println(userId + " : "  +  email + ", " + fullName + ", " + password);
-			Users users = new Users(userId, email, password, fullName);
-			userDAO.update(users);
+			userById.setEmail(email);
+			userById.setFullName(fullName);
+			
+			if (password != null & !password.isEmpty()) {
+				String encryptedPassword = HashGenerator.generateMD5(password);
+				userById.setPassword(encryptedPassword);				
+			}
+			
+			userDAO.update(userById);
 			String message = "User has been updated successfully!";
 			listUser(message);
 		}
@@ -112,7 +115,6 @@ public class UserServices {
 
 	public void deleteUser() throws ServletException, IOException {
 		int userId = Integer.parseInt(request.getParameter("id"));
-		//Users user = userDAO.get(userId);
 		String message = "User has been deleted successfully!";
 		
 		if (userId == 1) {
@@ -120,10 +122,20 @@ public class UserServices {
 			request.setAttribute("message", message);
 			request.getRequestDispatcher("message.jsp").forward(request, response);
 			return;
+		} 
+		
+		Users user = userDAO.get(userId);		
+		
+		if (user == null) {
+			message = "Could not find user with ID " + userId
+					+ ", or it might have been deleted by another admin";
+			
+			request.setAttribute("message", message);
+			request.getRequestDispatcher("message.jsp").forward(request, response);			
 		} else {
 			userDAO.delete(userId);
 			listUser(message);
-		}
+		}		
 	}
 	
 	public void login() throws ServletException, IOException {
