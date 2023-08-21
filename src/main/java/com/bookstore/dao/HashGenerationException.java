@@ -1,6 +1,6 @@
 package com.bookstore.dao;
 
-public class HashGenerationException {
+public class HashGenerationException extends RuntimeException{
 	
 	public HashGenerationException(String message) {
 		super(message);
