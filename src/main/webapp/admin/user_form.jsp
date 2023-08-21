@@ -66,28 +66,38 @@
 	</body>
 	
 	<script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 		$("#userForm").validate({
-			rules:{
+			rules: {
 				email: {
 					required: true,
-					email: true,
+					email: true
 				},
+		
 				fullname: "required",
-				password: "required",
+				
+				<c:if test="${user == null}">
+				password: "required"
+				</c:if>
 			},
-			messages:{
+			
+			messages: {
 				email: {
 					required: "Please enter email",
-					email: "Please enter a valid email address",
+					email: "Please enter an valid email address"
 				},
+				
 				fullname: "Please enter full name",
-				password: "Enter password",
+				
+				<c:if test="${user == null}">
+				password: "Please enter password"
+				</c:if>				
 			}
 		});
-	});
-	$("#buttonCancel").click(function(){
-		history.go(-1);
+		
+		$("#buttonCancel").click(function() {
+			history.go(-1);
+		});
 	});
 	</script>
 
