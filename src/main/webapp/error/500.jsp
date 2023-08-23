@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Page Not Found Error!</title>
+<title>Internal Server Error!</title>
 </head>
 <body>
 	<div align="center">
@@ -12,7 +12,9 @@
 		<img src="../images/BookstoreLogo.png" />
 		</div>
 		<div>
-			<h1>Sorry, the requested page could not be found!</h1>
+			<h1>Sorry, the server has encountered an error, while fulfilling your request!</h1>
+			<br>
+			<h1>Please check back later or contact the administrator.</h1>
 		</div>
 		<div>
 			<a href="javascript:history.go(-1);">Go Back</a>
