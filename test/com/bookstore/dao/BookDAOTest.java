@@ -17,6 +17,7 @@ public class BookDAOTest extends BaseDAOTest{
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		BaseDAOTest.tearDownAfterClass();
 	}
 
 	@Test
