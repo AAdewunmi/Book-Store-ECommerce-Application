@@ -33,8 +33,8 @@ public class BookDAOTest extends BaseDAOTest{
 	@Test
 	public void testCreateBook() throws ParseException, IOException {
 		Book book=new Book();
-		Category category=new Category("Advanced Java");
-		category.setCategoryId(5);
+		Category category=new Category("Core Java");
+		category.setCategoryId(9);
 		book.setCategory(category);
 		book.setTitle("Effective Java (2nd Edition)");
 		book.setAuthor("Joshua Bloch");
