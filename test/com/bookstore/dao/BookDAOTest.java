@@ -29,6 +29,28 @@ public class BookDAOTest extends BaseDAOTest{
 	public static void tearDownAfterClass() throws Exception {
 		BaseDAOTest.tearDownAfterClass();
 	}
+	
+	@Test
+	public void testUpdateBook() throws ParseException, IOException {
+		Book existBook=new Book();
+		existBook.setBookId(1);
+		Category category=new Category("Spring Boot Java");
+		category.setCategoryId(1);
+		existBook.setCategory(category);
+		existBook.setTitle("Effective Java (3rd Edition)");
+		existBook.setAuthor("Joshua Bloch");
+		existBook.setDescription("New coverage of generics, enums, annotations, autoboxing");
+		existBook.setPrice(40f);
+		existBook.setIsbn("0321356683");
+		SimpleDateFormat dateFormat=new SimpleDateFormat("MM/dd/yyyy");
+		Date publishDate=dateFormat.parse("05/28/2008");
+		existBook.setPublishDate(publishDate);
+		String imagePath="/Users/adrianadewunmi/Downloads/books/Effective Java.jpg";
+		byte[] imageBytes=Files.readAllBytes(Paths.get(imagePath));
+		existBook.setImage(imageBytes);
+		Book updatedBook =bookDAO.update(existBook);
+		assertEquals(updatedBook.getTitle(), "Effective Java (3rd Edition)");	
+	}
 
 	@Test
 	public void testCreateBook() throws ParseException, IOException {
@@ -49,6 +71,6 @@ public class BookDAOTest extends BaseDAOTest{
 		book.setImage(imageBytes);
 		Book createdBook =bookDAO.create(book);
 		assertTrue(createdBook.getBookId()>0);	
-		}
+	}
 
 }
