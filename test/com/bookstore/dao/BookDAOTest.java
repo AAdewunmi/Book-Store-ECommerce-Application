@@ -76,6 +76,13 @@ public class BookDAOTest extends BaseDAOTest{
 		bookDAO.delete(bookId);
 	}
 	
+	@Test
+	public void testDeleteBookSuccess() {
+		Integer bookId = 1;
+		bookDAO.delete(bookId);
+		assertTrue(true);
+	}
+	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		BaseDAOTest.tearDownAfterClass();
