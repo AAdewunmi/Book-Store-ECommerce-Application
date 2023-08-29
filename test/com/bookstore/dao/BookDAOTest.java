@@ -16,6 +16,8 @@ import org.junit.Test;
 import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
 
+import jakarta.persistence.EntityNotFoundException;
+
 public class BookDAOTest extends BaseDAOTest{
 	private static BookDAO bookDAO;
 	
@@ -23,11 +25,6 @@ public class BookDAOTest extends BaseDAOTest{
 	public static void setUpBeforeClass() throws Exception {
 		BaseDAOTest.setUpBeforeClass();
 		bookDAO = new BookDAO(entityManager);
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-		BaseDAOTest.tearDownAfterClass();
 	}
 	
 	@Test
@@ -71,6 +68,17 @@ public class BookDAOTest extends BaseDAOTest{
 		book.setImage(imageBytes);
 		Book createdBook =bookDAO.create(book);
 		assertTrue(createdBook.getBookId()>0);	
+	}
+	
+	@Test(expected = EntityNotFoundException.class)
+	public void testDeleteBookFail() {
+		Integer bookId = 100;
+		bookDAO.delete(bookId);
+	}
+	
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		BaseDAOTest.tearDownAfterClass();
 	}
 
 }
