@@ -77,6 +77,13 @@ public class BookDAOTest extends BaseDAOTest{
 	}
 	
 	@Test
+	public void testGetBookFail() {
+		Integer bookId = 99;
+		Book book = bookDAO.get(bookId);
+		assertNull(book);
+	}
+	
+	@Test
 	public void testDeleteBookSuccess() {
 		Integer bookId = 1;
 		bookDAO.delete(bookId);
