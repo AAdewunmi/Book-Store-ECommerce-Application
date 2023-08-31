@@ -28,6 +28,9 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "book", catalog = "bookstoredb", uniqueConstraints = @UniqueConstraint(columnNames = "title"))
+@NamedQueries({
+	@NamedQuery(name = "Book.findAll", query = "SELECT b FROM b"),
+})
 public class Book implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
