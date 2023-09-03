@@ -71,6 +71,27 @@ public class BookDAOTest extends BaseDAOTest{
 		assertTrue(createdBook.getBookId()>0);	
 	}
 	
+	@Test
+	public void testCreateSecondBook() throws ParseException, IOException {
+		Book book=new Book();
+		Category category=new Category("Core Java");
+		category.setCategoryId(9);
+		book.setCategory(category);
+		book.setTitle("Java 8 in Action");
+		book.setAuthor("Alan Mycroft");
+		book.setDescription("Java 8 in Action is a clearly written guide to the new features of Java 8");
+		book.setPrice(36.72f);
+		book.setIsbn("1617291994");
+		SimpleDateFormat dateFormat=new SimpleDateFormat("MM/dd/yyyy");
+		Date publishDate=dateFormat.parse("08/28/2014");
+		book.setPublishDate(publishDate);
+		String imagePath="/Users/adrianadewunmi/Downloads/books/Java 8 in Action.jpg";
+		byte[] imageBytes=Files.readAllBytes(Paths.get(imagePath));
+		book.setImage(imageBytes);
+		Book createdBook =bookDAO.create(book);
+		assertTrue(createdBook.getBookId()>0);	
+	}
+	
 	@Test(expected = EntityNotFoundException.class)
 	public void testDeleteBookFail() {
 		Integer bookId = 100;
