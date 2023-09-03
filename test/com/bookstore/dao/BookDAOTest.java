@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -95,6 +96,15 @@ public class BookDAOTest extends BaseDAOTest{
 		Integer bookId = 1;
 		bookDAO.delete(bookId);
 		assertTrue(true);
+	}
+	
+	@Test
+	public void testListAll() {
+		List<Book> listBooks = bookDAO.listAll();
+		for (Book book : listBooks) {
+			System.out.println(book.getTitle() + " - " + book.getAuthor());
+		}
+		assertFalse(listBooks.isEmpty());
 	}
 	
 	@AfterClass
