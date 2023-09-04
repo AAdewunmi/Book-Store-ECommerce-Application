@@ -132,7 +132,16 @@ public class BookDAOTest extends BaseDAOTest{
 	public void testFindByTitleNotExist() {
 		String title = "Thinking in Java";
 		Book book = bookDAO.findByTitle(title);
-		assertNull(book);
+		assertNotNull(book);
+	}
+	
+	@Test
+	public void testFindByTitleExist() {
+		String title = "Effective Java (2nd Edition)";
+		Book book = bookDAO.findByTitle(title);
+		System.out.println(book.getAuthor());
+		System.out.println(book.getPrice());
+		assertNotNull(book);
 	}
 	
 	@AfterClass
