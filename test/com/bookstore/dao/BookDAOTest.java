@@ -128,6 +128,13 @@ public class BookDAOTest extends BaseDAOTest{
 		assertFalse(listBooks.isEmpty());
 	}
 	
+	@Test
+	public void testFindByTitleNotExist() {
+		String title = "Thinking in Java";
+		Book book = bookDAO.findByTitle(title);
+		assertNull(book);
+	}
+	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		BaseDAOTest.tearDownAfterClass();
