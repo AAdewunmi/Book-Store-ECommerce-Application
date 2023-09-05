@@ -144,6 +144,12 @@ public class BookDAOTest extends BaseDAOTest{
 		assertNotNull(book);
 	}
 	
+	@Test
+	public void testCount() {
+		long totalBooks = bookDAO.count();
+		assertEquals(2, totalBooks);
+	}
+	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		BaseDAOTest.tearDownAfterClass();
