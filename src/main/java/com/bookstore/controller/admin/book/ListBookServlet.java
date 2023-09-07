@@ -3,6 +3,7 @@ package com.bookstore.controller.admin.book;
 import java.io.IOException;
 
 import com.bookstore.controller.BaseServlet;
+import com.bookstore.service.BookServices;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,7 +19,9 @@ public class ListBookServlet extends BaseServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		BookServices bookServices = new BookServices(entityManager, request, response);
+		bookServices.listBooks();
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
