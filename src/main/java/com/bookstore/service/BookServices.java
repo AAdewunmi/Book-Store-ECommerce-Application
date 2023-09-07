@@ -1,8 +1,14 @@
 package com.bookstore.service;
 
+import java.io.IOException;
+import java.util.List;
+
 import com.bookstore.dao.BookDAO;
+import com.bookstore.entity.Book;
 
 import jakarta.persistence.EntityManager;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -21,8 +27,12 @@ public class BookServices {
 		bookDAO = new BookDAO(entityManager);
 	}
 
-	public void listBooks() {
-		
+	public void listBooks() throws ServletException, IOException {
+		List<Book> listBooks = bookDAO.listAll();
+		request.setAttribute("listBooks", listBooks);
+		String listPage = "book_list.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
+		requestDispatcher.forward(request, response);
 	}
 
 }
