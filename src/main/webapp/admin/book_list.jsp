@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> Manage Users - Evergreen Bookstore Administration </title>
+<title> Manage Books - Evergreen Bookstore Administration </title>
 <style><%@include file="../css/style.css"%></style>
 <script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
 <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
@@ -12,8 +12,8 @@
 <body>
 	<jsp:directive.include file="header.jsp"/>
 	<div align="center">
-		<h2 class="pageheading"> User Management Dashboard </h2>
-		<h3><a href="user_form.jsp"> Create New User</a></h3>
+		<h2 class="pageheading"> Books Management Dashboard </h2>
+		<h3><a href="book_form.jsp"> Create New Book</a></h3>
 	</div>
 	
 	<c:if test="${message != null}">
@@ -27,16 +27,20 @@
 			<tr>
 				<th>Index</th>
 				<th>ID</th>
-				<th>Email</th>
-				<th>Full Name</th>
+				<th>Image</th>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Category</th>
+				<th>Price</th>
+				<th>Last Updated</th>
 				<th>Actions</th>
 			</tr>
-			<c:forEach var="user" items="${listUsers}" varStatus="status">
+			<c:forEach var="book" items="${listBooks}" varStatus="status">
 				<tr>
 	 				<td>${status.index + 1}</td>
-	 				<td>${user.userId}</td>
-	 				<td>${user.email}</td>
-	 				<td>${user.fullName}</td>
+	 				<td>${book.bookId}</td>
+	 				<td>${book.title}</td>
+	 				<td></td>
 	 				<td>
 	 					<a href="edit_user?id=${user.userId}">Edit</a> &nbsp;
 	 					<a href="javascript:void(0);" class="deleteLink" id="${user.userId}">Delete</a>
