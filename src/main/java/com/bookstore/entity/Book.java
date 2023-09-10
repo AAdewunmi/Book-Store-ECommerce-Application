@@ -198,13 +198,15 @@ public class Book implements java.io.Serializable {
 		this.orderDetails = orderDetails;
 	}
 	
+	@Transient
 	public String getBase64Image() {
 		this.base64Image = Base64.getEncoder().encodeToString(this.image);
 		return this.base64Image;
 	}
 	
-	public void setBase64Image(String base64) {
-		this.base64Image = base64;
+	@Transient
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
 	}
 
 }

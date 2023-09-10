@@ -37,14 +37,23 @@
 			</tr>
 			<c:forEach var="book" items="${listBooks}" varStatus="status">
 				<tr>
+	 				
 	 				<td>${status.index + 1}</td>
 	 				<td>${book.bookId}</td>
-	 				<td>${book.title}</td>
-	 				<td></td>
 	 				<td>
-	 					<a href="edit_user?id=${user.userId}">Edit</a> &nbsp;
-	 					<a href="javascript:void(0);" class="deleteLink" id="${user.userId}">Delete</a>
+	 					<img src="data:image/jpg;base64, ${book.base64Image}" width="84" height="110">
 	 				</td>
+	 				<td>${book.title}</td>
+	 				<td>${book.author}</td>
+	 				<td>${book.category.name}</td>
+	 				<td>${book.price}</td>
+	 				<td>${book.lastUpdateTime}</td>
+	 				
+	 				<td>
+	 					<a href="edit_book?id=${book.bookId}">Edit</a> &nbsp;
+	 					<a href="javascript:void(0);" class="deleteLink" id="${book.bookId}">Delete</a>
+	 				</td>
+ 				
  				</tr>
 			</c:forEach>
 		</table>
