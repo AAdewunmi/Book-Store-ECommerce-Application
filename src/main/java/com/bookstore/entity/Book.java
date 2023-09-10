@@ -45,6 +45,7 @@ public class Book implements java.io.Serializable {
 	private String description;
 	private String isbn;
 	private byte[] image;
+	private String base64Image;
 	private float price;
 	private Date publishDate;
 	private Date lastUpdateTime;
@@ -198,7 +199,12 @@ public class Book implements java.io.Serializable {
 	}
 	
 	public String getBase64Image() {
-		return Base64.getEncoder().encodeToString(this.image);
+		this.base64Image = Base64.getEncoder().encodeToString(this.image);
+		return this.base64Image;
+	}
+	
+	public void setBase64Image(String base64) {
+		this.base64Image = base64;
 	}
 
 }
