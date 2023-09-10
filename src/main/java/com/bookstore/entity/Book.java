@@ -1,6 +1,8 @@
 package com.bookstore.entity;
 // Generated 15 May 2023, 15:47:29 by Hibernate Tools 4.3.6.Final
 
+import java.util.Base64;
+
 //import java.util.Date;
 //import java.util.HashSet;
 //import java.util.Set;
@@ -193,6 +195,10 @@ public class Book implements java.io.Serializable {
 
 	public void setOrderDetails(Set<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
+	}
+	
+	public String getBase64Image() {
+		return Base64.getEncoder().encodeToString(this.image);
 	}
 
 }
