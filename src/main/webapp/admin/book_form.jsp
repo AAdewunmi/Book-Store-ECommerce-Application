@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create New User</title>
+<title>Create New Book</title>
 	<style><%@include file="../css/style.css"%></style>
 	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
     <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
@@ -15,38 +15,71 @@
 
 	<div align="center">
 		<h2 class="pageheading">
-			<c:if test="${user != null}">
-				Edit User
+			<c:if test="${book != null}">
+				Edit Book
 			</c:if>
-			<c:if test="${user == null}">
-				Create New User
+			<c:if test="${book == null}">
+				Create New Book
 			</c:if>
 		</h2>
 	</div>
 
 	<div align="center">
-		<c:if test="${user != null}">
+		<c:if test="${book != null}">
 			<form action="update_user" method="post" id="userForm">
 			<input type="hidden" name="userId" value=${user.userId}>
 		</c:if>
-		<c:if test="${user == null}">
-			<form action="create_user" method="post"id="userForm">
+		<c:if test="${book == null}">
+			<form action="create_book" method="post"id="bookForm">
 		</c:if>
 			<table class="form">
 				<tr>
-					<td align="right">Email:</td>
-					<td align="left"><input type="text" id="email" name="email"
-						size="20" value="${user.email}"></td>
+					<td>Category</td>
+					<td>
+						<select name="category">
+							<c:forEach items="${listCategory}" var="category">
+								<option value="{category.categoryId}">
+									${category.name} 
+								</option>
+							</c:forEach>
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<td align="right">Full Name:</td>
-					<td align="left"><input type="text" id="fullname"
-						name="fullname" size="20" value="${user.fullName}"></td>
+					<td align="right">Title:</td>
+					<td align="left"><input type="text" id="title" name="title"
+						size="20" value="${book.title}"></td>
 				</tr>
 				<tr>
-					<td align="right">Password:</td>
-					<td align="left"><input type="password" id="password"
-						name="password" size="20" value="${user.password}"></td>
+					<td align="right">Author:</td>
+					<td align="left"><input type="text" id="author"
+						name="author" size="20" value="${book.author}"></td>
+				</tr>
+				<tr>
+					<td align="right">ISBN:</td>
+					<td align="left"><input type="text" id="isbn"
+						name="isbn" size="20" value="${book.isbn}"></td>
+				</tr>
+				<tr>
+					<td align="right">Publish Date:</td>
+					<td align="left"><input type="text" id="publishDate"
+						name="publishDate" size="20" value="${book.publishDate}"></td>
+				</tr>
+				<tr>
+					<td align="right">Book Image:</td>
+					<td align="left"><input type="file" id="bookImage"
+						name="bookImage" size="20"></td>
+				</tr>
+				<tr>
+					<td align="right">Price:</td>
+					<td align="left"><input type="text" id="price"
+						name="price" size="20" value="${book.price}"></td>
+				</tr>
+				<tr>
+					<td align="right">Description:</td>
+					<td align="left">
+						<textarea rows="5" cols="50" name="description" id="description"></textarea>
+					</td>
 				</tr>
 				<tr>
 					<td>&nbsp<td>
