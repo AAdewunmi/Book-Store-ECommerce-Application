@@ -9,6 +9,8 @@
 	<style><%@include file="../css/style.css"%></style>
 	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
     <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
+    <style><%@include file="../css/jquery-ui.min.css"%></style>
+    <script src="<c:url value="../js/jquery-ui.min.js" />"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -132,6 +134,9 @@
 			history.go(-1);
 		});
 	});
+	  $( function() {
+		    $( "#publishDate" ).datepicker();
+		  } );
 	</script>
 
 </html>
