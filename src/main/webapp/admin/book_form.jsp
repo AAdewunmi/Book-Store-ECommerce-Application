@@ -7,9 +7,10 @@
 <meta charset="UTF-8">
 <title>Create New Book</title>
 	<style><%@include file="../css/style.css"%></style>
+	<style><%@include file="../css/jquery-ui.min.css"%></style>
+	
 	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
     <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
-    <style><%@include file="../css/jquery-ui.min.css"%></style>
     <script src="<c:url value="../js/jquery-ui.min.js" />"></script>
 </head>
 <body>
@@ -69,8 +70,10 @@
 				</tr>
 				<tr>
 					<td align="right">Book Image:</td>
-					<td align="left"><input type="file" id="bookImage"
-						name="bookImage" size="20"></td>
+					<td align="left">
+						<input type="file" id="bookImage" name="bookImage" size="20"><br/>
+						<img id="thumbnail" alt="Image Preview" style="width:20%; margin-top: 10px"/>
+					</td>
 				</tr>
 				<tr>
 					<td align="right">Price:</td>
@@ -102,6 +105,10 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function() {
+		$('#publishDate').datepicker();
+		$('#bookImage').change(function(){
+			showImageThumbnail(this);
+		});
 		$("#userForm").validate({
 			rules: {
 				email: {
@@ -134,9 +141,14 @@
 			history.go(-1);
 		});
 	});
-	  $( function() {
-		    $( "#publishDate" ).datepicker();
-		  } );
+	function showImageThumbnail(fileInput){
+		var file = fileInput.files[0];
+		var reader = new FileReader();
+		reader.onload = function(e){
+			$('#thumbnail').attr('src', e.target.result);
+		};
+		reader.readAsDataURL(file);
+	}
 	</script>
 
 </html>
