@@ -109,31 +109,27 @@
 		$('#bookImage').change(function(){
 			showImageThumbnail(this);
 		});
-		$("#userForm").validate({
+		$("#bookForm").validate({
 			rules: {
-				email: {
-					required: true,
-					email: true
-				},
-		
-				fullname: "required",
-				
-				<c:if test="${user == null}">
-				password: "required"
-				</c:if>
+				category: "required",
+				title: "required",
+				author: "required",
+				isbn: "required",
+				publishDate: "required",
+				bookImage: "required",
+				price: "required",
+				description: "required",
 			},
 			
 			messages: {
-				email: {
-					required: "Please enter email",
-					email: "Please enter an valid email address"
-				},
-				
-				fullname: "Please enter full name",
-				
-				<c:if test="${user == null}">
-				password: "Please enter password"
-				</c:if>				
+				category: "Please select a book category",
+				title: "Please enter book title",
+				author: "Please enter book author",
+				isbn: "Please enter book isbn",
+				publishDate: "Please enter book publish date",
+				bookImage: "Please choose book image",
+				price: "Please enter book price",
+				description: "Please enter book description",			
 			}
 		});
 		
