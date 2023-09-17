@@ -35,6 +35,7 @@
 		<c:if test="${book == null}">
 			<form action="create_book" method="post"id="bookForm">
 		</c:if>
+		
 			<table class="form">
 				<tr>
 					<td>Category</td>
