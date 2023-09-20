@@ -29,7 +29,7 @@
 
 	<div align="center">
 		<c:if test="${book != null}">
-			<form action="update_user" method="post" id="bookForm" enctype="multipart/form-data">
+			<form action="update_book" method="post" id="bookForm" enctype="multipart/form-data">
 			<input type="hidden" name="bookId" value=${book.bookId}>
 		</c:if>
 		<c:if test="${book == null}">
@@ -124,7 +124,11 @@
 				author: "required",
 				isbn: "required",
 				publishDate: "required",
+				
+				<c:if test="${book == null}">
 				bookImage: "required",
+				</c:if>
+				
 				price: "required",
 				description: "required",
 			},
