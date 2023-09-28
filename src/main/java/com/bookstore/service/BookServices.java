@@ -134,9 +134,13 @@ public class BookServices {
 		}
 	}
 
-	public void updateBook() {
-		Integer bookId = Integer.parseInt(request.getParameter("id"));
+	public void updateBook() throws ServletException, IOException {
+		Integer bookId = Integer.parseInt(request.getParameter("bookId"));
 		Book existBook = bookDAO.get(bookId);
+		readBookFields(existBook);
+		bookDAO.update(existBook);
+		String message = "The book has been updated successfully!";
+		listBooks(message);
 	}
 
 }
