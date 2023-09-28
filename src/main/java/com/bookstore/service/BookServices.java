@@ -63,9 +63,7 @@ public class BookServices {
 	}
 
 	public void createBook() throws  ServletException, IOException{
-		Integer categoryId = Integer.parseInt(request.getParameter("category"));
 		String title = request.getParameter("title");
-		
 		Book existBook = bookDAO.findByTitle(title);
 		if (existBook != null) {
 			String message = "Could not create new book because the title "
@@ -74,47 +72,8 @@ public class BookServices {
 			return;
 		}
 		
-		String author = request.getParameter("author");
-		String description = request.getParameter("description");
-		String isbn = request.getParameter("isbn"); 
-		float price = Float.parseFloat(request.getParameter("price"));
-		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		Date publishDate = null;
-		try {
-			publishDate = dateFormat.parse(request.getParameter("publishDate"));
-		} catch (ParseException e) {
-			e.printStackTrace();
-			throw new ServletException("Error parsing publish date (format is MM/dd/yyyy)");
-		}
-		System.out.println("Category ID: " + categoryId);
-		System.out.println("Title : " + title);
-		System.out.println("Author : " + author);
-		System.out.println("Description : " + description);
-		System.out.println("ISBN : " + isbn);
-		System.out.println("Price : " + price);
-		System.out.println("Publication Date : " + publishDate);
-		
 		Book newBook = new Book();
-		newBook.setTitle(title);
-		newBook.setAuthor(author);
-		newBook.setDescription(description);
-		newBook.setIsbn(isbn);
-		newBook.setPublishDate(publishDate);
-		Category category = categoryDAO.get(categoryId);
-		newBook.setCategory(category);
-		newBook.setPrice(price);
-		
-		Part part = request.getPart("bookImage");
-		if (part != null && part.getSize() > 0) {
-			long size = part.getSize();
-			byte[] imageBytes = new byte[(int) size];
-			
-			InputStream inputStream = part.getInputStream();
-			inputStream.read(imageBytes);
-			inputStream.close();
-			
-			newBook.setImage(imageBytes);
-		}
+		readBookFields(newBook);
 		
 		Book createdBook = bookDAO.create(newBook);
 		
@@ -134,6 +93,50 @@ public class BookServices {
 		String editPage = "book_form.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
 		requestDispatcher.forward(request, response);
+	}
+	
+	public void readBookFields(Book book) throws ServletException, IOException {
+		
+		String title = request.getParameter("title");
+		String author = request.getParameter("author");
+		String description = request.getParameter("description");
+		String isbn = request.getParameter("isbn"); 
+		float price = Float.parseFloat(request.getParameter("price"));
+		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		Date publishDate = null;
+		try {
+			publishDate = dateFormat.parse(request.getParameter("publishDate"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+			throw new ServletException("Error parsing publish date (format is MM/dd/yyyy)");
+		}
+		
+		book.setTitle(title);
+		book.setAuthor(author);
+		book.setDescription(description);
+		book.setIsbn(isbn);
+		book.setPublishDate(publishDate);
+		Integer categoryId = Integer.parseInt(request.getParameter("category"));
+		Category category = categoryDAO.get(categoryId);
+		book.setCategory(category);
+		book.setPrice(price);
+		
+		Part part = request.getPart("bookImage");
+		if (part != null && part.getSize() > 0) {
+			long size = part.getSize();
+			byte[] imageBytes = new byte[(int) size];
+			
+			InputStream inputStream = part.getInputStream();
+			inputStream.read(imageBytes);
+			inputStream.close();
+			
+			book.setImage(imageBytes);
+		}
+	}
+
+	public void updateBook() {
+		Integer bookId = Integer.parseInt(request.getParameter("id"));
+		Book existBook = bookDAO.get(bookId);
 	}
 
 }
