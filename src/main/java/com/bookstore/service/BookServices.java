@@ -136,7 +136,14 @@ public class BookServices {
 
 	public void updateBook() throws ServletException, IOException {
 		Integer bookId = Integer.parseInt(request.getParameter("bookId"));
+		String title = request.getParameter("title");
 		Book existBook = bookDAO.get(bookId);
+		Book bookByTitle = bookDAO.findByTitle(title);
+		if(!existBook.equals(bookByTitle)){
+			String message = "Could not update book because there's another book with the same title.";
+			listBooks(message);
+			return;
+		}
 		readBookFields(existBook);
 		bookDAO.update(existBook);
 		String message = "The book has been updated successfully!";
