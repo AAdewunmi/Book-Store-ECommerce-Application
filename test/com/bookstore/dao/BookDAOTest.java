@@ -150,6 +150,13 @@ public class BookDAOTest extends BaseDAOTest{
 		assertEquals(2, totalBooks);
 	}
 	
+	@Test
+	public void testListByCategory() {
+		int categoryId = 1;
+		List<Book> listBooks = bookDAO.listByCategory(categoryId);
+		assertTrue(listBooks.size() > 0);
+	}
+	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		BaseDAOTest.tearDownAfterClass();
