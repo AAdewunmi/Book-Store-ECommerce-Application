@@ -177,6 +177,13 @@ public class BookServices {
 		int categoryId = Integer.parseInt(request.getParameter("id"));
 		List<Book> listBooks = bookDAO.listByCategory(categoryId);
 		request.setAttribute("listBooks", listBooks);
+		
+		Category category = categoryDAO.get(categoryId);
+		request.setAttribute("category", category);
+		
+		List<Category> listCategory = categoryDAO.listAll();
+		request.setAttribute("listCategory", listCategory);
+		
 		String listPage = "frontend/book_list_by_category.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
 		requestDispatcher.forward(request, response);
