@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Evergreen Books - Online Books Store</title>
+<style><%@include file="../css/style.css"%></style>
 </head>
 <body>
 
