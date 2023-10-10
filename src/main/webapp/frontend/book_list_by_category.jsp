@@ -20,7 +20,12 @@
 	
 	<div align="center">
 		<c:forEach items="${listBooks}" var="book">
-			${book.title} 
+			<div>
+				<div>
+					<img src="data:image/jpg;base64, ${book.base64Image}" width="128" height="164">
+				</div>
+				<div>${book.title}</div>
+			</div>
 		</c:forEach>
 	</div>
 
