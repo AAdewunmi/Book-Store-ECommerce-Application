@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,12 @@
 		<br>
 		<h3> ${category.name} </h3>
 		<br>
+	</div>
+	
+	<div align="center">
+		<c:forEach items="${listBooks}" var="book">
+			${book.title} 
+		</c:forEach>
 	</div>
 
 	<jsp:directive.include file="footer.jsp"/>
