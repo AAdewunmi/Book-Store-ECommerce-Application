@@ -157,6 +157,15 @@ public class BookDAOTest extends BaseDAOTest{
 		assertTrue(listBooks.size() > 0);
 	}
 	
+	@Test
+	public void testListNewBooks() {
+		List<Book> listNewBooks = bookDAO.listNewBooks();
+		for (Book book : listNewBooks) {
+			System.out.println(book.getTitle() + " - " + book.getPublishDate());
+		}
+		assertEquals(4, listNewBooks.size());
+	}
+	
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		BaseDAOTest.tearDownAfterClass();
