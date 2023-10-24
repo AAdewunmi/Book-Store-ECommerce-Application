@@ -205,8 +205,19 @@ public class BookServices {
 		request.setAttribute("listCategory", listCategory);
 		request.setAttribute("book", book);
 		String detailPage = "frontend/book_detail.jsp";
+		
+		if (book != null) {
+			request.setAttribute("book", book);
+	
+		} else {
+			detailPage = "frontend/message.jsp";
+			String message = "Sorry, the book with ID " + bookId + " is not available.";
+			request.setAttribute("message", message);			
+		}
+		
+		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(detailPage);
-		requestDispatcher.forward(request, response);	
+		requestDispatcher.forward(request, response);
 	}
 	 
 
