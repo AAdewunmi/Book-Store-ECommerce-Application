@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Evergreen Books - Online Books Store</title>
+<title>${book.title} - Online Books Store</title>
 <style><%@include file="../css/style.css"%></style>
 </head>
 <body>
@@ -12,33 +12,41 @@
 	<jsp:directive.include file="header.jsp"/>
 	
 	<div align="center">
-		<div align="center" style="width: 80%; margin: 0 auto;">
-			<h2>New Books: </h2>
-		<c:forEach items="${listNewBooks}" var="book">
-			<div style="display: inline-block; margin: 20px">
-				<div>
-					<a href="view_book?id=${book.bookId}">
-						<img src="data:image/jpg;base64, ${book.base64Image}" width="128" height="164">
-					</a>
-				</div>
-				<div>
-					<a href="view_book?id=${book.bookId}">
-						<b>${book.title}</b>
-					</a>
-				</div>
-				<div>Rating ***** </div>
-				<div><i>by ${book.author}</i></div>
-				<div><b>$ ${book.price}</b></div>
-			</div>
-		</c:forEach>
-	</div>
-		<div align="center" style="clear:both">
-			<h2>Best-Selling Books: </h2>
-		</div>
-		<div align="center" style="clear:both">
-			<h2>Most - Favoured Books: </h2>
-		</div>
-		<br>
+		<table width=80% style="border:0">
+			<tr>
+				<td colspan="3" align="left" >
+						<h2>${book.title}</h2>by ${book.author}
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="2">
+					<img src="data:image/jpg;base64, ${book.base64Image}" width="240" height="300">
+				</td>
+				<td valign="top" align="left">
+					Rating *****
+				</td>
+				<td valign="top" rowspan="2" width="20%">
+					<h2>$ ${book.price}</h2>
+					<br>
+					<br>
+					<button type="submit">Add To Cart!</button>
+				</td>
+			</tr>
+			<tr>
+				<td valign="top" style="text-align: justify;">
+					${book.description} 
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr>
+				<td>
+					<h2>Customer Reviews</h2> 
+				</td>
+				<td colspan="2" align="center">
+					<button>Write a review</button>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 	<jsp:directive.include file="footer.jsp"/>
