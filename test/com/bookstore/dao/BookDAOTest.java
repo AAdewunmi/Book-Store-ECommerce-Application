@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.AfterClass;
@@ -117,6 +118,16 @@ public class BookDAOTest extends BaseDAOTest{
 		Integer bookId = 1;
 		bookDAO.delete(bookId);
 		assertTrue(true);
+	}
+	
+	@Test
+	public void testSearchBookInTitle() {
+		String keyword = "Java";
+		List<Book> result = bookDAO.search(keyword);
+		for (Book book : result) {
+			System.out.println(book.getTitle());
+		}
+		assertEquals(4, result.size());
 	}
 	
 	@Test
