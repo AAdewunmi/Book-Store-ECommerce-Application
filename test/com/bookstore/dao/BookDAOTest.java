@@ -121,13 +121,23 @@ public class BookDAOTest extends BaseDAOTest{
 	}
 	
 	@Test
-	public void testSearchBookInTitle() {
+	public void testSearchBookByTitle() {
 		String keyword = "Java";
 		List<Book> result = bookDAO.search(keyword);
 		for (Book book : result) {
 			System.out.println(book.getTitle());
 		}
 		assertEquals(4, result.size());
+	}
+	
+	@Test
+	public void testSearchBookByAuthor() {
+		String keyword = "Kathy";
+		List<Book> result = bookDAO.search(keyword);
+		for (Book book : result) {
+			System.out.println(book.getAuthor());
+		}
+		assertEquals(1, result.size());
 	}
 	
 	@Test
