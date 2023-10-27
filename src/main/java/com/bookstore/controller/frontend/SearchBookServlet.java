@@ -15,13 +15,13 @@ public class SearchBookServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
     public SearchBookServlet() {
-        // TODO Auto-generated constructor stub
+       
     }
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//BookServices bookServices = new BookServices(entityManager, request, response);
-		//bookServices.listBooksByCategory();
-    	super.doGet(request, response);
-	}
 
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BookServices bookServices = new BookServices(entityManager, request, response);
+		bookServices.search();
+	}
+    
 }
