@@ -10,8 +10,8 @@ import jakarta.persistence.EntityManager;
 
 public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
-	public UserDAO(EntityManager entityManager) {
-		super(entityManager);
+	public UserDAO() {
+		super();
 	}
 
 	@Override
