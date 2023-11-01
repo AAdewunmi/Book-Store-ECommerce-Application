@@ -27,8 +27,8 @@ public class HomeServlet extends BaseServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategoryDAO categoryDAO = new CategoryDAO(entityManager);
-		BookDAO bookDAO = new BookDAO(entityManager);
+		CategoryDAO categoryDAO = new CategoryDAO();
+		BookDAO bookDAO = new BookDAO();
 		
 		List<Category> listCategory = categoryDAO.listAll();
 		List<Book> listNewBooks = bookDAO.listNewBooks();
