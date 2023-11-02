@@ -10,11 +10,6 @@ import org.junit.Test;
 
 import com.bookstore.entity.Category;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import net.bytebuddy.implementation.bind.annotation.Super;
-
 public class CategoryDAOTest extends BaseDAOTest{
 	
 	private static CategoryDAO categoryDAO;
@@ -22,7 +17,7 @@ public class CategoryDAOTest extends BaseDAOTest{
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		BaseDAOTest.setUpBeforeClass();
-		categoryDAO = new CategoryDAO(entityManager);
+		categoryDAO = new CategoryDAO();
 	}
 
 	@AfterClass
