@@ -6,7 +6,6 @@ import com.bookstore.dao.HashGenerator;
 import com.bookstore.dao.UserDAO;
 import com.bookstore.entity.Users;
 
-import jakarta.persistence.EntityManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,10 +19,10 @@ public class UserServices {
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	public UserServices(EntityManager entityManager,
+	public UserServices(
 			HttpServletRequest request, HttpServletResponse response) {
 		super();
-		this.userDAO = new UserDAO(entityManager);
+		this.userDAO = new UserDAO();
 		this.request = request;
 		this.response = response;
 	}
