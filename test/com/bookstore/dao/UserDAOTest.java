@@ -9,11 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.bookstore.entity.Users;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceException;
 
 public class UserDAOTest extends BaseDAOTest{
@@ -23,7 +19,7 @@ public class UserDAOTest extends BaseDAOTest{
 	@BeforeClass
 	public static void setUpClass() throws Exception {
 		BaseDAOTest.setUpBeforeClass();
-		userDAO = new UserDAO(entityManager);
+		userDAO = new UserDAO();
 	}
 
 	@Test
