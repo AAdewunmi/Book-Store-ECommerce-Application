@@ -107,4 +107,10 @@ public class JpaDAO<E>{
 		entityManager.close();
 		return result;
 	}
+	
+	public void close() {
+		if (entityManagerFactory != null) {
+			entityManagerFactory.close();
+		}
+	}
 }
