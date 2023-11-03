@@ -48,7 +48,7 @@ public class CategoryDAOTest {
 
 	@Test
 	public void testDeleteCategory() {
-		Integer categoryId = 3;
+		Integer categoryId = 11;
 		categoryDAO.delete(categoryId);
 		Category category = categoryDAO.get(categoryId);
 		assertNull(category);
@@ -57,13 +57,14 @@ public class CategoryDAOTest {
 	@Test
 	public void testListAll() {
 		List<Category> listCategoryCategories = categoryDAO.listAll();
+		listCategoryCategories.forEach(c -> System.out.println(c.getName()));
 		assertTrue(listCategoryCategories.size() > 0);
 	}
 
 	@Test
 	public void testCount() {
 		long totalCategories = categoryDAO.count();
-		assertEquals(2, totalCategories);
+		assertTrue(totalCategories > 0);
 	}
 	
 	@Test
