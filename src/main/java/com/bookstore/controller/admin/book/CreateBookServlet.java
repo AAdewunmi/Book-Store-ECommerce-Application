@@ -1,6 +1,5 @@
 package com.bookstore.controller.admin.book;
 
-import com.bookstore.controller.BaseServlet;
 import com.bookstore.service.BookServices;
 
 import jakarta.servlet.ServletException;
