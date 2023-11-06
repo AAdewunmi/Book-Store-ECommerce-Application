@@ -18,14 +18,11 @@ public class CreateUserServlet extends HttpServlet {
 
 	public CreateUserServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserServices userServices = new UserServices(
-				request, response);
-		userServices.createUser();
-				
+		UserServices userServices = new UserServices(request, response);
+		userServices.createUser();	
 	}
 
 }
