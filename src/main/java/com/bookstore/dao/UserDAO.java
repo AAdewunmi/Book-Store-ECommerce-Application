@@ -6,8 +6,6 @@ import java.util.Map;
 
 import com.bookstore.entity.Users;
 
-import jakarta.persistence.EntityManager;
-
 public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
 	public UserDAO() {
@@ -16,38 +14,33 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
 	@Override
 	public Users create(Users user) {
-		String encryptedPassword = HashGenerator.generateMD5(user.getPassword());
-		user.setPassword(encryptedPassword);
+		//String encryptedPassword = HashGenerator.generateMD5(user.getPassword());
+		//user.setPassword(encryptedPassword);
 		return super.create(user);
 	}
 
 	@Override
 	public Users update(Users user) {
-		// TODO Auto-generated method stub
 		return super.update(user);
 	}
 
 	@Override
 	public Users get(Object userId) {
-		// TODO Auto-generated method stub
 		return super.find(Users.class, userId);
 	}
 
 	@Override
 	public void delete(Object userId) {
-		// TODO Auto-generated method stub
 		super.delete(Users.class, userId);
 	}
 
 	@Override
 	public List<Users> listAll() {
-		// TODO Auto-generated method stub
 		return super.findWithNamedQuery("Users.findAll");
 	}
 
 	@Override
 	public long count() {
-		// TODO Auto-generated method stub
 		return super.countWithNamedQuery("Users.countAll");
 	}
 	
