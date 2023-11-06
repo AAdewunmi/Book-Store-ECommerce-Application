@@ -48,23 +48,25 @@ public class UserServices {
 	
 	public void createUser() throws ServletException, IOException {
 		String email = request.getParameter("email");
+		String fullName = request.getParameter("fullname");
 		String password = request.getParameter("password");
-		String fullname = request.getParameter("fullname");
-		
-		Users existUser = userDAO.findByEmail(email);
-		
-		if (existUser != null) {
-			String message = "Could not create user. A user with email " + email +
-					" already exists!";
+		Users existUser=userDAO.findByEmail(email);
+		if(existUser!=null) {
+			String message="Could not create user.An user with email "+email+" already exists ";
 			request.setAttribute("message", message);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
+			RequestDispatcher dispatcher=request.getRequestDispatcher("message.jsp");
 			dispatcher.forward(request, response);
 		}else {
-			Users newUser = new Users(email, password, fullname);
-			userDAO.create(newUser);
-			listUser("New User Created Successfully!!!");
+			try {
+				String encryptedPassword=HashGenerator.generateMD5(password);
+				Users user=new Users(email, fullName, password);
+				userDAO.create(user);
+				listUser("New user created succesfully");
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}
+			
 		}
-		
 	}
 
 	public void editUser() throws ServletException, IOException {
