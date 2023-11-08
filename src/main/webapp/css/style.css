@@ -66,7 +66,7 @@ input{
 }
 .error{
 	color:red;
-	font_style:italic;
+	font-style:italic;
 	margin:5px;
 }
 div.center{
@@ -80,7 +80,7 @@ div.book{
 }
 table.book{
 	width:80%;
-	border:5;
+	border:0;
 	margin:0 auto;
 }
 table.normal{
@@ -89,4 +89,44 @@ table.normal{
 #book-title{
 	font-size:x-large;
 	font-weight:bold;
+}
+#author{
+	font-size: large;
+	font-style: italic;
+}
+#description{
+	text-align: justify;
+	font-style: italic;
+}
+div.book_group{
+	width: 80%; 
+	margin: 0 auto;
+}
+div.next_row{
+	 clear:both;
+}
+img.book-small{
+	 width: 128px;
+	 height: 164px;
+}
+img.book-smaller{
+	  width: 240px;
+	  height: 300px;
+}
+#search-image{
+	display: inline-block; 
+	margin: 20px; 
+	width: 10%;
+}
+#search-description{
+	display: inline-block; 
+	margin: 20px; 
+	vertical-align: top; 
+	width: 40%;
+	text-align: left;
+}
+#search-price{
+	display: inline-block; 
+	margin: 20px; 
+	vertical-align: top;
 }
