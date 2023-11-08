@@ -11,16 +11,18 @@
 
 	<jsp:directive.include file="header.jsp"/>
 	
-	<div align="center">
-		<table width=80% style="border:0">
+	<div class="center">
+		<table class="book">
 			<tr>
 				<td colspan="3" align="left" >
-						<h2>${book.title}</h2>by ${book.author}
+						<p id="book-title">${book.title}  </p>
+						by <span id="author">${book.author}</span>
 				</td>
 			</tr>
 			<tr>
 				<td rowspan="2">
-					<img src="data:image/jpg;base64, ${book.base64Image}" width="240" height="300">
+					<img class="book-smaller"
+					src="data:image/jpg;base64, ${book.base64Image}"/>
 				</td>
 				<td valign="top" align="left">
 					Rating *****
@@ -33,7 +35,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td valign="top" style="text-align: justify;">
+				<td id="description">
 					${book.description} 
 				</td>
 			</tr>
