@@ -54,8 +54,11 @@ public class CustomerDAOTest {
 	}
 	
 	@Test
-	public void testDeleteObject() {
-		fail("Not yet implemented");
+	public void testDeleteCustomer() {
+		Integer customerId = 1;
+		customerDAO.delete(customerId);
+		Customer customer = customerDAO.get(1);
+		assertNull(customer);
 	}
 
 }
