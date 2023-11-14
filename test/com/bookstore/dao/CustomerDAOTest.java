@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.bookstore.dao;
 
 import static org.junit.Assert.*;
@@ -9,44 +6,43 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * 
- */
-public class CustomerDAOTest {
+import com.bookstore.entity.Customer;
 
-	/**
-	 * @throws java.lang.Exception
-	 */
+public class CustomerDAOTest {
+	
+	private static CustomerDAO customerDAO;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		customerDAO = new CustomerDAO();
 	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		customerDAO.close();
 	}
 
-	/**
-	 * Test method for {@link com.bookstore.dao.CustomerDAO#create(com.bookstore.entity.Customer)}.
-	 */
 	@Test
 	public void testCreateCustomer() {
-		fail("Not yet implemented");
+		Customer customer = new Customer();
+		customer.setEmail("tom@gmail.com");
+		customer.setFullname("Tom Eager");
+		customer.setCity("New York");
+		customer.setCountry("United States");
+		customer.setAddress("100 North Avenue");
+		customer.setPassword("secret");
+		customer.setPhone("18001900");
+		customer.setZipcode("100000");
+		
+		Customer savedCustomer = customerDAO.create(customer);
+		assertTrue(savedCustomer.getCustomerId() > 0);
 	}
 
-	/**
-	 * Test method for {@link com.bookstore.dao.CustomerDAO#get(java.lang.Object)}.
-	 */
 	@Test
 	public void testGet() {
 		fail("Not yet implemented");
 	}
 
-	/**
-	 * Test method for {@link com.bookstore.dao.CustomerDAO#delete(java.lang.Object)}.
-	 */
 	@Test
 	public void testDeleteObject() {
 		fail("Not yet implemented");
