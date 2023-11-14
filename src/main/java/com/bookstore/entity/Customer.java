@@ -12,6 +12,9 @@ import java.util.Set;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "customer", catalog = "bookstoredb", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@NamedQueries({
+	@NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c ORDER BY c.registerDate DESC"),
+})
 public class Customer implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
