@@ -43,7 +43,16 @@ public class CustomerDAOTest {
 		Customer customer = customerDAO.get(customerId);
 		assertNotNull(customer);
 	}
-
+	
+	@Test
+	public void testUpdateCustomer() {
+		Customer customer = customerDAO.get(1);
+		String fullName = "Tommy Hilfiger";
+		customer.setFullname(fullName);
+		Customer updatedCustomer = customerDAO.update(customer);
+		assertTrue(updatedCustomer.getFullname().equals(fullName));
+	}
+	
 	@Test
 	public void testDeleteObject() {
 		fail("Not yet implemented");
