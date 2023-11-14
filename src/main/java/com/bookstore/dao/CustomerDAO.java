@@ -26,8 +26,7 @@ public class CustomerDAO extends JpaDAO<Customer> implements GenericDAO<Customer
 
 	@Override
 	public void delete(Object id) {
-		// TODO Auto-generated method stub
-		
+		super.delete(Customer.class, id);
 	}
 
 	@Override
