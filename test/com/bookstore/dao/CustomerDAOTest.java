@@ -33,14 +33,15 @@ public class CustomerDAOTest {
 		customer.setPassword("secret");
 		customer.setPhone("18001900");
 		customer.setZipcode("100000");
-		
 		Customer savedCustomer = customerDAO.create(customer);
 		assertTrue(savedCustomer.getCustomerId() > 0);
 	}
 
 	@Test
 	public void testGet() {
-		fail("Not yet implemented");
+		Integer customerId = 1;
+		Customer customer = customerDAO.get(customerId);
+		assertNotNull(customer);
 	}
 
 	@Test
