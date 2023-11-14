@@ -2,6 +2,8 @@ package com.bookstore.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -26,7 +28,7 @@ public class CustomerDAOTest {
 	public void testCreateCustomer() {
 		Customer customer = new Customer();
 		customer.setEmail("tom@gmail.com");
-		customer.setFullname("Tom Eager");
+		customer.setFullname("Tom Hilfiger");
 		customer.setCity("New York");
 		customer.setCountry("United States");
 		customer.setAddress("100 North Avenue");
@@ -59,6 +61,15 @@ public class CustomerDAOTest {
 		customerDAO.delete(customerId);
 		Customer customer = customerDAO.get(1);
 		assertNull(customer);
+	}
+	
+	@Test
+	public void testListAll() {
+		List<Customer> listCustomer = customerDAO.listAll();
+		for (Customer customer : listCustomer) {
+			System.out.println(customer.getFullname());
+		}
+		assertFalse(listCustomer.isEmpty());
 	}
 
 }
