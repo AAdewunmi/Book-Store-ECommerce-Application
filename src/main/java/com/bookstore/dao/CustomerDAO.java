@@ -35,8 +35,7 @@ public class CustomerDAO extends JpaDAO<Customer> implements GenericDAO<Customer
 
 	@Override
 	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.countWithNamedQuery("Customer.countAll");
 	}
 
 }
