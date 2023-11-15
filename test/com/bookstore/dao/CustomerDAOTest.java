@@ -57,7 +57,7 @@ public class CustomerDAOTest {
 	
 	@Test
 	public void testDeleteCustomer() {
-		Integer customerId = 1;
+		Integer customerId = 2;
 		customerDAO.delete(customerId);
 		Customer customer = customerDAO.get(1);
 		assertNull(customer);
@@ -70,6 +70,12 @@ public class CustomerDAOTest {
 			System.out.println(customer.getFullname());
 		}
 		assertFalse(listCustomer.isEmpty());
+	}
+	
+	@Test
+	public void testCount() {
+		long totalCustomer = customerDAO.count();
+		assertEquals(1, totalCustomer);
 	}
 
 }
