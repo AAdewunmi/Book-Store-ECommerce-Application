@@ -27,7 +27,7 @@ public class CustomerServices {
 		List<Customer> listCustomer = customerDAO.listAll();
 		request.setAttribute("listCustomer", listCustomer);
 		String listPage = "customer_list.jsp";
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("listPage");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
 		requestDispatcher.forward(request, response);
 	}
 

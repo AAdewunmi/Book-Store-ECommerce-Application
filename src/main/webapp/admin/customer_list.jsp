@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> Manage Books - Evergreen Bookstore Administration </title>
+<title> Manage Customers - Evergreen Bookstore Administration </title>
 <style><%@include file="../css/style.css"%></style>
 <script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
 <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
@@ -13,8 +13,8 @@
 <body>
 	<jsp:directive.include file="header.jsp"/>
 	<div align="center">
-		<h2 class="pageheading"> Books Management Dashboard </h2>
-		<h3><a href="new_book"> Create New Book</a></h3>
+		<h2 class="pageheading"> Customers Management Dashboard </h2>
+		<h3><a href="new_customer"> Create New Customer</a></h3>
 	</div>
 	
 	<c:if test="${message != null}">
@@ -28,35 +28,26 @@
 			<tr>
 				<th>Index</th>
 				<th>ID</th>
-				<th>Image</th>
-				<th>Title</th>
-				<th>Author</th>
-				<th>Category</th>
-				<th>Price</th>
-				<th>Last Updated</th>
+				<th>E Mail</th>
+				<th>Full Name</th>
+				<th>City</th>
+				<th>Country</th>
+				<th>Registered Date</th>
 				<th>Actions</th>
 			</tr>
-			<c:forEach var="book" items="${listBooks}" varStatus="status">
+			<c:forEach var="customer" items="${listCustomer}" varStatus="status">
 				<tr>
 	 				
 	 				<td>${status.index + 1}</td>
-	 				<td>${book.bookId}</td>
+	 				<td>${customer.customerId}</td>
+	 				<td>${customer.email}</td>
+	 				<td>${customer.fullname}</td>
+	 				<td>${customer.city}</td>
+	 				<td>${customer.country}</td>
+	 				<td>${customer.registerDate}</td>
 	 				<td>
-	 					<img src="data:image/jpg;base64, ${book.base64Image}" width="84" height="110">
-	 				</td>
-	 				<td>${book.title}</td>
-	 				<td>${book.author}</td>
-	 				
-	 				<td>${book.category.name}</td>
-	 				
-	 				<td>$${book.price}</td>
-	 				<td>
-	 				<fmt:formatDate pattern='MM/dd/yyyy' value='${book.lastUpdateTime}'/>
-	 				</td>
-	 				
-	 				<td>
-	 					<a href="edit_book?id=${book.bookId}">Edit</a> &nbsp;
-	 					<a href="javascript:void(0);" class="deleteLink" id="${book.bookId}">Delete</a>
+	 					<a href="edit_customer?id=${customer.customerId}">Edit</a> &nbsp;
+	 					<a href="javascript:void(0);" class="deleteLink" id="${customer.customerId}">Delete</a>
 	 				</td>
  				
  				</tr>
