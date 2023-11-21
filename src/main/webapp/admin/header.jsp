@@ -20,7 +20,7 @@
 			<a href="list_books"><img src="../images/book.png"/><br/>Books</a> 
 		</div>
 		<div >
-			<a href="customer"><img src="../images/customer.png"/><br/>Customers</a>  
+			<a href="list_customer"><img src="../images/customer.png"/><br/>Customers</a>  
 		</div>
 		<div >
 			<a href="reviews"><img src="../images/review.png"/><br/>Reviews</a> 
