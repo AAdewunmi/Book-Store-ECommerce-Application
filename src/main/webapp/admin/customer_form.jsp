@@ -6,100 +6,81 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create New Book</title>
+<title>Create New Customer</title>
+
 	<style><%@include file="../css/style.css"%></style>
-	<style><%@include file="../css/jquery-ui.min.css"%></style>
-	<style><%@include file="../css/richtext.min.css"%></style>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
 	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
     <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
-    <script src="<c:url value="../js/jquery-ui.min.js" />"></script>
-    <script src="<c:url value="../js/jquery.richtext.min.js" />"></script>
-    
+
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
 
 	<div align="center">
 		<h2 class="pageheading">
-			<c:if test="${book != null}">
-				Edit Book
+			<c:if test="${customer != null}">
+				Edit Customer
 			</c:if>
-			<c:if test="${book == null}">
-				Create New Book
+			<c:if test="${customer == null}">
+				Create New Customer
 			</c:if>
 		</h2>
 	</div>
 
 	<div align="center">
-		<c:if test="${book != null}">
-			<form action="update_book" method="post" id="bookForm" enctype="multipart/form-data">
-			<input type="hidden" name="bookId" value=${book.bookId}>
+		<c:if test="${customer != null}">
+			<form action="update_customer" method="post" id="customerForm" enctype="multipart/form-data">
+			<input type="hidden" name="customerId" value=${customer.customerId}>
 		</c:if>
-		<c:if test="${book == null}">
-			<form action="create_book" method="post"id="bookForm" enctype="multipart/form-data">
+		<c:if test="${customer == null}">
+			<form action="create_customer" method="post"id="customerForm" enctype="multipart/form-data">
 		</c:if>
 		
 			<table class="form">
 				<tr>
-					<td>Category</td>
-					<td>
-						<select name="category">
-							<c:forEach items="${listCategory}" var="category">
-								<c:if test="${category.categoryId eq book.category.categoryId}">
-									<option value="${category.categoryId}" selected>
-								</c:if>
-								<c:if test="${category.categoryId ne book.category.categoryId}">
-									<option value="${category.categoryId}">
-								</c:if>
-									${category.name}
-									</option>	
-							</c:forEach>
-						</select>
-					</td>
+					<td align="right">Email:</td>
+					<td align="left"><input type="text" id="email" name="email"
+						size="45" value="${customer.email}"></td>
 				</tr>
 				<tr>
-					<td align="right">Title:</td>
-					<td align="left"><input type="text" id="title" name="title"
-						size="20" value="${book.title}"></td>
+					<td align="right">Full Name:</td>
+					<td align="left"><input type="text" id="fullName" name="fullName" 
+					size="45" value="${customer.fullName}"></td>
 				</tr>
 				<tr>
-					<td align="right">Author:</td>
-					<td align="left"><input type="text" id="author"
-						name="author" size="20" value="${book.author}"></td>
+					<td align="right">Password:</td>
+					<td align="left"><input type="password" id="password" name="password" 
+						size="45" value="${customer.password}"></td>
 				</tr>
 				<tr>
-					<td align="right">ISBN:</td>
-					<td align="left"><input type="text" id="isbn"
-						name="isbn" size="20" value="${book.isbn}"></td>
+					<td align="right">Confirm Password:</td>
+					<td align="left"><input type="password" id="confirmPassword" name="confirmPassword" 
+						size="45" value="${customer.password}"></td>
 				</tr>
 				<tr>
-					<td align="right">Publish Date:</td>
-					<td align="left"><input type="text" id="publishDate"
-						name="publishDate" size="20" 
-						value="<fmt:formatDate pattern='MM/dd/yyyy' value='${book.publishDate}'/>"
-						/></td>
+					<td align="right">Phone Number:</td>
+					<td align="left"><input type="text" id="phone" name="phone" 
+					size="45" value="${customer.phone}"></td>
 				</tr>
 				<tr>
-					<td align="right">Book Image:</td>
-					<td align="left">
-						<input type="file" id="bookImage" name="bookImage" size="20"><br/>
-						<img id="thumbnail" alt="Image Preview" style="width:20%; margin-top: 10px"
-						src="data:image/jpg;base64, ${book.base64Image}"
-						/>
-					</td>
+					<td align="right">Address:</td>
+					<td align="left"><input type="text" id="address"
+						name="address" size="45" value="${customer.address}"></td>
 				</tr>
 				<tr>
-					<td align="right">Price:</td>
-					<td align="left"><input type="text" id="price"
-						name="price" size="20" value="${book.price}"></td>
+					<td align="right">City:</td>
+					<td align="left"><input type="text" id="city"
+						name="city" size="45" value="${customer.city}"></td>
 				</tr>
 				<tr>
-					<td align="right">Description:</td>
-					<td align="left">
-						<textarea rows="5" cols="50" name="description" id="description" value="">${book.description}</textarea>
-					</td>
+					<td align="right">Zip Code:</td>
+					<td align="left"><input type="text" id="zipCode"
+						name="zipCode" size="45" value="${customer.zipcode}"></td>
+				</tr>
+				<tr>
+					<td align="right">Country:</td>
+					<td align="left"><input type="text" id="country"
+						name="country" size="45" value="${customer.country}"></td>
 				</tr>
 				<tr>
 					<td>&nbsp<td>
