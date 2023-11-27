@@ -101,36 +101,41 @@
 	
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$('#publishDate').datepicker();
-		$('#description').richText();
-		$('#bookImage').change(function(){
-			showImageThumbnail(this);
-		});
-		$("#bookForm").validate({
+		$("#customerForm").validate({
 			rules: {
-				category: "required",
-				title: "required",
-				author: "required",
-				isbn: "required",
-				publishDate: "required",
-				
-				<c:if test="${book == null}">
-				bookImage: "required",
-				</c:if>
-				
-				price: "required",
-				description: "required",
+				email: {
+					required: true,
+					email: true
+					},
+				fullName: "required",
+				password: "required",
+				confirmPassword: {
+					required: true,
+					equalTo: "#password"
+				},
+				phone: "required",
+				address: "required",
+				city: "required",
+				zipCode: "required",
+				country: "required",
 			},
 			
 			messages: {
-				category: "Please select a book category",
-				title: "Please enter book title",
-				author: "Please enter book author",
-				isbn: "Please enter book isbn",
-				publishDate: "Please enter book publish date",
-				bookImage: "Please choose book image",
-				price: "Please enter book price",
-				description: "Please enter book description",			
+				email: {
+					required: "Please enter email address",
+					email: "Please enter valid email address",
+				},
+				fullName: "Please enter full name",
+				password: "Please enter email password",
+				confirmPassword: {
+					required: "Please re-enter email address",
+					equalTo: "Re-Confirm password! It does not match"
+				},
+				phone: "Please enter email phone",
+				address: "Please enter address",
+				city: "Please enter city",
+				zipCode: "Please enter zipcode",
+				country: "Please enter country",		
 			}
 		});
 		
@@ -138,14 +143,6 @@
 			history.go(-1);
 		});
 	});
-	function showImageThumbnail(fileInput){
-		var file = fileInput.files[0];
-		var reader = new FileReader();
-		reader.onload = function(e){
-			$('#thumbnail').attr('src', e.target.result);
-		};
-		reader.readAsDataURL(file);
-	}
 	</script>
 
 </html>
