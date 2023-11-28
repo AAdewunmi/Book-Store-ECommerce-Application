@@ -77,5 +77,12 @@ public class CustomerDAOTest {
 		long totalCustomer = customerDAO.count();
 		assertEquals(1, totalCustomer);
 	}
+	
+	@Test
+	public void testFindByEmail() {
+		String email = "tom@gmail.com";
+		Customer customer = customerDAO.findByEmail(email);
+		assertNotNull(customer);
+	}
 
 }
