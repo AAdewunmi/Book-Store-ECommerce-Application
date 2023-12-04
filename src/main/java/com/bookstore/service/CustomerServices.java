@@ -35,6 +35,10 @@ public class CustomerServices {
 		requestDispatcher.forward(request, response);
 	}
 	
+	public void listCustomers() throws ServletException, IOException {
+		listCustomers(null);
+	}
+	
 	public void createCustomer() {
 		String email = request.getParameter("email");
 		
