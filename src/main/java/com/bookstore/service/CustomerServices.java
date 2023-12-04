@@ -39,9 +39,35 @@ public class CustomerServices {
 		listCustomers(null);
 	}
 	
-	public void createCustomer() {
+	public void createCustomer() throws ServletException, IOException {
 		String email = request.getParameter("email");
-		
+		Customer existCustomer = customerDAO.findByEmail(email);
+		if (existCustomer != null) {
+			String message = "Could not create new customer: the email " + 
+					email + " is already registered by another customer";
+			listCustomers(message);
+		} else {
+			String fullName = request.getParameter("fullName");
+			String password = request.getParameter("password");
+			String phone = request.getParameter("phone");
+			String address = request.getParameter("address");
+			String city = request.getParameter("city");
+			String zipCode = request.getParameter("zipCode");
+			String country = request.getParameter("country");
+			
+			Customer newCustomer = new Customer();
+			newCustomer.setEmail(email);
+			newCustomer.setFullname(fullName);
+			newCustomer.setPassword(password);
+			newCustomer.setPhone(phone);
+			newCustomer.setAddress(address);
+			newCustomer.setCity(city);
+			newCustomer.setZipcode(zipCode);
+			newCustomer.setCountry(country);
+			customerDAO.create(newCustomer);
+			String message = "New customer has been created successfully!";
+			listCustomers(message);
+		}
 	}
 
 }
