@@ -2,6 +2,9 @@ package com.bookstore.controller.admin.customer;
 
 import java.io.IOException;
 
+import com.bookstore.dao.CustomerDAO;
+import com.bookstore.service.CustomerServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +21,8 @@ public class EditCustomerServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		CustomerServices customerServices = new CustomerServices(request, response);
+		customerServices.editCustomer();
 	}
 
 }
