@@ -74,8 +74,8 @@
 				</tr>
 				<tr>
 					<td align="right">Zip Code:</td>
-					<td align="left"><input type="text" id="zipCode"
-						name="zipCode" size="45" value="${customer.zipcode}"></td>
+					<td align="left"><input type="text" id="zipcode"
+						name="zipcode" size="45" value="${customer.zipcode}"></td>
 				</tr>
 				<tr>
 					<td align="right">Country:</td>

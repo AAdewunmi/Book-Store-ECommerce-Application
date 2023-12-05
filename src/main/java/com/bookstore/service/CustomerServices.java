@@ -79,4 +79,35 @@ public class CustomerServices {
 		requestDispatcher.forward(request, response);
 	}
 
+	public void updateCustomer() throws ServletException, IOException {
+		Integer customerId=Integer.parseInt(request.getParameter("customerId"));
+		String email=request.getParameter("email");
+		Customer existCustomer=customerDAO.findByEmail(email);
+		String message="";
+		if(existCustomer!=null && existCustomer.getCustomerId()!=customerId) {
+			 message ="Could not update the customer ID"+customerId+" because there's an existing customer having the same email.";
+		}else {
+			String fullName=request.getParameter("fullname");
+			String password=request.getParameter("password");
+			String phone=request.getParameter("phone");
+			String address=request.getParameter("address");
+			String city=request.getParameter("city");
+			String zipCode=request.getParameter("zipcode");
+			String country=request.getParameter("country");
+			Customer customer=customerDAO.get(customerId);
+			customer.setCustomerId(customerId);
+			customer.setEmail(email);
+			customer.setFullname(fullName);
+			customer.setPassword(password);
+			customer.setPhone(phone);
+			customer.setAddress(address);
+			customer.setCity(city);
+			customer.setZipcode(zipCode);
+			customer.setCountry(country);
+			customerDAO.update(customer);
+			message="The customer has been updated succesfully.";
+		}
+		listCustomers(message);
+	}
+
 }
