@@ -44,8 +44,8 @@
 				</tr>
 				<tr>
 					<td align="right">Full Name:</td>
-					<td align="left"><input type="text" id="fullName" name="fullName" 
-					size="45" value="${customer.fullName}"></td>
+					<td align="left"><input type="text" id="fullname" name="fullname" 
+					size="45" value="${customer.fullname}"></td>
 				</tr>
 				<tr>
 					<td align="right">Password:</td>
