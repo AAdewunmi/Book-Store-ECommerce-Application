@@ -47,7 +47,7 @@ public class CustomerServices {
 					email + " is already registered by another customer";
 			listCustomers(message);
 		} else {
-			String fullName = request.getParameter("fullName");
+			String fullName = request.getParameter("fullname");
 			String password = request.getParameter("password");
 			String phone = request.getParameter("phone");
 			String address = request.getParameter("address");
@@ -68,6 +68,15 @@ public class CustomerServices {
 			String message = "New customer has been created successfully!";
 			listCustomers(message);
 		}
+	}
+
+	public void editCustomer() throws ServletException, IOException {
+		Integer customerId = Integer.parseInt(request.getParameter("id"));
+		Customer customer = customerDAO.get(customerId);
+		request.setAttribute("customer", customer);
+		String editPage = "customer_form.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);
 	}
 
 }
