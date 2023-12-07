@@ -2,11 +2,11 @@
 
 ## 1. Project Title:
 
-Book Store E-Commerce Application
+"Evergreen Bookstore" E-Commerce Application
 
 ## 2. Project Description:
 
-Program a complete e-commerce website that sells books using Java Servlet, JSP and Hibernate framework
+Program a complete e-commerce bookstore website that sells books using Java 17, Java Servlet, JSP, Hibernate framework and MySQL.
 
 ## 3. Tech Stack: 
 
