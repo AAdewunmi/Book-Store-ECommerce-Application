@@ -59,9 +59,9 @@
 	$(document).ready(function(){
 		$(".deleteLink").each(function(){
 			$(this).on("click", function(){
-				bookId = $(this).attr("id");
-				if(confirm('Are you sure you want to delete book with ID ' + bookId + ' ?')){
-					window.location = 'delete_book?id=' + bookId;
+				customerId = $(this).attr("id");
+				if(confirm('Are you sure you want to delete customer with ID ' + customerId + ' ?')){
+					window.location = 'delete_customer?id=' + customerId;
 				}
 			});
 		});
