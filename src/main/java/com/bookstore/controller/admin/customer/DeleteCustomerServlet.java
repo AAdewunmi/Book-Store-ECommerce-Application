@@ -2,6 +2,8 @@ package com.bookstore.controller.admin.customer;
 
 import java.io.IOException;
 
+import com.bookstore.service.CustomerServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,8 +20,8 @@ public class DeleteCustomerServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		CustomerServices customerServices = new CustomerServices(request, response);
+		customerServices.deleteCustomer();
 	}
 
 }
