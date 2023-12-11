@@ -52,7 +52,7 @@ public class CustomerServices {
 			String phone = request.getParameter("phone");
 			String address = request.getParameter("address");
 			String city = request.getParameter("city");
-			String zipCode = request.getParameter("zipCode");
+			String zipCode = request.getParameter("zipcode");
 			String country = request.getParameter("country");
 			
 			Customer newCustomer = new Customer();
@@ -107,6 +107,13 @@ public class CustomerServices {
 			customerDAO.update(customer);
 			message="The customer has been updated succesfully.";
 		}
+		listCustomers(message);
+	}
+
+	public void deleteCustomer() throws ServletException, IOException {
+		Integer customerId = Integer.parseInt(request.getParameter("id"));
+		customerDAO.delete(customerId);
+		String message = "The customer has been deleted successfully!";
 		listCustomers(message);
 	}
 
