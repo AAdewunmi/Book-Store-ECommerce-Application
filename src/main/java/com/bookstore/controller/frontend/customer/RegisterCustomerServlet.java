@@ -2,6 +2,8 @@ package com.bookstore.controller.frontend.customer;
 
 import java.io.IOException;
 
+import com.bookstore.service.CustomerServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +19,8 @@ public class RegisterCustomerServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		CustomerServices customerServices = new CustomerServices(request, response);
+		customerServices.createCustomer();
 	}
 
 }
