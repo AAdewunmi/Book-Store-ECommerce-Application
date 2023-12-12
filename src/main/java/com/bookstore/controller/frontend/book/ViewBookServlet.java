@@ -1,6 +1,4 @@
-package com.bookstore.controller.frontend;
-
-import java.io.IOException;
+package com.bookstore.controller.frontend.book;
 
 import com.bookstore.service.BookServices;
 
@@ -10,18 +8,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/search")
-public class SearchBookServlet extends HttpServlet {
+import java.io.IOException;
+
+@WebServlet("/view_book")
+public class ViewBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public SearchBookServlet() {
-       
-    }
+    public ViewBookServlet() {}
 
-	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BookServices bookServices = new BookServices(request, response);
-		bookServices.search();
+		bookServices.viewBookDetail();
 	}
-    
+
 }
