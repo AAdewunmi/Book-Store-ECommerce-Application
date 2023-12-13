@@ -40,16 +40,19 @@ public class CustomerServices {
 	}
 	
 	public void createCustomer() throws ServletException, IOException {
-		/*
-		 * String email = request.getParameter("email"); Customer existCustomer =
-		 * customerDAO.findByEmail(email); if (existCustomer != null) { String message =
-		 * "Could not create new customer: the email " + email +
-		 * " is already registered by another customer"; listCustomers(message); } else
-		 * { Customer newCustomer = new Customer();
-		 * updateCustomerFieldsFromForm(newCustomer); customerDAO.create(newCustomer);
-		 * String message = "New customer has been created successfully!";
-		 * listCustomers(message); }
-		 */
+		  String email = request.getParameter("email"); 
+		  Customer existCustomer = customerDAO.findByEmail(email); 
+		  if (existCustomer != null) { 
+			  String message = "Could not create new customer: the email " + email +
+		  " is already registered by another customer"; 
+			  listCustomers(message); 
+			  } else { 
+			  Customer newCustomer = new Customer();
+			  updateCustomerFieldsFromForm(newCustomer); 
+			  customerDAO.create(newCustomer);
+			  String message = "New customer has been created successfully!";
+			  listCustomers(message); 
+		  }
 	}
 	
 	
