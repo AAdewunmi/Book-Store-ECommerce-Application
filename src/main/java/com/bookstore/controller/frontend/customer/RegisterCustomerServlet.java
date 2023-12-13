@@ -20,7 +20,7 @@ public class RegisterCustomerServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CustomerServices customerServices = new CustomerServices(request, response);
-		customerServices.createCustomer();
+		customerServices.registerCustomer();
 	}
 
 }
