@@ -5,13 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <style><%@include file="../css/style.css"%></style>
-<title> Evergreen Bookstore Administration </title>
+<title> Evergreen Bookstore - Online Book Store </title>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp"/>
 	
 	<div align="center">
-		<h3> ${message}</h3>
+		<br>
+			<h3> ${message}</h3>
+		<br>
 	</div>
 	
 	
