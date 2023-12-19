@@ -5,15 +5,15 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Administrator Login</title>
+	<title>Customer Login</title>
 	<style><%@include file="../css/style.css"%></style>
 	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
 	<script src="<c:url value="../js/jquery.validate.min.js" />"></script>
 </head>
 <body>
+	<jsp:directive.include file="header.jsp"/>
 	<div align="center">
-		<h1>Book Store Administration</h1>
-	<h2>Administrator Login</h2>
+		<h2>Customer Login</h2>
 	<div>
 		<c:if test="${message != null}">
 		<div align="center">
@@ -37,6 +37,7 @@
 		</table>
 	</form>
 	</div>
+	<jsp:directive.include file="footer.jsp"/>
 </body>
 	<script type="text/javascript">
 		$(document).ready(function(){
