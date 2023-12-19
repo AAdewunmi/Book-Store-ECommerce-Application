@@ -7,8 +7,8 @@
 	<meta charset="UTF-8">
 	<title>Customer Login</title>
 	<style><%@include file="../css/style.css"%></style>
-	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
-	<script src="<c:url value="../js/jquery.validate.min.js" />"></script>
+	<script src="<c:url value="js/jquery-3.7.0.min.js" />"></script>
+	<script src="<c:url value="js/jquery.validate.min.js" />"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp"/>
