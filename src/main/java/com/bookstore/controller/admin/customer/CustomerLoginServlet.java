@@ -24,7 +24,8 @@ public class CustomerLoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		CustomerServices customerServices = new CustomerServices(request, response);
+		customerServices.doLogin();
 	}
 
 }
