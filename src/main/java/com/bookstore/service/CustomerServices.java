@@ -128,4 +128,11 @@ public class CustomerServices {
 		customer.setCountry(country);
 	}
 
+	public void showLogin() throws ServletException, IOException {
+		String loginPage = "frontend/login.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(loginPage);
+		dispatcher.forward(request, response);
+		
+	}
+
 }
