@@ -27,12 +27,12 @@ public class CustomerDAOTest {
 	@Test
 	public void testCreateCustomer() {
 		Customer customer = new Customer();
-		customer.setEmail("tom@gmail.com");
-		customer.setFullname("Tom Hilfiger");
-		customer.setCity("New York");
+		customer.setEmail("bill@gates.com");
+		customer.setFullname("Bill Gates");
+		customer.setCity("Washington");
 		customer.setCountry("United States");
-		customer.setAddress("100 North Avenue");
-		customer.setPassword("secret");
+		customer.setAddress("2000 Gates Avenue");
+		customer.setPassword("milinda");
 		customer.setPhone("18001900");
 		customer.setZipcode("100000");
 		Customer savedCustomer = customerDAO.create(customer);
@@ -41,15 +41,15 @@ public class CustomerDAOTest {
 
 	@Test
 	public void testGet() {
-		Integer customerId = 1;
+		Integer customerId = 9;
 		Customer customer = customerDAO.get(customerId);
 		assertNotNull(customer);
 	}
 	
 	@Test
 	public void testUpdateCustomer() {
-		Customer customer = customerDAO.get(1);
-		String fullName = "Tommy Hilfiger";
+		Customer customer = customerDAO.get(5);
+		String fullName = "Koboko Dey Teach";
 		customer.setFullname(fullName);
 		Customer updatedCustomer = customerDAO.update(customer);
 		assertTrue(updatedCustomer.getFullname().equals(fullName));
@@ -75,13 +75,21 @@ public class CustomerDAOTest {
 	@Test
 	public void testCount() {
 		long totalCustomer = customerDAO.count();
-		assertEquals(1, totalCustomer);
+		assertEquals(7, totalCustomer);
 	}
 	
 	@Test
 	public void testFindByEmail() {
-		String email = "tom@gmail.com";
+		String email = "tommy@gmail.com";
 		Customer customer = customerDAO.findByEmail(email);
+		assertNotNull(customer);
+	}
+	
+	@Test
+	public void testCheckLogInSuccess() {
+		String email = "tommy@gmail.com";
+		String password = "secret";
+		Customer customer = customerDAO.checkLogin(email, password);
 		assertNotNull(customer);
 	}
 

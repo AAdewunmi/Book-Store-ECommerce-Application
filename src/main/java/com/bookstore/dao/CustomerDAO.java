@@ -7,8 +7,6 @@ import java.util.Map;
 
 import com.bookstore.entity.Customer;
 
-import jakarta.servlet.RequestDispatcher;
-
 public class CustomerDAO extends JpaDAO<Customer> implements GenericDAO<Customer> {
 
 	@Override
@@ -53,7 +51,7 @@ public class CustomerDAO extends JpaDAO<Customer> implements GenericDAO<Customer
 	public Customer checkLogin(String email, String password) {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("email", email);
-		parameters.put("password", password);
+		parameters.put("pass", password);
 		List<Customer> result = super.findWithNamedQuery("Customer.checkLogin", parameters);
 		if (!result.isEmpty()) {
 			return result.get(0);
