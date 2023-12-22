@@ -144,6 +144,7 @@ public class CustomerServices {
 			request.setAttribute("message", message);
 			showLogin();
 		}else {
+			request.getSession().setAttribute("loggedCustomer", customer);
 			String profilePage = "frontend/customer_profile.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
 			dispatcher.forward(request, response);
