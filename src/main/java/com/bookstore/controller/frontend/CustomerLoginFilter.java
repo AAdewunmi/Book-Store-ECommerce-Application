@@ -36,7 +36,7 @@ public class CustomerLoginFilter implements Filter {
 		boolean loggedIn = (session != null) && (session.getAttribute("loggedCustomer") != null);
 		System.out.println("Path: " + path);
 		System.out.println("LoggedIn: " + loggedIn);
-		if (!loggedIn) {
+		if (!loggedIn && path.startsWith("/view_profile")) {
 			String loginPage = "frontend/login.jsp";
 			RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher(loginPage);
 			dispatcher.forward(request, response);
