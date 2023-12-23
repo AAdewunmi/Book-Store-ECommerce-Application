@@ -4,12 +4,13 @@ import java.io.IOException;
 import java.util.List;
 
 import com.bookstore.dao.CustomerDAO;
+import com.bookstore.dao.HashGenerator;
 import com.bookstore.entity.Customer;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class CustomerServices {
 	private CustomerDAO customerDAO;
@@ -78,10 +79,14 @@ public class CustomerServices {
 	public void editCustomer() throws ServletException, IOException {
 		Integer customerId = Integer.parseInt(request.getParameter("id"));
 		Customer customer = customerDAO.get(customerId);
-		request.setAttribute("customer", customer);
-		String editPage = "customer_form.jsp";
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
-		requestDispatcher.forward(request, response);
+		if (customer == null) {
+			String message = "Could not find customer with ID " + customerId;
+			CommonUtility.showMessageBackend(message, request, response);
+		} else {
+			customer.setPassword(null);
+			request.setAttribute("customer", customer);	
+			CommonUtility.forwardToPage("customer_form.jsp", request, response);			
+		}	
 	}
 
 	public void updateCustomer() throws ServletException, IOException {
@@ -118,9 +123,14 @@ public class CustomerServices {
 		String zipCode = request.getParameter("zipcode");
 		String country = request.getParameter("country");
 		
-		customer.setEmail(email);
+		if (email != null && !email.equals("")) {
+			customer.setEmail(email);
+		}
 		customer.setFullname(fullName);
-		customer.setPassword(password);
+		if (password != null & !password.isEmpty()) {
+			String encryptedPassword = HashGenerator.generateMD5(password);
+			customer.setPassword(encryptedPassword);
+		}
 		customer.setPhone(phone);
 		customer.setAddress(address);
 		customer.setCity(city);
@@ -140,12 +150,23 @@ public class CustomerServices {
 		String password = request.getParameter("password");
 		Customer customer = customerDAO.checkLogin(email, password);
 		if (customer == null) {
-			String message = "Login failed! Please check your email and password";
+			String message = "Login failed. Please check your email and password.";
 			request.setAttribute("message", message);
 			showLogin();
-		}else {
-			request.getSession().setAttribute("loggedCustomer", customer);
-			showCustomerProfile();
+			
+		} else {
+			HttpSession session = request.getSession();
+			session.setAttribute("loggedCustomer", customer);
+			
+			Object objRedirectURL = session.getAttribute("redirectURL");
+			
+			if (objRedirectURL != null) {
+				String redirectURL = (String) objRedirectURL;
+				session.removeAttribute("redirectURL");
+				response.sendRedirect(redirectURL);
+			} else {
+				showCustomerProfile();
+			}
 		}
 	}
 	
