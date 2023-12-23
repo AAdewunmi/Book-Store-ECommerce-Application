@@ -108,27 +108,35 @@
 					email: true
 					},
 				fullName: "required",
-				password: "required",
+				<c:if test="${customer == null}">
+					password: "required",
+				</c:if>
 				confirmPassword: {
+				<c:if test="${customer == null}">
 					required: true,
+				</c:if>
 					equalTo: "#password"
 				},
+				
 				phone: "required",
 				address: "required",
 				city: "required",
 				zipCode: "required",
 				country: "required",
 			},
-			
 			messages: {
 				email: {
 					required: "Please enter email address",
 					email: "Please enter valid email address",
 				},
 				fullName: "Please enter full name",
-				password: "Please enter email password",
+				<c:if test="${customer == null}">
+					password: "Please enter email password",
+				</c:if>
 				confirmPassword: {
+				<c:if test="${customer == null}">
 					required: "Please re-enter email address",
+				</c:if>
 					equalTo: "Re-Confirm password! It does not match"
 				},
 				phone: "Please enter email phone",
