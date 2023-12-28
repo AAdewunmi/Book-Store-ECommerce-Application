@@ -182,4 +182,11 @@ public class CustomerServices {
 		dispatcher.forward(request, response);
 	}
 
+	public void updateCustomerProfile() throws ServletException, IOException {
+		Customer customer = (Customer) request.getSession().getAttribute("loggedCustomer");
+		updateCustomerFieldsFromForm(customer);
+		customerDAO.update(customer);
+		showCustomerProfile();
+	}
+
 }
