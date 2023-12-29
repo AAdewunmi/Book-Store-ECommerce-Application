@@ -9,13 +9,17 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ReviewDAOTest {
-
+	
+	private static ReviewDAO reviewDAO;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		reviewDAO = new ReviewDAO();
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		
 	}
 
 	@Before
