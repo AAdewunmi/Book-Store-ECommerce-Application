@@ -19,7 +19,7 @@ public class ReviewDAOTest {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		
+		reviewDAO.close();
 	}
 
 	@Before
