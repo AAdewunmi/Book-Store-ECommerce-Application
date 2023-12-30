@@ -2,11 +2,13 @@ package com.bookstore.dao;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.bookstore.entity.Book;
+import com.bookstore.entity.Customer;
+import com.bookstore.entity.Review;
 
 public class ReviewDAOTest {
 	
@@ -22,17 +24,20 @@ public class ReviewDAOTest {
 		reviewDAO.close();
 	}
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void testCreateReview() {
-		fail("Not yet implemented");
+		Review review = new Review();
+		Book book = new Book();
+		book.setBookId(2);
+		Customer customer = new Customer();
+		customer.setCustomerId(2);
+		review.setBook(book);
+		review.setCustomer(customer);
+		review.setHeadline("This is a very good book");
+		review.setRating(5);
+		review.setComment("I have just read this book. Very good.");
+		Review saveReview = reviewDAO.create(review);
+		assertTrue(saveReview.getReviewId() > 0);
 	}
 
 	@Test
