@@ -2,6 +2,8 @@ package com.bookstore.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -63,7 +65,16 @@ public class ReviewDAOTest {
 
 	@Test
 	public void testListAll() {
-		fail("Not yet implemented");
+		List<Review> listReview = reviewDAO.listAll();
+		
+		for (Review review : listReview) { 
+		  System.out.println(review.getReviewId() + " - " + 
+		  review.getBook().getTitle() + " - " +		
+		  review.getCustomer().getFullname() + " - " + 
+		  review.getHeadline() + " - " +
+		  review.getRating()); }
+		 
+		assertTrue(listReview.size() > 0);
 	}
 
 	@Test
