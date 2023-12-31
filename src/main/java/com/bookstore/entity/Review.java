@@ -9,6 +9,9 @@ import java.util.Date;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "review", catalog = "bookstoredb")
+@NamedQueries({
+	@NamedQuery(name = "Review.listAll", query = "SELECT r FROM Review r ORDER BY r.reviewTime DESC"),
+})
 public class Review implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -44,7 +47,7 @@ public class Review implements java.io.Serializable {
 		this.reviewId = reviewId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "book_id", nullable = false)
 	public Book getBook() {
 		return this.book;
@@ -54,7 +57,7 @@ public class Review implements java.io.Serializable {
 		this.book = book;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id", nullable = false)
 	public Customer getCustomer() {
 		return this.customer;
