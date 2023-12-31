@@ -14,9 +14,8 @@ public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
 	}
 
 	@Override
-	public Review update(Review t) {
-		// TODO Auto-generated method stub
-		return null;
+	public Review update(Review reviewId) {
+		return super.update(reviewId);
 	}
 
 	@Override
