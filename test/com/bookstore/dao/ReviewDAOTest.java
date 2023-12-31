@@ -42,7 +42,11 @@ public class ReviewDAOTest {
 
 	@Test
 	public void testUpdateReview() {
-		
+		Integer reviewId = 1;
+		Review review = reviewDAO.get(reviewId);
+		review.setHeadline("Excellent book");
+		Review updatedReview = reviewDAO.update(review);
+		assertEquals(review.getHeadline(), updatedReview.getHeadline());
 	}
 
 	@Test
