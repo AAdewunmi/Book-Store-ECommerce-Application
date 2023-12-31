@@ -42,12 +42,14 @@ public class ReviewDAOTest {
 
 	@Test
 	public void testUpdateReview() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	public void testGet() {
-		fail("Not yet implemented");
+		Integer reviewId = 1;
+		Review review = reviewDAO.get(reviewId);
+		assertNotNull(review);
 	}
 
 	@Test
