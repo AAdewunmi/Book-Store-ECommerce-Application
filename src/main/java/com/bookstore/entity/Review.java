@@ -11,6 +11,7 @@ import jakarta.persistence.*;
 @Table(name = "review", catalog = "bookstoredb")
 @NamedQueries({
 	@NamedQuery(name = "Review.listAll", query = "SELECT r FROM Review r ORDER BY r.reviewTime DESC"),
+	@NamedQuery(name = "Review.countAll", query = "SELECT COUNT(r) FROM Review r"),
 })
 public class Review implements java.io.Serializable {
 
