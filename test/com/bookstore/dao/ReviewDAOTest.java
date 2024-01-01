@@ -30,14 +30,14 @@ public class ReviewDAOTest {
 	public void testCreateReview() {
 		Review review = new Review();
 		Book book = new Book();
-		book.setBookId(2);
+		book.setBookId(3);
 		Customer customer = new Customer();
-		customer.setCustomerId(2);
+		customer.setCustomerId(6);
 		review.setBook(book);
 		review.setCustomer(customer);
-		review.setHeadline("This is a very good book");
-		review.setRating(5);
-		review.setComment("I have just read this book. Very good.");
+		review.setHeadline("This book is rubbish");
+		review.setRating(1);
+		review.setComment("I have just read this book. Don't like it!");
 		Review saveReview = reviewDAO.create(review);
 		assertTrue(saveReview.getReviewId() > 0);
 	}
@@ -79,7 +79,9 @@ public class ReviewDAOTest {
 
 	@Test
 	public void testCount() {
-		fail("Not yet implemented");
+		long totalReviews = reviewDAO.count();
+		System.out.println("Total Reviews: " + totalReviews);
+		assertTrue(totalReviews > 0);
 	}
 
 }
