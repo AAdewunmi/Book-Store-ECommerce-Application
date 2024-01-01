@@ -59,8 +59,11 @@ public class ReviewDAOTest {
 	}
 
 	@Test
-	public void testDeleteObject() {
-		fail("Not yet implemented");
+	public void testDeleteReview() {
+		Integer reviewId=2;
+		reviewDAO.delete(reviewId);
+		Review review=reviewDAO.get(reviewId);
+		assertNull(review);
 	}
 
 	@Test
