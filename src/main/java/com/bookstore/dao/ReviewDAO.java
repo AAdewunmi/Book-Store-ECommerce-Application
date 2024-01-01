@@ -36,8 +36,7 @@ public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
 
 	@Override
 	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return super.countWithNamedQuery("Review.countAll");
 	}
 
 	
