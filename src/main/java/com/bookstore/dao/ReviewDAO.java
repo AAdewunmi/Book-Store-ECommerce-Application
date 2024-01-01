@@ -24,9 +24,8 @@ public class ReviewDAO extends JpaDAO<Review> implements GenericDAO<Review> {
 	}
 
 	@Override
-	public void delete(Object id) {
-		// TODO Auto-generated method stub
-		
+	public void delete(Object reviewId) {
+		super.delete(Review.class, reviewId);
 	}
 
 	@Override
