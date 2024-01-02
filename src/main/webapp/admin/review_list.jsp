@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title> Manage Categories - Evergreen Bookstore Administration </title>
+<title> Manage Reviews - Evergreen Bookstore Administration </title>
 <style><%@include file="../css/style.css"%></style>
 <script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
 <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
@@ -12,8 +12,7 @@
 <body>
 	<jsp:directive.include file="header.jsp"/>
 	<div align="center">
-		<h2 class="pageheading"> Categories Management Dashboard </h2>
-		<h3><a href="category_form.jsp"> Create New Category</a></h3>
+		<h2 class="pageheading"> Review Management Dashboard </h2>
 	</div>
 	
 	<c:if test="${message != null}">
@@ -27,14 +26,22 @@
 			<tr>
 				<th>Index</th>
 				<th>ID</th>
-				<th>Category Name</th>
+				<th>Book</th>
+				<th>Ratings</th>
+				<th>Headline</th>
+				<th>Customer</th>
+				<th>Review On</th>
 				<th>Actions</th>
 			</tr>
-			<c:forEach var="cat" items="${listCategory}" varStatus="status">
+			<c:forEach var="review" items="${listReviews}" varStatus="status">
 				<tr>
 	 				<td>${status.index + 1}</td>
-	 				<td>${cat.categoryId}</td>
-	 				<td>${cat.name}</td>
+	 				<td>${review.reviewId}</td>
+	 				<td>${review.book.title}</td>
+	 				<td>${review.rating}</td>
+	 				<td>${review.headline}</td>
+	 				<td>${review.customer.fullname}</td>
+	 				<td>${review.reviewTime}</td>
 	 				<td>
 	 					<a href="edit_category?id=${cat.categoryId}">Edit</a> &nbsp;
 	 					<a href="javascript:void(0);" class="deleteLink" id="${cat.categoryId}">Delete</a>
