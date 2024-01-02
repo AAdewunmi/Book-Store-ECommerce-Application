@@ -2,6 +2,8 @@ package com.bookstore.controller.admin.review;
 
 import java.io.IOException;
 
+import com.bookstore.service.ReviewServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +19,8 @@ public class ListReviewServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ReviewServices reviewServices = new ReviewServices(request, response);
+		reviewServices.listAllReview();
 	}
 
 }
