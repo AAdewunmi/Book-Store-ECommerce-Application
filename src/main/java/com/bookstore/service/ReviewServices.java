@@ -32,4 +32,12 @@ public class ReviewServices {
 		dispatcher.forward(request, response);
 	}
 
+	public void editReview() throws ServletException, IOException {
+		Integer reviewId = Integer.parseInt(request.getParameter("id"));
+		Review review = reviewDAO.get(reviewId);
+		String editPage = "review_form.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
+		dispatcher.forward(request, response);
+	}
+
 }
