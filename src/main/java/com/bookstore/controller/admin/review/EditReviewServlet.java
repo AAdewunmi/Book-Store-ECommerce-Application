@@ -2,6 +2,8 @@ package com.bookstore.controller.admin.review;
 
 import java.io.IOException;
 
+import com.bookstore.service.ReviewServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +20,8 @@ public class EditReviewServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		ReviewServices reviewServices = new ReviewServices(request, response);
+		reviewServices.editReview();
 	}
 
 }
