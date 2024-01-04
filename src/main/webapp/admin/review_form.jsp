@@ -8,14 +8,7 @@
 	<style><%@include file="../css/style.css"%></style>
 	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
     <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
-<title>
-	<c:if test="${category!=nll}">
-		Edit Category
-	</c:if>
-	<c:if test="${category==nll}">
-		Create New Category
-	</c:if>
-</title>
+<title> Edit Review </title>
 
 </head>
 <body>
@@ -23,28 +16,38 @@
 	
 	<div align="center">
 		<h2 class="pageheading">
-			<c:if test="${category != null}">
-				Edit Category
-			</c:if>
-			<c:if test="${category == null}">
-				Create New Category
-			</c:if>
+			Edit Review
 		</h2>
 	</div>
 
 	<div align="center">
-		<c:if test="${category != null}">
-			<form action="update_category" method="post" id="categoryForm">
-			<input type="hidden" name="categoryId" value=${category.categoryId}>
-		</c:if>
-		<c:if test="${category == null}">
-			<form action="create_category" method="post" id="categoryForm">
-		</c:if>
+		
+	<form action="update_review" method="post" id="reviewForm">
+		<input type="hidden" name="reviewId" value=${review.reviewId}>
 			<table class="form">
 				<tr>
-					<td align="right">Category Name:</td>
-					<td align="left"><input type="text" id="name" name="name"
-						size="20" value="${category.name}"></td>
+					<td align="right">Book:</td>
+					<td align="left"><b>${review.book.title}</b></td>
+				</tr>
+				<tr>
+					<td align="right">Rating:</td>
+					<td align="left"><b>${review.rating}</b></td>
+				</tr>
+				<tr>
+					<td align="right">Customer:</td>
+					<td align="left"><b>${review.customer.fullname}</b></td>
+				</tr>
+				<tr>
+					<td align="right">Headline:</td>
+					<td align="left">
+						<input type="text" size="60" name="headline" value="${review.headline}"/>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Comment:</td>
+					<td align="left">
+						<textarea rows="5" cols="70" name="comment">${review.comment}</textarea>
+					</td>
 				</tr>
 				<tr>
 					<td>&nbsp<td>
@@ -53,7 +56,6 @@
 					<td colspan="2" align="center">
 						<button type="submit">Save</button> &nbsp;&nbsp;&nbsp;
 						<button id="buttonCancel">Cancel</button>
-						
 					</td>
 				</tr>
 			</table>
@@ -65,12 +67,14 @@
 </body>
 	<script type="text/javascript">
 	$(document).ready(function(){
-		$("#categoryForm").validate({
+		$("#reviewForm").validate({
 			rules:{
-				name: "required",
+				headline: "required",
+				comment: "required",
 			},
 			messages:{
-				name: "Please enter category name",
+				headline: "Please enter headline",
+				comment: "Please enter comment",
 			}
 		});
 	});
