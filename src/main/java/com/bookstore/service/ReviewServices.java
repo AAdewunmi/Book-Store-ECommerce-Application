@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.bookstore.dao.ReviewDAO;
 import com.bookstore.entity.Review;
+import com.bookstore.service.CommonUtility;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -40,12 +41,23 @@ public class ReviewServices {
 	}
 
 	public void editReview() throws ServletException, IOException {
+		/*
+		 * Integer reviewId = Integer.parseInt(request.getParameter("id")); Review
+		 * review = reviewDAO.get(reviewId); request.setAttribute("review", review);
+		 * String editPage = "review_form.jsp"; RequestDispatcher dispatcher =
+		 * request.getRequestDispatcher(editPage); dispatcher.forward(request,
+		 * response);
+		 */
 		Integer reviewId = Integer.parseInt(request.getParameter("id"));
 		Review review = reviewDAO.get(reviewId);
-		request.setAttribute("review", review);
-		String editPage = "review_form.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
-		dispatcher.forward(request, response);
+		
+		if (review != null) {		
+			request.setAttribute("review", review);	
+			CommonUtility.forwardToPage("review_form.jsp", request, response);
+		} else {
+			String message = "Could not find review with ID " + reviewId;
+			CommonUtility.showMessageBackend(message, request, response);
+		}
 	}
 
 	public void updateReview() throws ServletException, IOException {
