@@ -232,7 +232,5 @@ public class Book implements java.io.Serializable {
 		Book other = (Book) obj;
 		return Objects.equals(bookId, other.bookId);
 	}
-	
-	
 
 }
