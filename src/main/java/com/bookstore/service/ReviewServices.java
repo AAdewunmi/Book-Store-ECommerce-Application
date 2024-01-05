@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.bookstore.dao.ReviewDAO;
 import com.bookstore.entity.Review;
-import com.bookstore.service.CommonUtility;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -73,10 +72,23 @@ public class ReviewServices {
 	}
 
 	public void deleteReview() throws ServletException, IOException {
+		/*
+		 * Integer reviewId = Integer.parseInt(request.getParameter("id"));
+		 * reviewDAO.delete(reviewId); String message =
+		 * "The review has been deleted successfully!"; listAllReview(message);
+		 */
 		Integer reviewId = Integer.parseInt(request.getParameter("id"));
-		reviewDAO.delete(reviewId);
-		String message = "The review has been deleted successfully!";
-		listAllReview(message);
+		Review review = reviewDAO.get(reviewId);
+		
+		if (review != null) {
+			reviewDAO.delete(reviewId);
+			String message = "The review has been deleted successfully.";
+			listAllReview(message);
+		} else {
+			String message = "Could you find review with ID " + reviewId
+					+ ", or it might have been deleted by another admin";
+			CommonUtility.showMessageBackend(message, request, response);
+		}	
 	}
 
 }
