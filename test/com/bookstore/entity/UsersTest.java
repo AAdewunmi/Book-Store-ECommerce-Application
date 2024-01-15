@@ -1,3 +1,4 @@
+package com.bookstore.entity;
 
 import com.bookstore.entity.Users;
 
