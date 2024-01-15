@@ -8,7 +8,6 @@ import org.junit.Test;
 
 public class BookRatingTest {
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testAverageRating1() {
 		Book book = new Book();
@@ -19,6 +18,13 @@ public class BookRatingTest {
 		book.setReviews(reviews);
 		float averageRating = book.getAverageRating();
 		assertEquals(5.0, averageRating, 0.0);
+	}
+	
+	@Test
+	public void testAverageRating2() {
+		Book book = new Book();
+		float averageRating = book.getAverageRating();
+		assertEquals(0.0, averageRating, 0.0);
 	}
 
 }
