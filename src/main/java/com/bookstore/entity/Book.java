@@ -235,16 +235,16 @@ public class Book implements java.io.Serializable {
 		String result = "";
 		int numberOfStarsOn = (int) averageRating;
 		for (int i = 1; i <= numberOfStarsOn; i++) {
-			result += "on, ";
+			result += "on,";
 		}
 		int next = numberOfStarsOn + 1;
 		if (averageRating > numberOfStarsOn) {
-			result += "half, ";
+			result += "half,";
 		}
 		for (int j = next; j <= 5; j++) {
-			result += "off, ";
+			result += "off,";
 		}
-		return result;
+		return result.substring(0, result.length() - 1);
 	}
 
 	@Override
