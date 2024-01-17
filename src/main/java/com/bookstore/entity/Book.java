@@ -240,6 +240,7 @@ public class Book implements java.io.Serializable {
 		int next = numberOfStarsOn + 1;
 		if (averageRating > numberOfStarsOn) {
 			result += "half,";
+			next++;
 		}
 		for (int j = next; j <= 5; j++) {
 			result += "off,";

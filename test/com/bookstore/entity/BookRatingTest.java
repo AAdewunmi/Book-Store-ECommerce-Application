@@ -66,5 +66,14 @@ public class BookRatingTest {
 		String expectString = "on,on,on,on,on";
 		assertEquals(expectString, actualString);
 	}
+	
+	@Test
+	public void testRatingString3() {
+		float averageRating = 4.5f;
+		Book book = new Book();
+		String actualString = book.getRatingString(averageRating);
+		String expectString = "on,on,on,off,off";
+		assertEquals(expectString, actualString);
+	}
 
 }
