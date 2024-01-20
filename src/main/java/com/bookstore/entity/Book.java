@@ -231,6 +231,12 @@ public class Book implements java.io.Serializable {
 	}
 	
 	@Transient
+	public String getRatingStars() {
+		float averageRating = getAverageRating();
+		return getRatingString(averageRating);
+	}
+	
+	@Transient
 	public String getRatingString(float averageRating) {
 		String result = "";
 		int numberOfStarsOn = (int) averageRating;
