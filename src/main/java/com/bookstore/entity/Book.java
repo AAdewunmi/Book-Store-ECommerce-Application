@@ -187,7 +187,7 @@ public class Book implements java.io.Serializable {
 		this.lastUpdateTime = lastUpdateTime;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "book")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
 	public Set<Review> getReviews() {
 		return this.reviews;
 	}
@@ -231,12 +231,6 @@ public class Book implements java.io.Serializable {
 	}
 	
 	@Transient
-	public String getRatingStars() {
-		float averageRating = getAverageRating();
-		return getRatingString(averageRating);
-	}
-	
-	@Transient
 	public String getRatingString(float averageRating) {
 		String result = "";
 		int numberOfStarsOn = (int) averageRating;
@@ -252,6 +246,12 @@ public class Book implements java.io.Serializable {
 			result += "off,";
 		}
 		return result.substring(0, result.length() - 1);
+	}
+	
+	@Transient
+	public String getRatingStars() {
+		float averageRating = getAverageRating();
+		return getRatingString(averageRating);
 	}
 
 	@Override
