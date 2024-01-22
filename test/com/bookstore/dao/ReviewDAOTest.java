@@ -32,11 +32,11 @@ public class ReviewDAOTest {
 		Book book = new Book();
 		book.setBookId(2);
 		Customer customer = new Customer();
-		customer.setCustomerId(10);
+		customer.setCustomerId(5);
 		review.setBook(book);
 		review.setCustomer(customer);
-		review.setHeadline("This book is fantastic");
-		review.setRating(4);
+		review.setHeadline("This book is good");
+		review.setRating(5);
 		review.setComment("I have just read this book. Like it!");
 		Review saveReview = reviewDAO.create(review);
 		assertTrue(saveReview.getReviewId() > 0);
