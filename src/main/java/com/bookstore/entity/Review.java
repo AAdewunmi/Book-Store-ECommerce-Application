@@ -105,5 +105,18 @@ public class Review implements java.io.Serializable {
 	public void setReviewTime(Date reviewTime) {
 		this.reviewTime = reviewTime;
 	}
+	
+	@Transient
+	public String getStars() {
+		String result = "";
+		int numberOfStarsOn = (int) rating;
+		for (int i = 1; i <= numberOfStarsOn; i++) {
+			result += "on,";
+		}
+		for (int j = numberOfStarsOn + 1; j <= 5; j++) {
+			result += "off,";
+		}
+		return result.substring(0, result.length() - 1);
+	}
 
 }
