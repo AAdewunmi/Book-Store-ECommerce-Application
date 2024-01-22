@@ -2,6 +2,7 @@ package com.bookstore.entity;
 // Generated 15 May 2023, 15:47:29 by Hibernate Tools 4.3.6.Final
 
 import java.util.Base64;
+import java.util.Comparator;
 
 //import java.util.Date;
 //import java.util.HashSet;
@@ -27,6 +28,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -189,7 +192,14 @@ public class Book implements java.io.Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "book")
 	public Set<Review> getReviews() {
-		return this.reviews;
+		TreeSet<Review> sortedReviews = new TreeSet<>(new Comparator<Review>() {
+			@Override
+			public int compare(Review review1, Review review2) {
+				return review2.getReviewTime().compareTo(review1.getReviewTime());
+			}
+		});
+		sortedReviews.addAll(reviews);
+		return sortedReviews;
 	}
 
 	public void setReviews(Set<Review> reviews) {
