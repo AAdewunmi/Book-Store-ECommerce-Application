@@ -43,7 +43,7 @@
 								</a>
 								</h2>
 							</div>
-							<div>Rating ***** </div>
+							<div><jsp:directive.include file="book_rating.jsp" /></div>
 							<div><i>by ${book.author}</i></div>
 							<div><p>${fn:substring(book.description, 0, 100)} ... </p></div>
 					    </div>
