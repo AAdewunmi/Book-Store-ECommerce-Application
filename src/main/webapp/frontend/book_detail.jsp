@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${book.title} - Online Books Store</title>
-<style><%@include file="../css/style.css"%></style>
-<script src="<c:url value="js/jquery-3.7.0.min.js" />"></script>
+	<title>${book.title} - Online Books Store</title>
+	<style><%@include file="../css/style.css"%></style>
+	<script src="<c:url value="js/jquery-3.7.0.min.js"/>"></script>
 </head>
 <body>
 
@@ -84,11 +85,12 @@
 
 	<jsp:directive.include file="footer.jsp"/>
 	<script type="text/javascript">
-	$(document).ready(function() {
-		$("#buttonWriteReview").click(function() {
-			window.location = 'write_review?book_id=' + ${book.bookId};
+		$(document).ready(function() {
+			$("#buttonWriteReview").click(function() {
+				window.location = 'write_review?book_id=' + ${book.bookId};
+			});
 		});
-	}
 	</script>
+	
 </body>
 </html>
