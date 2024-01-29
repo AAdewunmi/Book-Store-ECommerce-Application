@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpSession;
 public class CustomerLoginFilter implements Filter {
 	
 	private static final String[] loginRequiredURLS = {
-		"/view_profile", "/edit_profile", "/update_profile"	
+		"/view_profile", "/edit_profile", "/update_profile", "/write_review"	
 	};
     
 	public CustomerLoginFilter() {
@@ -42,6 +42,12 @@ public class CustomerLoginFilter implements Filter {
 		System.out.println("Path: " + path);
 		System.out.println("LoggedIn: " + loggedIn);
 		if (!loggedIn && isLoginRequired(requestURL)) {
+			String queryString = httpServletRequest.getQueryString();
+			String redirectURL = requestURL;
+			if (queryString != null) {
+				redirectURL = redirectURL.concat("?").concat(queryString);
+			}
+			session.setAttribute("redirectURL", requestURL);
 			String loginPage = "frontend/login.jsp";
 			RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher(loginPage);
 			dispatcher.forward(request, response);
