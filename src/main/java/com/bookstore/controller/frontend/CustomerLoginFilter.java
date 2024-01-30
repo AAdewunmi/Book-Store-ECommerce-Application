@@ -1,8 +1,6 @@
 package com.bookstore.controller.frontend;
 
 import java.io.IOException;
-import java.net.http.HttpRequest;
-
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.FilterConfig;
@@ -47,7 +45,7 @@ public class CustomerLoginFilter implements Filter {
 			if (queryString != null) {
 				redirectURL = redirectURL.concat("?").concat(queryString);
 			}
-			session.setAttribute("redirectURL", requestURL);
+			session.setAttribute("redirectURL", redirectURL);
 			String loginPage = "frontend/login.jsp";
 			RequestDispatcher dispatcher = httpServletRequest.getRequestDispatcher(loginPage);
 			dispatcher.forward(request, response);
