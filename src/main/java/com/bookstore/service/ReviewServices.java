@@ -3,7 +3,9 @@ package com.bookstore.service;
 import java.io.IOException;
 import java.util.List;
 
+import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.ReviewDAO;
+import com.bookstore.entity.Book;
 import com.bookstore.entity.Review;
 
 import jakarta.servlet.RequestDispatcher;
@@ -40,13 +42,6 @@ public class ReviewServices {
 	}
 
 	public void editReview() throws ServletException, IOException {
-		/*
-		 * Integer reviewId = Integer.parseInt(request.getParameter("id")); Review
-		 * review = reviewDAO.get(reviewId); request.setAttribute("review", review);
-		 * String editPage = "review_form.jsp"; RequestDispatcher dispatcher =
-		 * request.getRequestDispatcher(editPage); dispatcher.forward(request,
-		 * response);
-		 */
 		Integer reviewId = Integer.parseInt(request.getParameter("id"));
 		Review review = reviewDAO.get(reviewId);
 		
@@ -72,11 +67,6 @@ public class ReviewServices {
 	}
 
 	public void deleteReview() throws ServletException, IOException {
-		/*
-		 * Integer reviewId = Integer.parseInt(request.getParameter("id"));
-		 * reviewDAO.delete(reviewId); String message =
-		 * "The review has been deleted successfully!"; listAllReview(message);
-		 */
 		Integer reviewId = Integer.parseInt(request.getParameter("id"));
 		Review review = reviewDAO.get(reviewId);
 		
@@ -92,6 +82,10 @@ public class ReviewServices {
 	}
 
 	public void showReviewForm() throws ServletException, IOException {
+		Integer bookId = Integer.parseInt(request.getParameter("book_id"));
+		BookDAO bookDAO = new BookDAO();
+		Book book = bookDAO.get(bookId);
+		request.setAttribute("book", book);
 		String targetPage = "frontend/review_form.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(targetPage);
 		dispatcher.forward(request, response);
