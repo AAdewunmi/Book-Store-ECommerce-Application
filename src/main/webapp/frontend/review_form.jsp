@@ -10,11 +10,15 @@
 	<style><%@include file="../css/style.css"%></style>
 	<script src="<c:url value="js/jquery-3.7.0.min.js" />"></script>
 	<script src="<c:url value="js/jquery.validate.min.js" />"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp"/>
 		<div align="center">
-			<form>
+			<form form id="reviewForm" action="submit_review" method="post">
 				<table class="normal" width="60%">
 					<tr>
 						<td><h2> Your Reviews </h2></td>
@@ -30,15 +34,27 @@
 							 <img class="book-small" src="data:image/jpg;base64, ${book.base64Image}"/>
 						</td>
 						<td>
+							<div id="rateYo"></div>
+							<input type="hidden" id="rating" name="rating" />
+							<input type="hidden" name="bookId" value="${book.bookId}"/>
+							<br/>
 							<input type="text" name="headline" size="60" placeholder="Headline or Summary for your review (required)" />
 							<br/>
 							<br/>
 							<textarea name="comment" rows="10" cols="64" placeholder="Write your review details ... "></textarea>
 						</td>
 					</tr>
+					<tr>
+						<td colspan="3" align="center">
+							<button type="submit">Submit</button>
+							&nbsp;&nbsp;
+							<button>Cancel</button>
+						</td>
+					</tr>
 				</table>
 			</form>
 		</div>
+		
 	<jsp:directive.include file="footer.jsp"/>
 </body>
 	<script type="text/javascript">
@@ -59,6 +75,13 @@
 					password: "Enter password",
 				}
 			});
+			$("#rateYo").rateYo({
+			    startWidth: "40px",
+			    fullStar: true,
+			    onSet: function (rating, rateYoInstance){
+			    	$("#rating").val(rating);
+			    }
+			  });
 		});
 	</script>
 </html>
