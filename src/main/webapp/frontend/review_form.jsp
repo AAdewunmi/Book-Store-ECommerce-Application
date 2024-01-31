@@ -18,7 +18,7 @@
 <body>
 	<jsp:directive.include file="header.jsp"/>
 		<div align="center">
-			<form form id="reviewForm" action="submit_review" method="post">
+			<form id="reviewForm" action="submit_review" method="post">
 				<table class="normal" width="60%">
 					<tr>
 						<td><h2> Your Reviews </h2></td>
@@ -59,20 +59,14 @@
 </body>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$("#loginForm").validate({
+			$("#reviewForm").validate({
 				rules:{
-					email: {
-						required: true,
-						email: true,
-					},
-					password: "required",
+					headline: "required",
+					comment: "required",
 				},
 				messages:{
-					email: {
-						required: "Please enter email",
-						email: "Please enter a valid email address",
-					},
-					password: "Enter password",
+					headline: "Please enter headline",
+					comment: "Please enter review details",
 				}
 			});
 			$("#rateYo").rateYo({
@@ -81,7 +75,7 @@
 			    onSet: function (rating, rateYoInstance){
 			    	$("#rating").val(rating);
 			    }
-			  });
+			});
 		});
 	</script>
 </html>
