@@ -48,7 +48,7 @@
 						<td colspan="3" align="center">
 							<button type="submit">Submit</button>
 							&nbsp;&nbsp;
-							<button>Cancel</button>
+							<button id="buttonCancel">Cancel</button>
 						</td>
 					</tr>
 				</table>
@@ -75,6 +75,9 @@
 			    onSet: function (rating, rateYoInstance){
 			    	$("#rating").val(rating);
 			    }
+			});
+			$("#buttonCancel").click(function() {
+				history.go(-1);
 			});
 		});
 	</script>
