@@ -2,6 +2,7 @@ package com.bookstore.controller.frontend.review;
 
 import java.io.IOException;
 
+import com.bookstore.service.ReviewServices;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +19,8 @@ public class SubmitReviewServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		ReviewServices reviewServices = new ReviewServices(request, response);
+		reviewServices.submitReview();
 	}
 
 }
