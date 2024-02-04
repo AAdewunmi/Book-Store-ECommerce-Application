@@ -86,7 +86,7 @@ public class ReviewServices {
 		Integer bookId = Integer.parseInt(request.getParameter("book_id"));
 		BookDAO bookDAO = new BookDAO();
 		Book book = bookDAO.get(bookId);
-		request.setAttribute("book", book);
+		request.getSession().setAttribute("book", book);
 		String targetPage = "frontend/review_form.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(targetPage);
 		dispatcher.forward(request, response);
