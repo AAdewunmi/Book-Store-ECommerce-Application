@@ -13,6 +13,7 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class ReviewServices {
 	
@@ -86,8 +87,15 @@ public class ReviewServices {
 		Integer bookId = Integer.parseInt(request.getParameter("book_id"));
 		BookDAO bookDAO = new BookDAO();
 		Book book = bookDAO.get(bookId);
-		request.getSession().setAttribute("book", book);
+		HttpSession session = request.getSession();
+		session.setAttribute("book", book);
+		Customer customer = (Customer) session.getAttribute("loggedCustomer");
+		Review existReview = reviewDAO.findByCustomerAndBook(customer.getCustomerId(), bookId);
 		String targetPage = "frontend/review_form.jsp";
+		if (existReview != null) {
+			request.setAttribute("review", existReview);
+			targetPage = "frontend/review_info.jsp";
+		} 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(targetPage);
 		dispatcher.forward(request, response);
 	}
