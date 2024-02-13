@@ -18,6 +18,10 @@ public class ShoppingCart {
 		}
 	}
 	
+	public void removeItem(Book book) {
+		cart.remove(book);
+	}
+	
 	public Map<Book, Integer> getItems(){
 		return this.cart;
 	}
