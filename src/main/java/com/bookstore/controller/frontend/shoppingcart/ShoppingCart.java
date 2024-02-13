@@ -1,5 +1,20 @@
 package com.bookstore.controller.frontend.shoppingcart;
 
-public class ShoppingCart {
+import java.util.HashMap;
+import java.util.Map;
 
+import com.bookstore.entity.Book;
+
+public class ShoppingCart {
+	
+	private Map<Book, Integer> cart = new HashMap<>();
+	public void addItem(Book book) {
+		if (cart.containsKey(book)) {
+			Integer quality = cart.get(book) + 1;
+			cart.put(book, quality);
+		} else {
+			cart.put(book, 1);
+		}
+	}
+	
 }
