@@ -34,6 +34,18 @@ public class ShoppingCart {
 		return total;
 	}
 	
+	public double getTotalAmount() {
+		double total = 0.0f;
+		Iterator<Book> iterator = cart.keySet().iterator();
+		while (iterator.hasNext()) {
+			Book book = iterator.next();
+			Integer quantity = cart.get(book);
+			double subTotal = quantity * book.getPrice();
+			total += subTotal;
+		}
+		return total;
+	}
+	
 	public Map<Book, Integer> getItems(){
 		return this.cart;
 	}
