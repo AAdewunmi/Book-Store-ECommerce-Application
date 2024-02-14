@@ -51,6 +51,18 @@ public class ShoppingCartTest {
 		cart.addItem(book3);
 		assertEquals(5, cart.getTotalQuantity());
 	}
+	
+	@Test
+	public void testGetTotalAmount1() {
+		ShoppingCart cart = new ShoppingCart();
+		assertEquals(0.0f, cart.getTotalAmount(), 0.0f);
+	}
+	
+	@Test
+	public void testGetTotalAmount2() {
+		ShoppingCart cart = new ShoppingCart();
+		assertEquals(0.0f, cart.getTotalAmount(), 0.0f);
+	}
 
 	@After
 	public void tearDown() throws Exception {
