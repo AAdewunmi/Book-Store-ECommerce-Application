@@ -63,6 +63,12 @@ public class ShoppingCartTest {
 	public void testGetTotalAmount2() {
 		assertEquals(20.0f, cart.getTotalAmount(), 0.0f);
 	}
+	
+	@Test
+	public void testClear() {
+		cart.clear();
+		assertEquals(0, cart.getTotalQuantity());
+	}
 
 	@After
 	public void tearDown() throws Exception {
