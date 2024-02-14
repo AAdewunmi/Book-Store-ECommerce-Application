@@ -18,6 +18,7 @@ public class ShoppingCartTest {
 	public void setUp() throws Exception {
 		cart = new ShoppingCart();
 		Book book = new Book(1);
+		book.setPrice(10);
 		cart.addItem(book);
 		cart.addItem(book);
 	}
@@ -60,8 +61,7 @@ public class ShoppingCartTest {
 	
 	@Test
 	public void testGetTotalAmount2() {
-		ShoppingCart cart = new ShoppingCart();
-		assertEquals(0.0f, cart.getTotalAmount(), 0.0f);
+		assertEquals(20.0f, cart.getTotalAmount(), 0.0f);
 	}
 
 	@After
