@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+
 import com.bookstore.entity.Book;
 
 public class ShoppingCart {
@@ -44,6 +45,10 @@ public class ShoppingCart {
 			total += subTotal;
 		}
 		return total;
+	}
+	
+	public void clear(){
+		cart.clear();
 	}
 	
 	public Map<Book, Integer> getItems(){
