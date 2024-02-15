@@ -2,6 +2,9 @@ package com.bookstore.controller.frontend.shoppingcart;
 
 import java.io.IOException;
 
+import com.bookstore.entity.Book;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +21,20 @@ public class ViewCartServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Object cartObject = request.getSession().getAttribute("cart");
+		if (cartObject == null) {
+			ShoppingCart shoppingCart = new ShoppingCart();
+			request.getSession().setAttribute("cart", shoppingCart);
+		}
+		Book book = new Book();
+		book.setTitle("Effective Java (3 Edition)");
+		book.setPrice(20);
+		ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute("cart");
+		//shoppingCart.addItem(book);
+		
+		String cartPage = "frontend/shopping_cart.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(cartPage);
+		dispatcher.forward(request, response);
 	}
 
 }
