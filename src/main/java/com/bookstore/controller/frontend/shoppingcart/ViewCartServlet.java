@@ -2,6 +2,7 @@ package com.bookstore.controller.frontend.shoppingcart;
 
 import java.io.IOException;
 
+import com.bookstore.dao.BookDAO;
 import com.bookstore.entity.Book;
 
 import jakarta.servlet.RequestDispatcher;
@@ -25,12 +26,15 @@ public class ViewCartServlet extends HttpServlet {
 		if (cartObject == null) {
 			ShoppingCart shoppingCart = new ShoppingCart();
 			request.getSession().setAttribute("cart", shoppingCart);
+			BookDAO bookDAO = new BookDAO();
+			Book book1 = bookDAO.get(2);
+			Book book2 = bookDAO.get(3);
+			Book book3 = bookDAO.get(4);
+			shoppingCart.addItem(book1);
+			shoppingCart.addItem(book2);
+			shoppingCart.addItem(book3);
+			shoppingCart.addItem(book3);
 		}
-		Book book = new Book();
-		book.setTitle("Effective Java (3 Edition)");
-		book.setPrice(20);
-		ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute("cart");
-		//shoppingCart.addItem(book);
 		
 		String cartPage = "frontend/shopping_cart.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(cartPage);
