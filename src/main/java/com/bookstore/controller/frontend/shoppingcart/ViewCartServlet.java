@@ -26,14 +26,7 @@ public class ViewCartServlet extends HttpServlet {
 		if (cartObject == null) {
 			ShoppingCart shoppingCart = new ShoppingCart();
 			request.getSession().setAttribute("cart", shoppingCart);
-			BookDAO bookDAO = new BookDAO();
-			Book book1 = bookDAO.get(2);
-			Book book2 = bookDAO.get(3);
-			Book book3 = bookDAO.get(4);
-			shoppingCart.addItem(book1);
-			shoppingCart.addItem(book2);
-			shoppingCart.addItem(book3);
-			shoppingCart.addItem(book3);
+			
 		}
 		
 		String cartPage = "frontend/shopping_cart.jsp";
