@@ -2,6 +2,9 @@ package com.bookstore.controller.frontend.shoppingcart;
 
 import java.io.IOException;
 
+import com.bookstore.dao.BookDAO;
+import com.bookstore.entity.Book;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,8 +20,12 @@ public class RemoveBookFromCartServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Integer bookId = Integer.parseInt(request.getParameter("book_id"));
+		Object cartObject = request.getSession().getAttribute("cart");
+		ShoppingCart shoppingCart = (ShoppingCart) cartObject;
+		shoppingCart.removeItem(new Book(bookId));
+		String cartPage = request.getContextPath().concat("/view_cart");
+		response.sendRedirect(cartPage);
 	}
 
 }
