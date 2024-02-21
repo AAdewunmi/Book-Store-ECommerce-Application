@@ -87,23 +87,32 @@
 	<jsp:directive.include file="footer.jsp"/>
 </body>
 	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#loginForm").validate({
-				rules:{
-					email: {
-						required: true,
-						email: true,
-					},
-					password: "required",
+	
+		$(document).ready(function() {
+			$("#clearCart").click(function() {
+				window.location = 'clear_cart';
+			});
+			
+			$("#cartForm").validate({
+				rules : {
+					<c:forEach items="${cart.items}" var="item" varStatus="status">
+						quantity${status.index + 1}: {
+							required: true, number: true, min: 1
+						},
+					</c:forEach>
 				},
-				messages:{
-					email: {
-						required: "Please enter email",
-						email: "Please enter a valid email address",
-					},
-					password: "Enter password",
+
+				messages : {
+					<c:forEach items="${cart.items}" var="item" varStatus="status">
+						quantity${status.index + 1}: { 
+							required: "Please enter quantity",
+							number: "Quantity must be a number",
+							min: "Quantity must be greater than 0"
+						},
+					</c:forEach>					
 				}
 			});
+
 		});
 	</script>
 </html>
