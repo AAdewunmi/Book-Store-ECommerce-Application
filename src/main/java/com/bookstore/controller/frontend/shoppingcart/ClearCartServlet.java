@@ -18,7 +18,11 @@ public class ClearCartServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ShoppingCart cart = (ShoppingCart) request.getSession().getAttribute("cart");
+		cart.clear();
 		
+		String cartPage = request.getContextPath().concat("/view_cart");
+		response.sendRedirect(cartPage);	
 	}
 
 }
