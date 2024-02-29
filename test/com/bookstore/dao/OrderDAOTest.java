@@ -7,13 +7,17 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class OrderDAOTest {
+	
+	private static OrderDAO orderDAO;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		orderDAO = new OrderDAO();
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		
 	}
 
 	@Test
