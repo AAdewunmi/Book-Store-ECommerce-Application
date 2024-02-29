@@ -17,7 +17,7 @@ public class OrderDAOTest {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		
+		orderDAO.close();
 	}
 
 	@Test
