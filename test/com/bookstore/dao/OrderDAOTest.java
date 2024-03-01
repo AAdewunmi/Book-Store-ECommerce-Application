@@ -31,29 +31,30 @@ public class OrderDAOTest {
 
 	@Test
 	public void testCreateBookOrder() {
-		BookOrder order = new BookOrder();
-		Customer customer = new Customer();
-		customer.setCustomerId(2);
 		
-		order.setCustomer(customer);
-		order.setPaymentMethod("Debit Card");
-		order.setRecipientName("Tommy Hilfiger");
-		order.setRecipientPhone("18001900");
-		order.setShippingAddress("300 Zjinwan Avenue, Changai, China");
-		
-		Set<OrderDetail> orderDetails = new HashSet<>();
-		OrderDetail orderDetail = new OrderDetail();
-		
-		Book book = new Book(2);
-		orderDetail.setBook(book);
-		OrderDetailId orderDetailId = new OrderDetailId();
-		orderDetailId.setQuantity(2);
-		orderDetailId.setSubtotal(50.0f);
-		orderDetail.setId(orderDetailId);
-		orderDetails.add(orderDetail);
-		order.setOrderDetails(orderDetails);
-		BookOrder savedOrder = orderDAO.create(order);
-		assertNotNull(savedOrder);
+		  BookOrder order = new BookOrder(); 
+		  Customer customer = new Customer();
+		  customer.setCustomerId(2);
+		  
+		  order.setCustomer(customer); 
+		  //order.setPaymentMethod("Debit Card");
+		  order.setRecipientName("Tommy Hilfiger");
+		  order.setRecipientPhone("18001900");
+		  order.setShippingAddress("300 Zjinwan Avenue, Changai, China");
+		  
+		  Set<OrderDetail> orderDetails = new HashSet<>(); 
+		  OrderDetail orderDetail = new OrderDetail();
+		  
+		  Book book = new Book(2); 
+		  orderDetail.setBook(book);
+		  orderDetail.setQuantity(2); 
+		  orderDetail.setSubtotal(50.00f);
+		  orderDetail.setBookOrder(order); 
+		  orderDetails.add(orderDetail);
+		  order.setOrderDetails(orderDetails); 
+		  orderDAO.create(order);
+		  assertTrue(order.getOrderId() > 0);
+		 
 	}
 
 	@Test
