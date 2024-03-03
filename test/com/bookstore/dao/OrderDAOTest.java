@@ -37,7 +37,7 @@ public class OrderDAOTest {
 		  customer.setCustomerId(2);
 		  
 		  order.setCustomer(customer); 
-		  //order.setPaymentMethod("Debit Card");
+		  order.setPaymentMethod("Debit Card");
 		  order.setRecipientName("Tommy Hilfiger");
 		  order.setRecipientPhone("18001900");
 		  order.setShippingAddress("300 Zjinwan Avenue, Changai, China");
@@ -45,10 +45,10 @@ public class OrderDAOTest {
 		  Set<OrderDetail> orderDetails = new HashSet<>(); 
 		  OrderDetail orderDetail = new OrderDetail();
 		  
-		  Book book = new Book(2); 
+		  Book book = new Book(4); 
 		  orderDetail.setBook(book);
-		  orderDetail.setQuantity(2); 
-		  orderDetail.setSubtotal(50.00f);
+		  orderDetail.setQuantity(1); 
+		  orderDetail.setSubtotal(24.33f);
 		  orderDetail.setBookOrder(order); 
 		  orderDetails.add(orderDetail);
 		  order.setOrderDetails(orderDetails); 
