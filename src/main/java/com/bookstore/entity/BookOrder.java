@@ -12,6 +12,9 @@ import java.util.Set;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "book_order", catalog = "bookstoredb")
+@NamedQueries({
+	@NamedQuery(name = "BookOrder.findAll", query = "SELECT bo FROM BookOrder bo ORDER BY bo.orderDate DESC")
+})
 public class BookOrder implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
