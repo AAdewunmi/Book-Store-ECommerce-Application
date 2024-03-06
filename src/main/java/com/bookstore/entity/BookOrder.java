@@ -69,7 +69,7 @@ public class BookOrder implements java.io.Serializable {
 		this.orderId = orderId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id", nullable = false)
 	public Customer getCustomer() {
 		return this.customer;
@@ -143,7 +143,7 @@ public class BookOrder implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bookOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "bookOrder", cascade = CascadeType.ALL, orphanRemoval = true)
 	public Set<OrderDetail> getOrderDetails() {
 		return this.orderDetails;
 	}
