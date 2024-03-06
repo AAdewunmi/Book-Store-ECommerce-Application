@@ -64,7 +64,9 @@ public class OrderDAOTest {
 
 	@Test
 	public void testGet() {
-		fail("Not yet implemented");
+		Integer orderId = 5;
+		BookOrder order = orderDAO.get(orderId);
+		assertEquals(1, order.getOrderDetails().size());
 	}
 
 	@Test
