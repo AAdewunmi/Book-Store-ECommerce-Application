@@ -62,6 +62,17 @@ public class OrderDAOTest {
 	public void testUpdateBookOrder() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	public void testUpdateBookOrderShippingAddress() {
+		int orderId = 5;
+		BookOrder order = orderDAO.get(orderId);
+		order.setShippingAddress("New Port, Connecticut, USA");
+		orderDAO.update(order);
+		BookOrder updatedOrder = orderDAO.get(orderId);
+		assertEquals(order.getShippingAddress(), updatedOrder.getShippingAddress());
+		
+	}
 
 	@Test
 	public void testGet() {
