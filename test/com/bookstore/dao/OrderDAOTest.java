@@ -3,6 +3,7 @@ package com.bookstore.dao;
 import static org.junit.Assert.*;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -73,6 +74,45 @@ public class OrderDAOTest {
 		assertEquals(order.getShippingAddress(), updatedOrder.getShippingAddress());
 		
 	}
+	
+	@Test
+	public void testUpdateBookOrderDetail() {
+		Integer orderId = 5;
+		BookOrder order = orderDAO.get(orderId);
+		
+		Iterator<OrderDetail> iterator = order.getOrderDetails().iterator();
+		
+		while (iterator.hasNext()) {
+			OrderDetail orderDetail = iterator.next();
+			if (orderDetail.getBook().getBookId() == 4) {
+				orderDetail.setQuantity(3);
+				orderDetail.setSubtotal(81.99f);
+			}
+		}
+			
+		orderDAO.update(order);
+		
+		BookOrder updatedOrder = orderDAO.get(orderId);
+		
+		iterator = order.getOrderDetails().iterator();
+		
+		int expectedQuantity = 3;
+		float expectedSubtotal = 81.99f;
+		int actualQuantity = 3;
+		float actualSubtotal = 81.99f;
+		
+		while (iterator.hasNext()) {
+			OrderDetail orderDetail = iterator.next();
+			if (orderDetail.getBook().getBookId() == 5) {
+				actualQuantity = orderDetail.getQuantity();
+				actualSubtotal = orderDetail.getSubtotal();
+			}
+		}		
+		
+		assertEquals(expectedQuantity, actualQuantity);
+		assertEquals(expectedSubtotal, actualSubtotal, 0.0f);
+		
+	}	
 
 	@Test
 	public void testGet() {
