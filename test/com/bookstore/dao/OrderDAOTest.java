@@ -144,7 +144,8 @@ public class OrderDAOTest {
 
 	@Test
 	public void testCount() {
-		fail("Not yet implemented");
+		long totalOrders = orderDAO.count();
+		assertEquals(1, totalOrders);
 	}
 
 }
