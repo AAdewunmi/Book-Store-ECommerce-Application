@@ -122,8 +122,11 @@ public class OrderDAOTest {
 	}
 
 	@Test
-	public void testDeleteObject() {
-		fail("Not yet implemented");
+	public void testDeleteOrder() {
+		int orderId = 5;
+		orderDAO.delete(orderId);
+		BookOrder order = orderDAO.get(orderId);
+		assertNull(order);
 	}
 
 	@Test
