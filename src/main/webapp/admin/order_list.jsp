@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title> Manage Reviews - Evergreen Bookstore Administration </title>
+<title> Manage Orders - Evergreen Bookstore Administration </title>
 <style><%@include file="../css/style.css"%></style>
 <script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
 <script src="<c:url value="../js/jquery.validate.min.js" />"></script>
@@ -12,7 +13,7 @@
 <body>
 	<jsp:directive.include file="header.jsp"/>
 	<div align="center">
-		<h2 class="pageheading"> Review Management Dashboard </h2>
+		<h2 class="pageheading"> Book Orders Dashboard </h2>
 	</div>
 	
 	<c:if test="${message != null}">
@@ -25,24 +26,27 @@
 		<table border="1" cellpadding="5">
 			<tr>
 				<th>Index</th>
-				<th>ID</th>
-				<th>Book</th>
-				<th>Ratings</th>
-				<th>Headline</th>
-				<th>Customer</th>
-				<th>Review On</th>
+				<th>Order ID</th>
+				<th>Ordered By</th>
+				<th>Book Copies</th>
+				<th>Total</th>
+				<th>Payment Method</th>
+				<th>Status</th>
+				<th>Order Date</th>
 				<th>Actions</th>
 			</tr>
-			<c:forEach var="review" items="${listReviews}" varStatus="status">
+			<c:forEach var="order" items="${listOrder}" varStatus="status">
 				<tr>
 	 				<td>${status.index + 1}</td>
-	 				<td>${review.reviewId}</td>
-	 				<td>${review.book.title}</td>
-	 				<td>${review.rating}</td>
-	 				<td>${review.headline}</td>
-	 				<td>${review.customer.fullname}</td>
-	 				<td>${review.reviewTime}</td>
+	 				<td>${order.orderId}</td>
+	 				<td>${order.customer.fullname}</td>
+	 				<td>${order.bookCopies}</td>
+	 				<td><fmt:formatNumber value="${order.total}" type="currency"/></td>
+	 				<td>${order.paymentMethod}</td>
+	 				<td>${order.status}</td>
+	 				<td>${order.orderDate}</td>
 	 				<td>
+	 					<a href="edit_review?id=${review.reviewId}">Details</a> &nbsp;
 	 					<a href="edit_review?id=${review.reviewId}">Edit</a> &nbsp;
 	 					<a href="javascript:void(0);" class="deleteLink" id="${review.reviewId}">Delete</a>
 	 				</td>
