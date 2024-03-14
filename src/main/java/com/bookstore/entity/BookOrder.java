@@ -157,6 +157,15 @@ public class BookOrder implements java.io.Serializable {
 	public int hashCode() {
 		return Objects.hash(orderId);
 	}
+	
+	@Transient
+	public int getBookCopies() {
+		int total = 0;
+		for (OrderDetail orderDetail : orderDetails) {
+			total += orderDetail.getQuantity();
+		}
+		return total;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
