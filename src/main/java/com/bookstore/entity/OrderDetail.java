@@ -8,6 +8,11 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "order_detail", catalog = "bookstoredb")
+@NamedQueries({
+	@NamedQuery(name = "OrderDetail.countByBook",
+		query = "SELECT COUNT(*) FROM OrderDetail od WHERE od.book.bookId =:bookId")
+})
+
 public class OrderDetail implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
