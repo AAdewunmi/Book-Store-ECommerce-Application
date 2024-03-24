@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.bookstore.dao.CustomerDAO;
 import com.bookstore.dao.HashGenerator;
+import com.bookstore.dao.OrderDAO;
 import com.bookstore.dao.ReviewDAO;
 import com.bookstore.entity.Customer;
 import jakarta.servlet.RequestDispatcher;
@@ -113,6 +114,22 @@ public class CustomerServices {
 		 * customerDAO.delete(customerId); String message =
 		 * "The customer has been deleted successfully!"; listCustomers(message);
 		 */
+		/*
+		 * Integer customerId = Integer.parseInt(request.getParameter("id")); Customer
+		 * customer = customerDAO.get(customerId);
+		 * 
+		 * if (customer != null) { ReviewDAO reviewDAO = new ReviewDAO(); long
+		 * reviewCount = reviewDAO.countByCustomer(customerId);
+		 * 
+		 * if (reviewCount == 0) { customerDAO.delete(customerId); String message =
+		 * "The customer has been deleted successfully."; listCustomers(message); } else
+		 * { String message = "Could not delete customer with ID " + customerId +
+		 * " because he/she posted reviews for books.";
+		 * CommonUtility.showMessageBackend(message, request, response); } } else {
+		 * String message = "Could not find customer with ID " + customerId + ", " +
+		 * "or it has been deleted by another admin";
+		 * CommonUtility.showMessageBackend(message, request, response); }
+		 */
 		Integer customerId = Integer.parseInt(request.getParameter("id"));
 		Customer customer = customerDAO.get(customerId);
 		
@@ -120,21 +137,29 @@ public class CustomerServices {
 			ReviewDAO reviewDAO = new ReviewDAO();
 			long reviewCount = reviewDAO.countByCustomer(customerId);
 			
-			if (reviewCount == 0) {
-				customerDAO.delete(customerId);			
-				String message = "The customer has been deleted successfully.";
-				listCustomers(message);
-			} else {
+			if (reviewCount > 0) {
 				String message = "Could not delete customer with ID " + customerId
 						+ " because he/she posted reviews for books.";
 				CommonUtility.showMessageBackend(message, request, response);
+			} else {
+				OrderDAO orderDAO = new OrderDAO();
+				long orderCount = orderDAO.countByCustomer(customerId);
+				
+				if (orderCount > 0) {
+					String message = "Could not delete customer with ID " + customerId 
+							+ " because he/she placed orders.";
+					CommonUtility.showMessageBackend(message, request, response);
+				} else {
+					customerDAO.delete(customerId);			
+					String message = "The customer has been deleted successfully.";
+					listCustomers(message);
+				}
 			}
 		} else {
 			String message = "Could not find customer with ID " + customerId + ", "
 					+ "or it has been deleted by another admin";
 			CommonUtility.showMessageBackend(message, request, response);
 		}
-		
 	}
 
 	private void updateCustomerFieldsFromForm(Customer customer) {
