@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.CategoryDAO;
+import com.bookstore.dao.OrderDAO;
 import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
 
@@ -154,19 +155,45 @@ public class BookServices {
 	}
 	
 	public void deleteBook() throws ServletException, IOException {
+		/*
+		 * Integer bookId = Integer.parseInt(request.getParameter("id")); Book book =
+		 * bookDAO.get(bookId);
+		 * 
+		 * if (book == null) { String message = "Could not find book with ID " + bookId
+		 * + ", or it might have been deleted"; request.setAttribute("message",
+		 * message); request.getRequestDispatcher("message.jsp").forward(request,
+		 * response);
+		 * 
+		 * } else { String message = "The book has been deleted successfully.";
+		 * bookDAO.delete(bookId); listBooks(message); }
+		 */
 		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		Book book =  bookDAO.get(bookId);
 		
 		if (book == null) {
 			String message = "Could not find book with ID " + bookId 
 					+ ", or it might have been deleted";
-			request.setAttribute("message", message);
-			request.getRequestDispatcher("message.jsp").forward(request, response);
+			CommonUtility.showMessageBackend(message, request, response);
 			
-		} else {
-			String message = "The book has been deleted successfully.";
-			bookDAO.delete(bookId);			
-			listBooks(message);		
+		} else {			
+			if (!book.getReviews().isEmpty()) {
+				String message = "Could not delete the book with ID " + bookId
+						+ " because it has reviews";
+				CommonUtility.showMessageBackend(message, request, response);
+			} else {
+				OrderDAO orderDAO = new OrderDAO();
+				long countByOrder = orderDAO.countOrderDetailByBook(bookId);
+				
+				if (countByOrder > 0) {
+					String message = "Could not delete book with ID " + bookId
+							+ " because there are orders associated with it.";
+					CommonUtility.showMessageBackend(message, request, response);
+				} else {
+					String message = "The book has been deleted successfully.";
+					bookDAO.delete(bookId);			
+					listBooks(message);
+				}
+			}
 		}
 	}
 	
