@@ -124,28 +124,25 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function() {
-			$("#clearCart").click(function() {
-				window.location = 'clear_cart';
-			});
-			
-			$("#cartForm").validate({
-				rules : {
-					<c:forEach items="${cart.items}" var="item" varStatus="status">
-						quantity${status.index + 1}: {
-							required: true, number: true, min: 1
-						},
-					</c:forEach>
+			$("#orderForm").validate({
+				rules: {
+					recipientName: "required",
+					recipientPhone: "required",
+					address: "required",
+					city: "required",
+					zipcode: "required",
+					country: "required",
 				},
-
-				messages : {
-					<c:forEach items="${cart.items}" var="item" varStatus="status">
-						quantity${status.index + 1}: { 
-							required: "Please enter quantity",
-							number: "Quantity must be a number",
-							min: "Quantity must be greater than 0"
-						},
-					</c:forEach>					
+				
+				messages: {
+					recipientName: "Please enter recipient name",
+					recipientPhone: "Please enter phone number",
+					address: "Please enter street address",
+					city: "Please enter city",
+					zipcode: "Please enter zip code",
+					country: "Please enter country",					
 				}
+				
 			});
 
 		});
