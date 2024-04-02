@@ -6,7 +6,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Your Shopping Cart Details</title>
+	<title>Checkout - Online Book Store</title>
 	<style><%@include file="../css/style.css"%></style>
 	<script src="<c:url value="js/jquery-3.7.0.min.js" />"></script>
 	<script src="<c:url value="js/jquery.validate.min.js" />"></script>
@@ -15,7 +15,6 @@
 <body>
 	<jsp:directive.include file="header.jsp"/>
 	<div align="center">
-		<h2>Your Shopping Cart Details</h2>
 		<div>
 			<c:if test="${message != null}">
 			<div align="center">
@@ -27,16 +26,17 @@
 			<h2>There's no items in your cart</h2>
 		</c:if>
 		<c:if test="${cart.totalItems > 0}">
-			<form action="update_cart" method="post" id="cartForm">
-				<div>
+			
+			<div>
+				<h2>Review Your Order Details!&nbsp&nbsp<a href="view_cart">Edit</a></h2>
 					<table border="1">
 						<tr>
 							<th>No</th>
 							<th colspan="2">Book</th>
-							<th>Quantity</th>
+							<th>Author</th>
 							<th>Price</th>
+							<th>Quantity</th>
 							<th>Subtotal</th>
-							<th></th>
 						</tr>
 						<c:forEach items="${cart.items}" var="item" varStatus="status">
 							<tr>
@@ -46,14 +46,15 @@
 									src="data:image/jpg;base64, ${item.key.base64Image}"/>
 								</td>
 								<td><span id="book-title">${item.key.title}</span></td>
-								<td>
-									<input type="hidden" name="bookId" value="${item.key.bookId}" />
-									<input type="text" name="quantity${status.index + 1}" value="${item.value}" size="5" /></td>
+								<td><span id="book-author">${item.key.author}</span></td>
 								<td><fmt:formatNumber value="${item.key.price}"
 										type="currency" /></td>
+								<td>
+									<input type="text" name="quantity${status.index + 1}" value="${item.value}" size="5" readonly="readonly"/>
+								</td>
+								
 								<td><fmt:formatNumber
 										value="${item.value * item.key.price}" type="currency" /></td>
-								<td><a href="remove_from_cart?book_id=${item.key.bookId}">Remove</a></td>
 							</tr>
 						</c:forEach>
 
@@ -67,20 +68,54 @@
 										value="${cart.totalAmount}" type="currency" /></b></td>
 						</tr>
 					</table>
-				</div>
-				<div>
-					<table class="normal">
-						<tr><td>&nbsp;</td></tr>
+					<h2>Your Shipping Information</h2>
+					<form id="orderForm" action="place_order" method="post">
+						<table>
 						<tr>
-							<td></td>
-							<td><button type="submit">Update</button></td>
-							<td><input type="button" id="clearCart" value="Clear Cart"/></td>
-							<td><a href="${pageContext.request.contextPath}/">Continue Shopping</a></td>
-							<td><a href="checkout">Checkout</a>
+							<td>Recipient Name:</td>
+							<td><input type="text" name="recipientName" value="${loggedCustomer.fullname}" /></td>
 						</tr>
+						<tr>
+							<td>Recipient Phone:</td>
+							<td><input type="text" name="recipientPhone" value="${loggedCustomer.phone}" /></td>
+						</tr>
+						<tr>
+							<td>Street Address:</td>
+							<td><input type="text" name="address" value="${loggedCustomer.address}" /></td>
+						</tr>						
+						<tr>
+							<td>City:</td>
+							<td><input type="text" name="city" value="${loggedCustomer.city}" /></td>
+						</tr>						
+						<tr>
+							<td>Zip Code:</td>
+							<td><input type="text" name="zipcode" value="${loggedCustomer.zipcode}" /></td>
+						</tr>						
+						<tr>
+							<td>Country:</td>
+							<td><input type="text" name="country" value="${loggedCustomer.country}" /></td>
+						</tr>																								
 					</table>
+					<div>
+						<h2>Payment</h2>
+						Choose your payment method:
+						&nbsp;&nbsp;&nbsp;
+						<select name="paymentMethod">
+							<option value="Debit Card">Debit Card</option>
+						</select>
+					</div>
+					<div>
+						<table class="normal">
+							<tr><td>&nbsp;</td></tr>
+							<tr>								
+								<td><button type="submit">Place Order</button></td>								
+								<td><a href="${pageContext.request.contextPath}/">Continue Shopping</a></td>
+							</tr>
+						</table>
+					</div>		
+					</form>
 				</div>
-			</form>
+				
 		</c:if>
 		</div>
 	</div>
