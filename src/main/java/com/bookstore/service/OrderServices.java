@@ -1,15 +1,24 @@
 package com.bookstore.service;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import com.bookstore.controller.frontend.shoppingcart.ShoppingCart;
 import com.bookstore.dao.OrderDAO;
+import com.bookstore.entity.Book;
 import com.bookstore.entity.BookOrder;
+import com.bookstore.entity.Customer;
+import com.bookstore.entity.OrderDetail;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class OrderServices {
 	private OrderDAO orderDAO;
@@ -55,6 +64,60 @@ public class OrderServices {
 		String checkOutPage = "frontend/checkout.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(checkOutPage);
 		dispatcher.forward(request, response);
+	}
+
+	public void placeOrder() throws ServletException, IOException {
+		String recipientName = request.getParameter("recipientName");
+		String recipientPhone = request.getParameter("recipientPhone");
+		String address = request.getParameter("address");
+		String city = request.getParameter("city");
+		String zipcode = request.getParameter("zipcode");
+		String country = request.getParameter("country");
+		String paymentMethod = request.getParameter("paymentMethod");
+		String shippingAddress = address + ", " + city + ", " + zipcode + ", " + country;
+		
+		BookOrder order = new BookOrder();
+		order.setRecipientName(recipientName);
+		order.setRecipientPhone(recipientPhone);
+		order.setShippingAddress(shippingAddress );
+		order.setPaymentMethod(paymentMethod);
+		
+		HttpSession session = request.getSession();
+		Customer customer = (Customer) session.getAttribute("loggedCustomer");
+		order.setCustomer(customer);
+		
+		ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+		Map<Book, Integer> items = shoppingCart.getItems();
+		
+		Iterator<Book> iterator = items.keySet().iterator();
+		
+		Set<OrderDetail> orderDetails = new HashSet<>();
+		
+		while (iterator.hasNext()) {
+			Book book = iterator.next();
+			Integer quantity = items.get(book);
+			float subtotal = quantity * book.getPrice();
+			
+			OrderDetail orderDetail = new OrderDetail();
+			orderDetail.setBook(book);
+			orderDetail.setBookOrder(order);
+			orderDetail.setQuantity(quantity);
+			orderDetail.setSubtotal(subtotal);
+			
+			orderDetails.add(orderDetail);
+		}
+		
+		order.setOrderDetails(orderDetails);
+		order.setTotal(shoppingCart.getTotalAmount());
+		
+		orderDAO.create(order);
+		
+		shoppingCart.clear();
+		
+		String message = "Thank you. Your order has been received. "
+				+ " We will deliver your books within a few days.";
+		CommonUtility.showMessageFrontend(message, request, response);
+		
 	}
 
 }
