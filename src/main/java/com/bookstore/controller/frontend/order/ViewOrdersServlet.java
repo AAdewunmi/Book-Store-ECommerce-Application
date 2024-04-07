@@ -2,6 +2,8 @@ package com.bookstore.controller.frontend.order;
 
 import java.io.IOException;
 
+import com.bookstore.service.OrderServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +19,8 @@ public class ViewOrdersServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		OrderServices orderServices = new OrderServices(request, response);
+		orderServices.listOrderByCustomer();
 	}
 
 }
