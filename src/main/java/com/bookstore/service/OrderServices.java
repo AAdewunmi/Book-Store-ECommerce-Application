@@ -120,4 +120,12 @@ public class OrderServices {
 		
 	}
 
+	public void listOrderByCustomer() throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Customer customer = (Customer) session.getAttribute("loggedCustomer");
+		List<BookOrder> listOrders = orderDAO.listByCustomer(customer.getCustomerId());
+		request.setAttribute("listOrders", listOrders);
+		CommonUtility.forwardToPage("frontend/order_list.jsp", request, response);
+	}
+
 }
