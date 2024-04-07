@@ -17,6 +17,8 @@ import jakarta.persistence.*;
 	@NamedQuery(name = "BookOrder.countAll", query = "SELECT COUNT(*) FROM BookOrder"),
 	@NamedQuery(name = "BookOrder.countByCustomer",
 	query = "SELECT COUNT(bo.orderId) FROM BookOrder bo WHERE bo.customer.customerId =:customerId"),
+	@NamedQuery(name = "BookOrder.findByCustomer", 
+	query = "SELECT bo FROM BookOrder bo WHERE bo.customer.customerId =:customerId ORDER BY bo.orderDate DESC"),
 })
 public class BookOrder implements java.io.Serializable {
 
