@@ -157,5 +157,12 @@ public class OrderDAOTest {
 		List<BookOrder> listOrders = orderDAO.listByCustomer(customerId);
 		assertTrue(listOrders.isEmpty());
 	}
+	
+	@Test
+	public void testListByCustomerHaveOrders() {
+		Integer customerId = 2;
+		List<BookOrder> listOrders = orderDAO.listByCustomer(customerId);
+		assertTrue(listOrders.size() > 0);
+	}	
 
 }
