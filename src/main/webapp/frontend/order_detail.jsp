@@ -4,39 +4,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title> My Order Details - Evergreen Bookstore </title>
-<style><%@include file="../css/style.css"%></style>
-<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
-<script src="<c:url value="../js/jquery.validate.min.js" />"></script>
+	<meta charset="UTF-8">
+	<title> My Order Details - Evergreen Bookstore </title>
+	<style><%@include file="../css/style.css"%></style>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp"/>
 	<div align="center">
-		<h2 class="pageheading"> Details of Orders ID: ${order.orderId} </h2>
+		<h2 class="pageheading"> Your Order ID: ${order.orderId} </h2>
 	</div>
 	
-	<c:if test="${message != null}">
-		<div align="center">
-			<h4 class="message">${message}</h4>
-		</div>
-	</c:if>
-	
 	<div align="center">
-		<h2>Order Overview</h2>
-		<table>
-			<tr>
-				<td><b>Order By: </b></td>
-				<td>${order.customer.fullname}</td>
-			</tr>	
+		<table>	
 			<tr>
 				<td><b>Order Status: </b></td>
 				<td>${order.status}</td>
-			</tr>		
+			</tr>
 			<tr>
 				<td><b>Order Date: </b></td>
 				<td>${order.orderDate}</td>
-			</tr>			
+			</tr>					
 			<tr>
 				<td><b>Quantity: </b></td>
 				<td>${order.bookCopies}</td>
@@ -56,12 +43,11 @@
 			<tr>
 				<td><b>Ship to: </b></td>
 				<td>${order.shippingAddress}</td>
-			</tr>			
+			</tr>	
 			<tr>
 				<td><b>Payment Method: </b></td>
 				<td>${order.paymentMethod}</td>
-			</tr>
-												
+			</tr>										
 		</table>
 	</div>
 	<div align="center">
@@ -101,24 +87,6 @@
 			</tr>
 		</table>
 	</div>	
-	<div align="center">
-		</br>
-		<a href="">Edit this Order</a>
-		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-		<a href="">Delete this Order</a>
-	</div>
 	<jsp:directive.include file="footer.jsp"/>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$(".deleteLink").each(function(){
-			$(this).on("click", function(){
-				reviewId = $(this).attr("id");
-				if(confirm('Are you sure you want to delete review with ID ' + reviewId + ' ?')){
-					window.location = 'delete_review?id=' + reviewId;
-				}
-			});
-		});
-	});
-	</script>
 </body>
 </html>
