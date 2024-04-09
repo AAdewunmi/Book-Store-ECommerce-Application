@@ -128,4 +128,9 @@ public class OrderServices {
 		CommonUtility.forwardToPage("frontend/order_list.jsp", request, response);
 	}
 
+	public void showOrderDetailForCustomer() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
