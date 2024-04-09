@@ -40,7 +40,7 @@
 						<td>${order.orderDate}</td>
 						<td>${order.status}</td>
 						<td>
-							<a href="view_order?id=${order.orderId}">View Details</a> &nbsp;
+							<a href="show_order_detail?id=${order.orderId}">View Details</a> &nbsp;
 						</td>
 					</tr>
 				</c:forEach>
