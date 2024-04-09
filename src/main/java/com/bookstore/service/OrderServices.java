@@ -128,9 +128,14 @@ public class OrderServices {
 		CommonUtility.forwardToPage("frontend/order_list.jsp", request, response);
 	}
 
-	public void showOrderDetailForCustomer() {
-		// TODO Auto-generated method stub
-		
+	public void showOrderDetailForCustomer() throws ServletException, IOException {
+		int orderId = Integer.parseInt(request.getParameter("id"));
+		HttpSession session = request.getSession();
+		Customer customer = (Customer) session.getAttribute("loggedCustomer");
+		//BookOrder order = orderDAO.get(orderId, customer.getCustomerId());
+		BookOrder order = orderDAO.get(orderId);
+		request.setAttribute("order", order);
+		CommonUtility.forwardToPage("frontend/order_detail.jsp", request, response);
 	}
 
 }
