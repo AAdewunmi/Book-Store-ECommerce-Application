@@ -132,8 +132,8 @@ public class OrderServices {
 		int orderId = Integer.parseInt(request.getParameter("id"));
 		HttpSession session = request.getSession();
 		Customer customer = (Customer) session.getAttribute("loggedCustomer");
-		//BookOrder order = orderDAO.get(orderId, customer.getCustomerId());
-		BookOrder order = orderDAO.get(orderId);
+		BookOrder order = orderDAO.get(orderId, customer.getCustomerId());
+		//BookOrder order = orderDAO.get(orderId);
 		request.setAttribute("order", order);
 		CommonUtility.forwardToPage("frontend/order_detail.jsp", request, response);
 	}
