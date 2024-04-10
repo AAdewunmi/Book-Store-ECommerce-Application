@@ -164,5 +164,13 @@ public class OrderDAOTest {
 		List<BookOrder> listOrders = orderDAO.listByCustomer(customerId);
 		assertTrue(listOrders.size() > 0);
 	}	
+	
+	@Test
+	public void testGetByIdAndCustomerNull() {
+		Integer orderId = 10;
+		Integer customerId = 99;
+		BookOrder order = orderDAO.get(orderId, customerId);
+		assertNull(order);
+	}
 
 }
