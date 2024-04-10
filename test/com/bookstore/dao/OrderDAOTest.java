@@ -172,5 +172,14 @@ public class OrderDAOTest {
 		BookOrder order = orderDAO.get(orderId, customerId);
 		assertNull(order);
 	}
+	
+	@Test
+	public void testGetByIdAndCustomerNotNull() {
+		Integer orderId = 4;
+		Integer customerId = 2;
+		BookOrder order = orderDAO.get(orderId, customerId);
+		assertNotNull(order);
+	}	
+	
 
 }
