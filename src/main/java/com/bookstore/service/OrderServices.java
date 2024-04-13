@@ -138,4 +138,25 @@ public class OrderServices {
 		CommonUtility.forwardToPage("frontend/order_detail.jsp", request, response);
 	}
 
+	public void showEditOrderForm() throws ServletException, IOException {
+		Integer orderId = Integer.parseInt(request.getParameter("id"));		
+		BookOrder order = orderDAO.get(orderId);
+		
+		if (order == null) {
+			String message = "Could not find order with ID " + orderId;
+			CommonUtility.showMessageBackend(message, request, response);
+			return;
+		}
+		
+		HttpSession session = request.getSession();
+		Object isPendingBook = session.getAttribute("NewBookPendingToAddToOrder");
+		
+		if (isPendingBook == null) {			
+			session.setAttribute("order", order);
+		} else {
+			session.removeAttribute("NewBookPendingToAddToOrder");
+		}
+		CommonUtility.forwardToPage("order_form.jsp", request, response);
+	}
+
 }
