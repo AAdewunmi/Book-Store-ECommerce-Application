@@ -114,7 +114,7 @@
 		</div>	
 		<div align="center">
 			</br>
-			<a href="">Add Books</a>
+			<a href="javascript:showAddBookPopup()">Add Books</a>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 			<input type="submit" value="Save"/>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -125,17 +125,47 @@
 	
 	<jsp:directive.include file="footer.jsp"/>
 	
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$(".deleteLink").each(function(){
-			$(this).on("click", function(){
-				reviewId = $(this).attr("id");
-				if(confirm('Are you sure you want to delete review with ID ' + reviewId + ' ?')){
-					window.location = 'delete_review?id=' + reviewId;
+	<script>
+		function showAddBookPopup() {
+			var width = 600;
+			var height = 250;
+			var left = (screen.width - width) / 2;
+			var top = (screen.height - height) / 2;
+			
+			window.open('add_book_form', '_blank', 
+					'width=' + width + ', height=' + height + ', top=' + top + ', left=' + left);
+		}
+		
+		$(document).ready(function() {
+			$("#orderForm").validate({
+				rules: {	
+					recipientName: "required",
+					recipientPhone: "required",
+					shippingAddress: "required",
+					
+					<c:forEach items="${order.orderDetails}" var="book" varStatus="status">
+						quantity${status.index + 1}: {
+							required: true, number: true, min: 1
+						},
+					</c:forEach>					
+				},
+				
+				messages: {
+					recipientName: "Please enter recipient name",
+					recipientPhone: "Please enter recipient phone",
+					shippingAddress: "Please enter shipping address",
+					
+					<c:forEach items="${order.orderDetails}" var="book" varStatus="status">
+						quantity${status.index + 1}: { 
+							required: "Please enter quantity",
+							number: "Quantity must be a number",
+							min: "Quantity must be greater than 0"
+						},
+					</c:forEach>						
 				}
 			});
-		});
-	});
+			
+		});		
 	</script>
 </body>
 </html>
