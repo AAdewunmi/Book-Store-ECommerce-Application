@@ -95,7 +95,7 @@
 						<input type="text" name="recipientPhone" value="${orderDetail.quantity}" size="5"/>
 					</td>
 					<td><fmt:formatNumber value="${orderDetail.subtotal}" type="currency" /></td>
-					<td><a href="">Remove</a></td>
+					<td><a href="remove_book_from_order?id=${orderDetail.book.bookId}">Remove</a></td>
 				</tr>
 				</c:forEach>
 				<tr>
@@ -118,7 +118,7 @@
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 			<input type="submit" value="Save"/>
 			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-			<input type="button" value="Cancel"/>
+			<input type="button" value="Cancel" onclick="javascript:window.location.href='list_order';"/>
 		</div>
 	
 	</form>	
