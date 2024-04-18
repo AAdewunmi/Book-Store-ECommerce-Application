@@ -32,13 +32,15 @@ public class OrderServices {
 		this.response = response;
 		this.orderDAO = new OrderDAO();
 	}
-
+	
 	public void listAllOrder() throws ServletException, IOException {
+		listAllOrder(null);
+	}
+
+	public void listAllOrder(String message) throws ServletException, IOException {
 		List<BookOrder> listOrder = orderDAO.listAll();
 		request.setAttribute("listOrder", listOrder);
-		String listPage = "order_list.jsp"; 
-		RequestDispatcher dispatcher = request.getRequestDispatcher(listPage);
-		dispatcher.forward(request, response);
+		CommonUtility.forwardToPage("order_list.jsp", message, request, response);
 	}
 
 	public void viewOrderDetailsForAdmin() throws ServletException, IOException {
