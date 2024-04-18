@@ -2,6 +2,8 @@ package com.bookstore.controller.admin.order;
 
 import java.io.IOException;
 
+import com.bookstore.service.OrderServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,7 +19,8 @@ public class UpdateOrderServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		OrderServices orderServices = new OrderServices(request, response);
+		orderServices.updateOrder();
 	}
 
 }
