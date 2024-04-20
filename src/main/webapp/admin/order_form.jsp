@@ -50,17 +50,15 @@
 					<td><b>Payment Method: </b></td>
 					<td>
 						<select name="paymentMethod">
-							<option value="DebitCard">${order.paymentMethod}</option>
-							<option value="CreditCard">Credit Card</option>
-							<option value="CashOnDelivery">Cash On Delivery</option>
+							<option value="DebitCard">DebitCard</option>
 						</select>
 					</td>
 				</tr>
 				<tr>
 					<td><b>Order Status: </b></td>
 					<td>
-						<select name="paymentMethod">
-							<option value="Processing">${order.status}</option>
+						<select name="orderStatus">
+							<option value="Processing">Processing</option>
 							<option value="Shipping">Shipping</option>
 							<option value="Delivered">Delivered</option>
 							<option value="Completed">Completed</option>
@@ -84,18 +82,22 @@
 				</tr>
 				<c:forEach items="${order.orderDetails}" var="orderDetail" varStatus="status">
 				<tr>
-					<td>${status.index + 1}</td>
-					<td>
-						<img style="vertical-align: middle;" src="data:image/jpg;base64,${orderDetail.book.base64Image}" width="48" height="64" />
-						${orderDetail.book.title}
-					</td>
-					<td>${orderDetail.book.author}</td>
-					<td><fmt:formatNumber value="${orderDetail.book.price}" type="currency" /></td>
-					<td>
-						<input type="text" name="recipientPhone" value="${orderDetail.quantity}" size="5"/>
-					</td>
-					<td><fmt:formatNumber value="${orderDetail.subtotal}" type="currency" /></td>
-					<td><a href="remove_book_from_order?id=${orderDetail.book.bookId}">Remove</a></td>
+					<tr>
+				<td>${status.index + 1}</td>
+				<td>${orderDetail.book.title}</td>
+				<td>${orderDetail.book.author}</td>
+				<td>
+					<input type="hidden" name="price" value="${orderDetail.book.price}" />
+					<fmt:formatNumber value="${orderDetail.book.price}" type="currency" />
+				</td>
+				<td>
+					<input type="hidden" name="bookId" value="${orderDetail.book.bookId}" />
+					<input type="text" name="quantity${status.index + 1}" value="${orderDetail.quantity}" size="5" />
+				</td>
+				
+				<td><fmt:formatNumber value="${orderDetail.subtotal}" type="currency" /></td>
+				<td><a href="remove_book_from_order?id=${orderDetail.book.bookId}">Remove</a></td>
+			</tr>
 				</tr>
 				</c:forEach>
 				<tr>
