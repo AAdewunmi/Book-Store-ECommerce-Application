@@ -210,4 +210,18 @@ public class OrderServices {
 		
 	}
 
+	public void deleteOrder() throws ServletException, IOException{
+		Integer orderId = Integer.parseInt(request.getParameter("id"));
+		BookOrder order = orderDAO.get(orderId);
+		if (order != null) {		
+			orderDAO.delete(orderId);
+			String message = "The order ID " + orderId + " has been deleted.";
+			listAllOrder(message);
+		} else {
+			String message = "Could not find order with ID " + orderId +
+					", or it might have been deleted by another admin.";
+			CommonUtility.showMessageBackend(message, request, response);
+		}
+	}
+
 }
