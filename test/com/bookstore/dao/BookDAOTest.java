@@ -1,3 +1,4 @@
+
 package com.bookstore.dao;
 
 import static org.junit.Assert.*;
@@ -200,6 +201,15 @@ public class BookDAOTest {
 		int categoryId = 1;
 		long numOfBooks = bookDAO.countByCategory(categoryId);
 		assertTrue(numOfBooks == 1);
+	}
+	
+	@Test
+	public void testListBestSellingBooks() {
+		List<Book> topBestSellingBooks = bookDAO.listBestSellingBooks();
+		for (Book book : topBestSellingBooks) {
+			System.out.println(book.getTitle());
+		}
+		assertEquals(4, topBestSellingBooks.size());
 	}
 	
 	@AfterClass
