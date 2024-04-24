@@ -14,29 +14,49 @@
 	<div class="center">
 		<div>
 			<h2>New Books: </h2>
-		<c:forEach items="${listNewBooks}" var="book">
-			<div class="book">
-				<div>
-					<a href="view_book?id=${book.bookId}">
-						<img class="book-small"
-						src="data:image/jpg;base64, ${book.base64Image}">
-					</a>
-				</div>
-				<div>
-					<a href="view_book?id=${book.bookId}">
-						<b>${book.title}</b>
-					</a>
-				</div>
-				<div>
-					<jsp:directive.include file="book_rating.jsp"/>
-				</div>
-				<div><i>by ${book.author}</i></div>
-				<div><b>$ ${book.price}</b></div>
-			</div>
-		</c:forEach>
+				<c:forEach items="${listNewBooks}" var="book">
+					<div class="book">
+						<div>
+							<a href="view_book?id=${book.bookId}">
+								<img class="book-small"
+								src="data:image/jpg;base64, ${book.base64Image}">
+							</a>
+						</div>
+						<div>
+							<a href="view_book?id=${book.bookId}">
+								<b>${book.title}</b>
+							</a>
+						</div>
+						<div>
+							<jsp:directive.include file="book_rating.jsp"/>
+						</div>
+						<div><i>by ${book.author}</i></div>
+						<div><b>$ ${book.price}</b></div>
+					</div>
+				</c:forEach>
 	</div>
 		<div class="next_row">
 			<h2>Best-Selling Books: </h2>
+					<c:forEach items="${listBestSellingBooks}" var="book">
+						<div class="book">
+							<div>
+								<a href="view_book?id=${book.bookId}">
+									<img class="book-small"
+									src="data:image/jpg;base64, ${book.base64Image}">
+								</a>
+							</div>
+							<div>
+								<a href="view_book?id=${book.bookId}">
+									<b>${book.title}</b>
+								</a>
+							</div>
+							<div>
+								<jsp:directive.include file="book_rating.jsp"/>
+							</div>
+							<div><i>by ${book.author}</i></div>
+							<div><b>$ ${book.price}</b></div>
+						</div>
+					</c:forEach>
 		</div>
 		<div class="next_row">
 			<h2>Most - Favoured Books: </h2>
