@@ -1,6 +1,10 @@
 package com.bookstore.controller.admin;
 
 import java.io.IOException;
+import java.util.List;
+
+import com.bookstore.dao.OrderDAO;
+import com.bookstore.entity.BookOrder;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -25,7 +29,10 @@ public class AdminHomeServlet extends HttpServlet {
     
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String homepage = "index.jsp";
+		OrderDAO orderDAO = new OrderDAO();
+		List<BookOrder> listMostRecentSales = orderDAO.listMostRecentSales();
+		request.setAttribute("listMostRecentSales", listMostRecentSales);
+    	String homepage = "index.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(homepage);
 		dispatcher.forward(request, response);
 	}
