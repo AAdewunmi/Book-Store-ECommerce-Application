@@ -136,9 +136,9 @@ public class Customer implements java.io.Serializable {
 		return state;
 	}
 
-	//public void setState(String state) {
-		//this.state = state;
-	//}
+	public void setState(String state) {
+		this.state = state;
+	}
 
 	@Column(name = "country", nullable = false, length = 64)
 	public String getCountry() {
