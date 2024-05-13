@@ -89,7 +89,8 @@ public class Customer implements java.io.Serializable {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-
+	
+	@Column(name = "lastname", nullable = false, length = 30)
 	public String getLastname() {
 		return lastname;
 	}
