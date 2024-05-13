@@ -23,7 +23,8 @@ public class Customer implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer customerId;
 	private String email;
-	private String fullname;
+	private String firstname;
+	private String lastname;
 	private String address;
 	private String city;
 	private String country;
@@ -37,10 +38,11 @@ public class Customer implements java.io.Serializable {
 	public Customer() {
 	}
 
-	public Customer(String email, String fullname, String address, String city, String country, String phone,
+	public Customer(String email, String firstname, String lastname, String address, String city, String country, String phone,
 			String zipcode, String password, Date registerDate) {
 		this.email = email;
-		this.fullname = fullname;
+		this.firstname = firstname;
+		this.lastname = lastname;
 		this.address = address;
 		this.city = city;
 		this.country = country;
@@ -50,17 +52,10 @@ public class Customer implements java.io.Serializable {
 		this.registerDate = registerDate;
 	}
 
-	public Customer(String email, String fullname, String address, String city, String country, String phone,
+	public Customer(String email, String firstname, String lastname, String address, String city, String country, String phone,
 			String zipcode, String password, Date registerDate, Set<Review> reviews, Set<BookOrder> bookOrders) {
-		this.email = email;
-		this.fullname = fullname;
-		this.address = address;
-		this.city = city;
-		this.country = country;
-		this.phone = phone;
-		this.zipcode = zipcode;
-		this.password = password;
-		this.registerDate = registerDate;
+		this (email, firstname, lastname, address, city, country, 
+				phone, zipcode, password, registerDate);
 		this.reviews = reviews;
 		this.bookOrders = bookOrders;
 	}
@@ -86,13 +81,21 @@ public class Customer implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "fullname", nullable = false, length = 30)
-	public String getFullname() {
-		return this.fullname;
+	@Column(name = "firstname", nullable = false, length = 30)
+	public String getFirstname() {
+		return this.firstname;
 	}
 
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
 
 	@Column(name = "address", nullable = false, length = 128)
