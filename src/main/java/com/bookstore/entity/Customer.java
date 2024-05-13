@@ -28,6 +28,7 @@ public class Customer implements java.io.Serializable {
 	private String addressLine1;
 	private String addressLine2;
 	private String city;
+	private String state;
 	private String country;
 	private String phone;
 	private String zipcode;
@@ -39,7 +40,7 @@ public class Customer implements java.io.Serializable {
 	public Customer() {
 	}
 
-	public Customer(String email, String firstname, String lastname, String address1, String address2, String city, String country, String phone,
+	public Customer(String email, String firstname, String lastname, String address1, String address2, String city, String state, String country, String phone,
 			String zipcode, String password, Date registerDate) {
 		this.email = email;
 		this.firstname = firstname;
@@ -47,6 +48,7 @@ public class Customer implements java.io.Serializable {
 		this.addressLine1 = address1;
 		this.addressLine2 = address2;
 		this.city = city;
+		this.state = state;
 		this.country = country;
 		this.phone = phone;
 		this.zipcode = zipcode;
@@ -54,9 +56,9 @@ public class Customer implements java.io.Serializable {
 		this.registerDate = registerDate;
 	}
 
-	public Customer(String email, String firstname, String lastname, String address1, String address2, String city, String country, String phone,
+	public Customer(String email, String firstname, String lastname, String address1, String address2, String city, String state, String country, String phone,
 			String zipcode, String password, Date registerDate, Set<Review> reviews, Set<BookOrder> bookOrders) {
-		this (email, firstname, lastname, address1, address2, city, country, 
+		this (email, firstname, lastname, address1, address2, city, state, country, 
 				phone, zipcode, password, registerDate);
 		this.reviews = reviews;
 		this.bookOrders = bookOrders;
@@ -127,6 +129,16 @@ public class Customer implements java.io.Serializable {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
+	
+	@Column(name = "state", nullable = false, length = 45)
+	public String getState() {
+		return state;
+	}
+
+	//public void setState(String state) {
+		//this.state = state;
+	//}
 
 	@Column(name = "country", nullable = false, length = 64)
 	public String getCountry() {
