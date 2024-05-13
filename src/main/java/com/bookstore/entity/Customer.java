@@ -25,7 +25,8 @@ public class Customer implements java.io.Serializable {
 	private String email;
 	private String firstname;
 	private String lastname;
-	private String address;
+	private String addressLine1;
+	private String addressLine2;
 	private String city;
 	private String country;
 	private String phone;
@@ -38,12 +39,13 @@ public class Customer implements java.io.Serializable {
 	public Customer() {
 	}
 
-	public Customer(String email, String firstname, String lastname, String address, String city, String country, String phone,
+	public Customer(String email, String firstname, String lastname, String address1, String address2, String city, String country, String phone,
 			String zipcode, String password, Date registerDate) {
 		this.email = email;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.address = address;
+		this.addressLine1 = address1;
+		this.addressLine2 = address2;
 		this.city = city;
 		this.country = country;
 		this.phone = phone;
@@ -52,9 +54,9 @@ public class Customer implements java.io.Serializable {
 		this.registerDate = registerDate;
 	}
 
-	public Customer(String email, String firstname, String lastname, String address, String city, String country, String phone,
+	public Customer(String email, String firstname, String lastname, String address1, String address2, String city, String country, String phone,
 			String zipcode, String password, Date registerDate, Set<Review> reviews, Set<BookOrder> bookOrders) {
-		this (email, firstname, lastname, address, city, country, 
+		this (email, firstname, lastname, address1, address2, city, country, 
 				phone, zipcode, password, registerDate);
 		this.reviews = reviews;
 		this.bookOrders = bookOrders;
@@ -99,13 +101,22 @@ public class Customer implements java.io.Serializable {
 		this.lastname = lastname;
 	}
 
-	@Column(name = "address", nullable = false, length = 128)
-	public String getAddress() {
-		return this.address;
+	@Column(name = "address_line1", nullable = false, length = 128)
+	public String getAddressLine1() {
+		return this.addressLine1;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddressLine1(String address1) {
+		this.addressLine1 = address1;
+	}
+	
+	/*
+	 * @Column(name = "address1", nullable = false, length = 128) public String
+	 * getAddressLine1() { return this.addressLine1; }
+	 */
+
+	public void setAddressLine2(String address2) {
+		this.addressLine2 = address2;
 	}
 
 	@Column(name = "city", nullable = false, length = 32)
