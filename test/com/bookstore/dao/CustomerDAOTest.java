@@ -28,10 +28,10 @@ public class CustomerDAOTest {
 	public void testCreateCustomer() {
 		Customer customer = new Customer();
 		customer.setEmail("bill@gates.com");
-		customer.setFullname("Bill Gates");
+		customer.setFirstname("Bill Gates");
 		customer.setCity("Washington");
 		customer.setCountry("United States");
-		customer.setAddress("2000 Gates Avenue");
+		customer.setAddressLine1("2000 Gates Avenue");
 		customer.setPassword("milinda");
 		customer.setPhone("18001900");
 		customer.setZipcode("100000");
@@ -50,9 +50,9 @@ public class CustomerDAOTest {
 	public void testUpdateCustomer() {
 		Customer customer = customerDAO.get(5);
 		String fullName = "Koboko Dey Teach";
-		customer.setFullname(fullName);
+		customer.setFirstname(fullName);
 		Customer updatedCustomer = customerDAO.update(customer);
-		assertTrue(updatedCustomer.getFullname().equals(fullName));
+		assertTrue(updatedCustomer.getFirstname().equals(fullName));
 	}
 	
 	@Test
@@ -67,7 +67,7 @@ public class CustomerDAOTest {
 	public void testListAll() {
 		List<Customer> listCustomer = customerDAO.listAll();
 		for (Customer customer : listCustomer) {
-			System.out.println(customer.getFullname());
+			System.out.println(customer.getFirstname());
 		}
 		assertFalse(listCustomer.isEmpty());
 	}
