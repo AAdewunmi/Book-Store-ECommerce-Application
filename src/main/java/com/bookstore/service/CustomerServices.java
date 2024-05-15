@@ -175,13 +175,13 @@ public class CustomerServices {
 		if (email != null && !email.equals("")) {
 			customer.setEmail(email);
 		}
-		customer.setFullname(fullName);
+		customer.setFirstname(fullName);
 		if (password != null & !password.isEmpty()) {
 			String encryptedPassword = HashGenerator.generateMD5(password);
 			customer.setPassword(encryptedPassword);
 		}
 		customer.setPhone(phone);
-		customer.setAddress(address);
+		customer.setAddressLine1(address);
 		customer.setCity(city);
 		customer.setZipcode(zipCode);
 		customer.setCountry(country);
