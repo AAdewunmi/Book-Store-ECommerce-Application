@@ -27,12 +27,15 @@ public class CustomerDAOTest {
 	@Test
 	public void testCreateCustomer() {
 		Customer customer = new Customer();
-		customer.setEmail("bill@gates.com");
-		customer.setFirstname("Bill Gates");
+		customer.setEmail("customer101@gmail.com");
+		customer.setFirstname("Josh");
+		customer.setLastname("Bailey");
 		customer.setCity("Washington");
+		customer.setState("Colombia");
 		customer.setCountry("United States");
 		customer.setAddressLine1("2000 Gates Avenue");
-		customer.setPassword("milinda");
+		customer.setAddressLine2("Clifton Park");
+		customer.setPassword("billygoat");
 		customer.setPhone("18001900");
 		customer.setZipcode("100000");
 		Customer savedCustomer = customerDAO.create(customer);
@@ -41,25 +44,25 @@ public class CustomerDAOTest {
 
 	@Test
 	public void testGet() {
-		Integer customerId = 9;
+		Integer customerId = 11;
 		Customer customer = customerDAO.get(customerId);
 		assertNotNull(customer);
 	}
 	
 	@Test
 	public void testUpdateCustomer() {
-		Customer customer = customerDAO.get(5);
-		String fullName = "Koboko Dey Teach";
-		customer.setFirstname(fullName);
+		Customer customer = customerDAO.get(11);
+		String firstName = "Jonathan";
+		customer.setFirstname(firstName);
 		Customer updatedCustomer = customerDAO.update(customer);
-		assertTrue(updatedCustomer.getFirstname().equals(fullName));
+		assertTrue(updatedCustomer.getFirstname().equals(firstName));
 	}
 	
 	@Test
 	public void testDeleteCustomer() {
-		Integer customerId = 2;
+		Integer customerId = 11;
 		customerDAO.delete(customerId);
-		Customer customer = customerDAO.get(1);
+		Customer customer = customerDAO.get(customerId);
 		assertNull(customer);
 	}
 	
