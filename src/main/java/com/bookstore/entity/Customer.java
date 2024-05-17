@@ -94,6 +94,11 @@ public class Customer implements java.io.Serializable {
 		this.firstname = firstname;
 	}
 	
+	@Transient
+	public String getFullname() {
+		return this.firstname + " " + this.lastname;
+	}
+	
 	@Column(name = "lastname", nullable = false, length = 30)
 	public String getLastname() {
 		return lastname;
