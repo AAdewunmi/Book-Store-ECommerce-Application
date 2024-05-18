@@ -43,9 +43,14 @@
 						size="45" value="${customer.email}"></td>
 				</tr>
 				<tr>
-					<td align="right">Full Name:</td>
-					<td align="left"><input type="text" id="fullname" name="fullname" 
-					size="45" value="${customer.fullname}"></td>
+					<td align="right">First Name:</td>
+					<td align="left"><input type="text" id="firstname" name="firstname" 
+					size="45" value="${customer.firstname}"></td>
+				</tr>
+				<tr>
+					<td align="right">Last Name:</td>
+					<td align="left"><input type="text" id="lastname" name="lastname" 
+					size="45" value="${customer.lastname}"></td>
 				</tr>
 				<tr>
 					<td align="right">Password:</td>
@@ -63,14 +68,24 @@
 					size="45" value="${customer.phone}"></td>
 				</tr>
 				<tr>
-					<td align="right">Address:</td>
-					<td align="left"><input type="text" id="address"
-						name="address" size="45" value="${customer.address}"></td>
+					<td align="right">Address Line 1:</td>
+					<td align="left"><input type="text" id="address1"
+						name="address1" size="45" value="${customer.addressLine1}"></td>
+				</tr>
+				<tr>
+					<td align="right">Address Line 2:</td>
+					<td align="left"><input type="text" id="address2"
+						name="address2" size="45" value="${customer.addressLine2}"></td>
 				</tr>
 				<tr>
 					<td align="right">City:</td>
 					<td align="left"><input type="text" id="city"
 						name="city" size="45" value="${customer.city}"></td>
+				</tr>
+				<tr>
+					<td align="right">State:</td>
+					<td align="left"><input type="text" id="state"
+						name="state" size="45" value="${customer.state}"></td>
 				</tr>
 				<tr>
 					<td align="right">Zip Code:</td>
@@ -107,7 +122,8 @@
 					required: true,
 					email: true
 					},
-				fullName: "required",
+				firstname: "required",
+				lastname: "required",
 				<c:if test="${customer == null}">
 					password: "required",
 				</c:if>
@@ -119,9 +135,11 @@
 				},
 				
 				phone: "required",
-				address: "required",
+				address1: "required",
+				address2: "required",
 				city: "required",
-				zipCode: "required",
+				state: "required",
+				zipcode: "required",
 				country: "required",
 			},
 			messages: {
@@ -129,7 +147,8 @@
 					required: "Please enter email address",
 					email: "Please enter valid email address",
 				},
-				fullName: "Please enter full name",
+				firstname: "Please enter first name",
+				lastname: "Please enter last name",
 				<c:if test="${customer == null}">
 					password: "Please enter email password",
 				</c:if>
@@ -140,9 +159,11 @@
 					equalTo: "Re-Confirm password! It does not match"
 				},
 				phone: "Please enter email phone",
-				address: "Please enter address",
+				address1: "Please enter address line 1",
+				address2: "Please enter address line 2",
 				city: "Please enter city",
-				zipCode: "Please enter zipcode",
+				state: "Please enter state",
+				zipcode: "Please enter zipcode",
 				country: "Please enter country",		
 			}
 		});
