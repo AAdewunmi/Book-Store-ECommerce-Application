@@ -2,13 +2,15 @@ package com.bookstore.controller.admin.customer;
 
 import java.io.IOException;
 
+import com.bookstore.service.CustomerServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/new_customer")
+@WebServlet("/admin/new_customer")
 
 public class ShowCustomerNewFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -18,7 +20,8 @@ public class ShowCustomerNewFormServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		CustomerServices customerServices = new CustomerServices(request, response);
+		customerServices.newCustomer();
 	}
 
 }
