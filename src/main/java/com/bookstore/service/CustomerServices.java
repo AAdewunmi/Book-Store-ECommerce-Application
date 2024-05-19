@@ -1,7 +1,12 @@
 package com.bookstore.service;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
 
 import com.bookstore.dao.CustomerDAO;
 import com.bookstore.dao.HashGenerator;
@@ -233,6 +238,20 @@ public class CustomerServices {
 		updateCustomerFieldsFromForm(customer);
 		customerDAO.update(customer);
 		showCustomerProfile();
+	}
+
+	public void newCustomer() throws ServletException, IOException {
+		String[] countryCodes = Locale.getISOCountries();
+		Map<String, String> mapCountries = new TreeMap<>();
+		for (String countryCode : countryCodes) {
+			Locale locale = new Locale("", countryCode);
+			String code = locale.getCountry();
+			String name = locale.getDisplayCountry();
+			mapCountries.put(name, code);
+		}
+		request.setAttribute("mapCountries", mapCountries);
+		String customerForm = "customer_form.jsp";
+		request.getRequestDispatcher(customerForm).forward(request, response);
 	}
 
 }
