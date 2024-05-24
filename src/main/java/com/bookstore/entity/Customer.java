@@ -3,6 +3,7 @@ package com.bookstore.entity;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 
@@ -153,6 +154,11 @@ public class Customer implements java.io.Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+	
+	@Transient
+	public String getCountryName() {
+		return new Locale("", this.country).getDisplayCountry();
+	}
 
 	@Column(name = "phone", nullable = false, length = 15)
 	public String getPhone() {
@@ -172,7 +178,7 @@ public class Customer implements java.io.Serializable {
 		this.zipcode = zipcode;
 	}
 
-	@Column(name = "password", nullable = false, length = 16)
+	@Column(name = "password", nullable = false, length = 128)
 	public String getPassword() {
 		return this.password;
 	}
