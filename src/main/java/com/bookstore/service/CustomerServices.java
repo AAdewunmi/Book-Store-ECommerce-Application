@@ -169,25 +169,31 @@ public class CustomerServices {
 
 	private void updateCustomerFieldsFromForm(Customer customer) {
 		String email = request.getParameter("email");
-		String fullName = request.getParameter("fullname");
+		String firstname = request.getParameter("firstname");
+		String lastname = request.getParameter("lastname");
 		String password = request.getParameter("password");
 		String phone = request.getParameter("phone");
-		String address = request.getParameter("address");
+		String addressLine1 = request.getParameter("address1");
+		String addressLine2 = request.getParameter("address2");
 		String city = request.getParameter("city");
+		String state = request.getParameter("state");
 		String zipCode = request.getParameter("zipcode");
 		String country = request.getParameter("country");
 		
 		if (email != null && !email.equals("")) {
 			customer.setEmail(email);
 		}
-		customer.setFirstname(fullName);
+		customer.setFirstname(firstname);
+		customer.setLastname(lastname);
 		if (password != null & !password.isEmpty()) {
 			String encryptedPassword = HashGenerator.generateMD5(password);
 			customer.setPassword(encryptedPassword);
 		}
 		customer.setPhone(phone);
-		customer.setAddressLine1(address);
+		customer.setAddressLine1(addressLine1);
+		customer.setAddressLine2(addressLine2);
 		customer.setCity(city);
+		customer.setState(state);
 		customer.setZipcode(zipCode);
 		customer.setCountry(country);
 	}
