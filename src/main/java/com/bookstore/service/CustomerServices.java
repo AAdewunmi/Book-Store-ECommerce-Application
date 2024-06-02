@@ -264,5 +264,12 @@ public class CustomerServices {
 		}
 		request.setAttribute("mapCountries", mapCountries);
 	}
+	
+	public void showCustomerRegistrationForm() throws ServletException, IOException {
+		generateCountyList();
+		String registerForm = "frontend/customer_registration.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(registerForm);
+		dispatcher.forward(request, response);
+	}
 
 }
