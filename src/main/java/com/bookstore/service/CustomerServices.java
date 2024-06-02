@@ -86,6 +86,7 @@ public class CustomerServices {
 	public void editCustomer() throws ServletException, IOException {
 		Integer customerId = Integer.parseInt(request.getParameter("id"));
 		Customer customer = customerDAO.get(customerId);
+		generateCountyList();
 		if (customer == null) {
 			String message = "Could not find customer with ID " + customerId;
 			CommonUtility.showMessageBackend(message, request, response);
