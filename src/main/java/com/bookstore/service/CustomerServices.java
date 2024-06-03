@@ -235,12 +235,14 @@ public class CustomerServices {
 	}
 
 	public void showCustomerProfileEditForm() throws ServletException, IOException {
+		generateCountyList();
 		String editPage = "frontend/edit_profile.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
 		dispatcher.forward(request, response);
 	}
 
 	public void updateCustomerProfile() throws ServletException, IOException {
+		generateCountyList();
 		Customer customer = (Customer) request.getSession().getAttribute("loggedCustomer");
 		updateCustomerFieldsFromForm(customer);
 		customerDAO.update(customer);
