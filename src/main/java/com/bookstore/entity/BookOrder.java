@@ -29,9 +29,18 @@ public class BookOrder implements java.io.Serializable {
 	private Customer customer;
 	private Date orderDate;
 	private String addressLine1;
+	private String addressLine2;
 	private String firstname;
+	private String lastname;
 	private String phone;
+	private String country;
+	private String city;
+	private String state;
+	private String zipcode;
 	private String paymentMethod;
+	private String shipping_fee;
+	private String tax;
+	private float subtotal;
 	private float total;
 	private String status;
 	private Set<OrderDetail> orderDetails = new HashSet<OrderDetail>(0);
