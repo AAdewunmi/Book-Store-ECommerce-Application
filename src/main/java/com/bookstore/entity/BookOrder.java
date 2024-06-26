@@ -28,9 +28,9 @@ public class BookOrder implements java.io.Serializable {
 	private Integer orderId;
 	private Customer customer;
 	private Date orderDate;
-	private String shippingAddress;
-	private String recipientName;
-	private String recipientPhone;
+	private String addressLine1;
+	private String firstname;
+	private String phone;
 	private String paymentMethod;
 	private float total;
 	private String status;
@@ -43,9 +43,9 @@ public class BookOrder implements java.io.Serializable {
 			String recipientPhone, String paymentMethod, float total, String status) {
 		this.customer = customer;
 		this.orderDate = orderDate;
-		this.shippingAddress = shippingAddress;
-		this.recipientName = recipientName;
-		this.recipientPhone = recipientPhone;
+		this.addressLine1 = shippingAddress;
+		this.firstname = recipientName;
+		this.phone = recipientPhone;
 		this.paymentMethod = paymentMethod;
 		this.total = total;
 		this.status = status;
@@ -55,9 +55,9 @@ public class BookOrder implements java.io.Serializable {
 			String recipientPhone, String paymentMethod, float total, String status, Set<OrderDetail> orderDetails) {
 		this.customer = customer;
 		this.orderDate = orderDate;
-		this.shippingAddress = shippingAddress;
-		this.recipientName = recipientName;
-		this.recipientPhone = recipientPhone;
+		this.addressLine1 = shippingAddress;
+		this.firstname = recipientName;
+		this.phone = recipientPhone;
 		this.paymentMethod = paymentMethod;
 		this.total = total;
 		this.status = status;
@@ -96,31 +96,31 @@ public class BookOrder implements java.io.Serializable {
 		this.orderDate = orderDate;
 	}
 
-	@Column(name = "shipping_address", nullable = false, length = 256)
-	public String getShippingAddress() {
-		return this.shippingAddress;
+	@Column(name = "r_address_line1", nullable = false, length = 256)
+	public String getAddressLine1() {
+		return this.addressLine1;
 	}
 
 	public void setShippingAddress(String shippingAddress) {
-		this.shippingAddress = shippingAddress;
+		this.addressLine1 = shippingAddress;
 	}
 
 	@Column(name = "recipient_name", nullable = false, length = 30)
 	public String getRecipientName() {
-		return this.recipientName;
+		return this.firstname;
 	}
 
 	public void setRecipientName(String recipientName) {
-		this.recipientName = recipientName;
+		this.firstname = recipientName;
 	}
 
 	@Column(name = "recipient_phone", nullable = false, length = 15)
 	public String getRecipientPhone() {
-		return this.recipientPhone;
+		return this.phone;
 	}
 
 	public void setRecipientPhone(String recipientPhone) {
-		this.recipientPhone = recipientPhone;
+		this.phone = recipientPhone;
 	}
 
 	@Column(name = "payment_method", nullable = false, length = 20)
