@@ -110,8 +110,8 @@ public class BookOrder implements java.io.Serializable {
 		return this.firstname;
 	}
 
-	public void setRecipientName(String recipientName) {
-		this.firstname = recipientName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	@Column(name = "recipient_phone", nullable = false, length = 15)
