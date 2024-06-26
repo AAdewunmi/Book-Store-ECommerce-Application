@@ -101,8 +101,8 @@ public class BookOrder implements java.io.Serializable {
 		return this.addressLine1;
 	}
 
-	public void setShippingAddress(String shippingAddress) {
-		this.addressLine1 = shippingAddress;
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
 	}
 
 	@Column(name = "recipient_name", nullable = false, length = 30)
