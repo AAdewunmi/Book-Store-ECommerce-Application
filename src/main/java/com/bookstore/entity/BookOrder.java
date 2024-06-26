@@ -167,6 +167,97 @@ public class BookOrder implements java.io.Serializable {
 	public void setOrderDetails(Set<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
+	
+	@Column(name = "r_address_line2", nullable = false, length = 256)
+	public String getAddressLine2() {
+		return addressLine2;
+	}
+
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
+	}
+	
+	@Column(name = "r_lastname", nullable = false, length = 30)
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	
+	@Column(name = "r_phone", nullable = false, length = 15)
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
+	@Column(name = "r_country", nullable = false, length = 4)
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
+	
+	@Column(name = "r_city", nullable = false, length = 32)
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+	
+	@Column(name = "r_state", nullable = false, length = 45)
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+	
+	@Column(name = "r_zipcode", nullable = false, length = 24)
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	@Column(name = "shipping_fee", nullable = false, precision = 12, scale = 0)
+	public String getShipping_fee() {
+		return shipping_fee;
+	}
+
+	public void setShipping_fee(String shipping_fee) {
+		this.shipping_fee = shipping_fee;
+	}
+	
+	@Column(name = "tax", nullable = false, precision = 12, scale = 0)
+	public String getTax() {
+		return tax;
+	}
+
+	public void setTax(String tax) {
+		this.tax = tax;
+	}
+	
+	@Column(name = "subtotal", nullable = false, precision = 12, scale = 0)
+	public float getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(float subtotal) {
+		this.subtotal = subtotal;
+	}
 
 	@Override
 	public int hashCode() {
