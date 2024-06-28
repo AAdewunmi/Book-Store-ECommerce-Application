@@ -127,8 +127,23 @@ public class OrderDAOTest {
 
 	@Test
 	public void testGet() {
-		Integer orderId = 5;
+		Integer orderId = 8;
 		BookOrder order = orderDAO.get(orderId);
+		System.out.println(order.getFirstname());
+		System.out.println(order.getLastname());
+		System.out.println(order.getPhone());
+		System.out.println(order.getAddressLine1());
+		System.out.println(order.getAddressLine2());
+		System.out.println(order.getCity());
+		System.out.println(order.getState());
+		System.out.println(order.getCountry());
+		System.out.println(order.getZipcode());
+		System.out.println(order.getStatus());
+		System.out.println(order.getSubtotal());
+		System.out.println(order.getShipping_fee());
+		System.out.println(order.getTax());
+		System.out.println(order.getTotal());
+		System.out.println(order.getPaymentMethod());
 		assertEquals(1, order.getOrderDetails().size());
 	}
 
