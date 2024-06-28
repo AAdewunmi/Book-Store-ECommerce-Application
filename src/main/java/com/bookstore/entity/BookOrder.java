@@ -38,8 +38,8 @@ public class BookOrder implements java.io.Serializable {
 	private String state;
 	private String zipcode;
 	private String paymentMethod;
-	private String shipping_fee;
-	private String tax;
+	private float shipping_fee;
+	private float tax;
 	private float subtotal;
 	private float total;
 	private String status;
@@ -114,22 +114,13 @@ public class BookOrder implements java.io.Serializable {
 		this.addressLine1 = addressLine1;
 	}
 
-	@Column(name = "firstname", nullable = false, length = 30)
+	@Column(name = "r_firstname", nullable = false, length = 30)
 	public String getFirstname() {
 		return this.firstname;
 	}
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
-	}
-
-	@Column(name = "recipient_phone", nullable = false, length = 15)
-	public String getRecipientPhone() {
-		return this.phone;
-	}
-
-	public void setRecipientPhone(String recipientPhone) {
-		this.phone = recipientPhone;
 	}
 
 	@Column(name = "payment_method", nullable = false, length = 20)
@@ -233,20 +224,20 @@ public class BookOrder implements java.io.Serializable {
 	}
 
 	@Column(name = "shipping_fee", nullable = false, precision = 12, scale = 0)
-	public String getShipping_fee() {
+	public float getShipping_fee() {
 		return shipping_fee;
 	}
 
-	public void setShipping_fee(String shipping_fee) {
+	public void setShipping_fee(float shipping_fee) {
 		this.shipping_fee = shipping_fee;
 	}
 	
 	@Column(name = "tax", nullable = false, precision = 12, scale = 0)
-	public String getTax() {
+	public float getTax() {
 		return tax;
 	}
 
-	public void setTax(String tax) {
+	public void setTax(float tax) {
 		this.tax = tax;
 	}
 	
