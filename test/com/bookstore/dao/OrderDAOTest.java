@@ -40,10 +40,11 @@ public class OrderDAOTest {
 		  
 		  order.setCustomer(customer); 
 		  order.setPaymentMethod("Debit Card");
-		  order.setRecipientName("Tommy Hilfiger");
-		  order.setRecipientPhone("18001900");
-		  order.setShippingAddress("300 Zjinwan Avenue, Changai, China");
-		  
+		  order.setFirstname("Tommy");
+		  order.setLastname("Hilfiger");
+		  order.setPhone("18001900");
+		  order.setAddressLine1("300 Zjinwan Avenue");
+		  order.setAddressLine2("Changai, China");
 		  Set<OrderDetail> orderDetails = new HashSet<>(); 
 		  OrderDetail orderDetail = new OrderDetail();
 		  
