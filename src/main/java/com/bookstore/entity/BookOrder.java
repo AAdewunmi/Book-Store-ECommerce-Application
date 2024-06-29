@@ -3,6 +3,7 @@ package com.bookstore.entity;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Set;
 
@@ -195,6 +196,10 @@ public class BookOrder implements java.io.Serializable {
 		this.country = country;
 	}
 	
+	@Transient
+	public String getCountryName() {
+		return new Locale("", this.country).getDisplayCountry();
+	}
 	
 	@Column(name = "r_city", nullable = false, length = 32)
 	public String getCity() {
