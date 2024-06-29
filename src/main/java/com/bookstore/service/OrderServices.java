@@ -153,7 +153,7 @@ public class OrderServices {
 		
 		HttpSession session = request.getSession();
 		Object isPendingBook = session.getAttribute("NewBookPendingToAddToOrder");
-		
+		CommonUtility.generateCountyList(request);
 		if (isPendingBook == null) {			
 			session.setAttribute("order", order);
 		} else {
