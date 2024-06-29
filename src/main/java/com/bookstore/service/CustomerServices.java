@@ -86,7 +86,7 @@ public class CustomerServices {
 	public void editCustomer() throws ServletException, IOException {
 		Integer customerId = Integer.parseInt(request.getParameter("id"));
 		Customer customer = customerDAO.get(customerId);
-		generateCountyList();
+		CommonUtility.generateCountyList(request);
 		if (customer == null) {
 			String message = "Could not find customer with ID " + customerId;
 			CommonUtility.showMessageBackend(message, request, response);
@@ -235,14 +235,14 @@ public class CustomerServices {
 	}
 
 	public void showCustomerProfileEditForm() throws ServletException, IOException {
-		generateCountyList();
+		CommonUtility.generateCountyList(request);
 		String editPage = "frontend/edit_profile.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
 		dispatcher.forward(request, response);
 	}
 
 	public void updateCustomerProfile() throws ServletException, IOException {
-		generateCountyList();
+		CommonUtility.generateCountyList(request);
 		Customer customer = (Customer) request.getSession().getAttribute("loggedCustomer");
 		updateCustomerFieldsFromForm(customer);
 		customerDAO.update(customer);
@@ -250,25 +250,23 @@ public class CustomerServices {
 	}
 
 	public void newCustomer() throws ServletException, IOException {
-		generateCountyList();
+		CommonUtility.generateCountyList(request);
 		String customerForm = "customer_form.jsp";
 		request.getRequestDispatcher(customerForm).forward(request, response);
 	}
 
-	private void generateCountyList() {
-		String[] countryCodes = Locale.getISOCountries();
-		Map<String, String> mapCountries = new TreeMap<>();
-		for (String countryCode : countryCodes) {
-			Locale locale = new Locale("", countryCode);
-			String code = locale.getCountry();
-			String name = locale.getDisplayCountry();
-			mapCountries.put(name, code);
-		}
-		request.setAttribute("mapCountries", mapCountries);
-	}
+	
+	/*
+	 * private void generateCountyList() { String[] countryCodes =
+	 * Locale.getISOCountries(); Map<String, String> mapCountries = new TreeMap<>();
+	 * for (String countryCode : countryCodes) { Locale locale = new Locale("",
+	 * countryCode); String code = locale.getCountry(); String name =
+	 * locale.getDisplayCountry(); mapCountries.put(name, code); }
+	 * request.setAttribute("mapCountries", mapCountries); }
+	 */
 	
 	public void showCustomerRegistrationForm() throws ServletException, IOException {
-		generateCountyList();
+		CommonUtility.generateCountyList(request);
 		String registerForm = "frontend/customer_registration.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(registerForm);
 		dispatcher.forward(request, response);
