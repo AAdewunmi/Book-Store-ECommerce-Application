@@ -26,6 +26,7 @@
 	
 		<div align="center">
 			<table>
+				<h2>Order Overview:</h2>
 				<tr>
 					<td><b>Order By: </b></td>
 					<td>${order.customer.fullname}</td>
@@ -35,22 +36,11 @@
 					<td>${order.orderDate}</td>
 				</tr>
 				<tr>
-					<td><b>Recipient Name: </b></td>
-					<td><input type="text" name="recipientName" value="${order.recipientName}" size="45"/></td>
-				</tr>
-				<tr>
-					<td><b>Recipient Phone: </b></td>
-					<td><input type="text" name="recipientPhone" value="${order.recipientPhone}" size="45"/></td>
-				</tr>			
-				<tr>
-					<td><b>Ship To: </b></td>
-					<td><input type="text" name="shippingAddress" value="${order.shippingAddress}" size="45"/></td>
-				</tr>
-				<tr>
 					<td><b>Payment Method: </b></td>
 					<td>
 						<select name="paymentMethod">
-							<option value="DebitCard">DebitCard</option>
+							<option value="debitcard" <c:if test="${order.paymentMethod eq 'debitcard'}">selected='selected'</c:if> >Debit Card </option>
+							<option value="paypal" <c:if test="${order.paymentMethod eq 'paypal'}">selected='selected'</c:if> >Pay Pal </option>
 						</select>
 					</td>
 				</tr>
@@ -65,7 +55,20 @@
 						<option value="Cancelled" <c:if test="${order.status eq 'Cancelled' }">selected='selected'</c:if>>Cancelled</option>
 					</select>
 				</td>
-				</tr>																
+				</tr>
+				<tr>
+					<td><b>Recipient Name: </b></td>
+					<td><input type="text" name="recipientName" value="${order.firstname}" size="45"/></td>
+				</tr>
+				<tr>
+					<td><b>Recipient Phone: </b></td>
+					<td><input type="text" name="recipientPhone" value="${order.phone}" size="45"/></td>
+				</tr>			
+				<tr>
+					<td><b>Ship To: </b></td>
+					<td><input type="text" name="shippingAddress" value="${order.addressLine1}" size="45"/></td>
+				</tr>
+																				
 			</table>
 		</div>
 		<div align="center">
