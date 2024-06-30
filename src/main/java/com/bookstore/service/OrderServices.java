@@ -166,15 +166,31 @@ public class OrderServices {
 		HttpSession session = request.getSession();
 		BookOrder order = (BookOrder) session.getAttribute("order");
 		
-		String recipientName = request.getParameter("recipientName");
-		String recipientPhone = request.getParameter("recipientPhone");
-		String shippingAddress = request.getParameter("shippingAddress");
+		String firstname = request.getParameter("firstname");
+		String lastname = request.getParameter("lastname");
+		String phone = request.getParameter("phone");
+		String address1 = request.getParameter("address1");
+		String address2 = request.getParameter("address2");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		String country = request.getParameter("country");
+		String zipcode = request.getParameter("zipcode");
 		String paymentMethod = request.getParameter("paymentMethod");
 		String orderStatus = request.getParameter("orderStatus");
 		
-		order.setFirstname(recipientName);
-		order.setPhone(recipientPhone);
-		order.setAddressLine1(shippingAddress);
+		float shippingFee = Float.parseFloat(request.getParameter("shippingFee"));
+		float tax = Float.parseFloat(request.getParameter("tax"));
+		
+		order.setFirstname(firstname);
+		order.setPhone(phone);
+		order.setAddressLine1(address1);
+		order.setAddressLine2(address2);
+		order.setCity(city);
+		order.setState(state);
+		order.setZipcode(zipcode);
+		order.setCountry(country);
+		order.setShipping_fee(shippingFee);
+		order.setTax(tax);
 		order.setPaymentMethod(paymentMethod);
 		order.setStatus(orderStatus);
 		
@@ -204,6 +220,9 @@ public class OrderServices {
 			totalAmount += subtotal;
 		}
 		
+		order.setSubtotal(totalAmount);
+		totalAmount += shippingFee;
+		totalAmount += tax;
 		order.setTotal(totalAmount);
 		orderDAO.update(order);
 		String message = "The order " + order.getOrderId() + " has been updated successfully";
