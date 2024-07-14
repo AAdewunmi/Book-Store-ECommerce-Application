@@ -126,6 +126,8 @@
 						&nbsp;&nbsp;&nbsp;
 						<select name="paymentMethod">
 							<option value="Debit Card">Debit Card</option>
+							<option value="Credit Card">Credit Card</option>
+							<option value="paypal">Pay Pal</option>
 						</select>
 					</div>
 					<div>
@@ -150,19 +152,25 @@
 		$(document).ready(function() {
 			$("#orderForm").validate({
 				rules: {
-					recipientName: "required",
-					recipientPhone: "required",
-					address: "required",
+					firstname: "required",
+					lastname: "required",
+					phone: "required",
+					address1: "required",
+					address2: "required",
 					city: "required",
+					state: "required",
 					zipcode: "required",
 					country: "required",
 				},
 				
 				messages: {
-					recipientName: "Please enter recipient name",
-					recipientPhone: "Please enter phone number",
-					address: "Please enter street address",
+					firstname: "Please enter first name",
+					lastname: "Please enter last name",
+					phone: "Please enter phone number",
+					address1: "Please enter address line 1",
+					address2: "Please enter address line 2",
 					city: "Please enter city",
+					state: "Please enter state",
 					zipcode: "Please enter zip code",
 					country: "Please enter country",					
 				}
