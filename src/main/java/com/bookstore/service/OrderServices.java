@@ -83,6 +83,18 @@ public class OrderServices {
 	}
 
 	public void placeOrder() throws ServletException, IOException {
+		
+		
+		if (paymentMethod.equals("paypal")) {
+			
+		} else {
+			placeOrderCOD();
+		}
+		
+	}
+
+	private void placeOrderCOD() {
+		String paymentMethod = request.getParameter("paymentMethod");
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
 		String phone = request.getParameter("phone");
@@ -92,7 +104,7 @@ public class OrderServices {
 		String state = request.getParameter("state");
 		String zipcode = request.getParameter("zipcode");
 		String country = request.getParameter("country");
-		String paymentMethod = request.getParameter("paymentMethod");
+		
 		
 		BookOrder order = new BookOrder();
 		order.setFirstname(firstname);
