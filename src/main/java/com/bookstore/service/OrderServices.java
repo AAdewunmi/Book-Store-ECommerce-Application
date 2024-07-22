@@ -93,8 +93,8 @@ public class OrderServices {
 		}
 		
 	}
-
-	private void placeOrderCOD() {
+	
+	private BookOrder readOrderInfo() {
 		String paymentMethod = request.getParameter("paymentMethod");
 		String firstname = request.getParameter("firstname");
 		String lastname = request.getParameter("lastname");
@@ -153,6 +153,11 @@ public class OrderServices {
 		order.setTax(tax);
 		order.setShipping_fee(shippingFee);
 		order.setTotal(total);
+		return order;
+	}
+
+	private void placeOrderCOD() {
+		
 		
 		orderDAO.create(order);
 		shoppingCart.clear();
