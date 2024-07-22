@@ -83,10 +83,11 @@ public class OrderServices {
 	}
 
 	public void placeOrder() throws ServletException, IOException {
-		
-		
+		String paymentMethod = request.getParameter("paymentMethod");
+	
 		if (paymentMethod.equals("paypal")) {
-			
+			PaymentServices paymentServices = new PaymentServices(request, response);
+			paymentServices.authorizePayment(order);
 		} else {
 			placeOrderCOD();
 		}
