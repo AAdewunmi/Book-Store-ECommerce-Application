@@ -116,4 +116,35 @@ public class PaymentServices {
 	 * 
 	 * return shippingAddress; }
 	 */
+	
+	
+	// getTransactionInformation()
+	/*
+	 * private List<Transaction> getTransactionInformation(BookOrder order) {
+	 * Transaction transaction = new Transaction();
+	 * transaction.setDescription("Books ordered on Evergreen Books"); Amount amount
+	 * = getAmountDetails(order); transaction.setAmount(amount);
+	 * 
+	 * ItemList itemList = new ItemList(); ShippingAddress shippingAddress =
+	 * getRecipientInformation(order); itemList.setShippingAddress(shippingAddress);
+	 * 
+	 * List<Item> paypalItems = new ArrayList<>(); Iterator<OrderDetail> iterator =
+	 * order.getOrderDetails().iterator();
+	 * 
+	 * while (iterator.hasNext()) { OrderDetail orderDetail = iterator.next(); Book
+	 * book = orderDetail.getBook(); Integer quantity = orderDetail.getQuantity();
+	 * 
+	 * Item paypalItem = new Item(); paypalItem.setCurrency("USD")
+	 * .setName(book.getTitle()) .setQuantity(String.valueOf(quantity))
+	 * .setPrice(String.format("%.2f", book.getPrice()));
+	 * 
+	 * paypalItems.add(paypalItem); }
+	 * 
+	 * itemList.setItems(paypalItems); transaction.setItemList(itemList);
+	 * 
+	 * List<Transaction> listTransaction = new ArrayList<>();
+	 * listTransaction.add(transaction);
+	 * 
+	 * return listTransaction; }
+	 */
 }
