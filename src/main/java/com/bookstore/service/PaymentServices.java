@@ -88,4 +88,19 @@ public class PaymentServices {
 	 * 
 	 * return redirectUrls; }
 	 */
+	
+	// getAmountDetails() method
+	/*
+	 * private Amount getAmountDetails(BookOrder order) { Details details = new
+	 * Details(); details.setShipping(String.format("%.2f",
+	 * order.getShippingFee())); details.setTax(String.format("%.2f",
+	 * order.getTax())); details.setSubtotal(String.format("%.2f",
+	 * order.getSubtotal()));
+	 * 
+	 * Amount amount = new Amount(); amount.setCurrency("USD");
+	 * amount.setDetails(details); amount.setTotal(String.format("%.2f",
+	 * order.getTotal()));
+	 * 
+	 * return amount; }
+	 */
 }
