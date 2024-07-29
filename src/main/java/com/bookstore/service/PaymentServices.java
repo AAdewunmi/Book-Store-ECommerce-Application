@@ -1,6 +1,7 @@
 package com.bookstore.service;
 
 import com.bookstore.entity.BookOrder;
+import com.bookstore.entity.Customer;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,6 +19,8 @@ public class PaymentServices {
 		this.response = response;
 	}
 	
+	
+	// authorizePayment() method
 	public void authorizePayment(BookOrder order) {
 		/*
 		 * Payer payer = getPayerInformation(order); RedirectUrls redirectUrls =
@@ -50,4 +53,20 @@ public class PaymentServices {
 		
 		// redirect to Paypal's payment page
 	}
+	
+	
+	// getPayerInformation() method
+	/*
+	 * private Payer getPayerInformation(BookOrder order) { Payer payer = new
+	 * Payer(); payer.setPaymentMethod("paypal");
+	 * 
+	 * Customer customer = order.getCustomer();
+	 * 
+	 * PayerInfo payerInfo = new PayerInfo();
+	 * payerInfo.setFirstName(customer.getFirstname());
+	 * payerInfo.setLastName(customer.getLastname());
+	 * payerInfo.setEmail(customer.getEmail()); payer.setPayerInfo(payerInfo);
+	 * 
+	 * return payer; }
+	 */
 }
