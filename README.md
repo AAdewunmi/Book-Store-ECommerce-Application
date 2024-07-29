@@ -21,6 +21,7 @@ Program a complete e-commerce bookstore website that sells books using Java 17, 
 - JavaScript & jQuery
 - MySQL Database
 - Maven
+- Paypal Payments API
 
 ## 4. What is the MVP?
 

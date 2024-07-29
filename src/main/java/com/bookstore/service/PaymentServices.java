@@ -103,4 +103,17 @@ public class PaymentServices {
 	 * 
 	 * return amount; }
 	 */
+	
+	// getRecipientInformation() method
+	/*
+	 * private ShippingAddress getRecipientInformation(BookOrder order) {
+	 * ShippingAddress shippingAddress = new ShippingAddress(); String recipientName
+	 * = order.getFirstname() + " " + order.getLastname();
+	 * shippingAddress.setRecipientName(recipientName) .setPhone(order.getPhone())
+	 * .setLine1(order.getAddressLine1()) .setLine2(order.getAddressLine2())
+	 * .setCity(order.getCity()) .setState(order.getState())
+	 * .setCountryCode(order.getCountry()) .setPostalCode(order.getZipcode());
+	 * 
+	 * return shippingAddress; }
+	 */
 }
