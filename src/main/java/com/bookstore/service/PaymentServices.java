@@ -1,5 +1,53 @@
 package com.bookstore.service;
 
-public class PaymentServices {
+import com.bookstore.entity.BookOrder;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class PaymentServices {
+	private static final String CLIENT_ID = "";
+	private static final String CLIENT_SECRET = "";
+	
+	private HttpServletRequest request;
+	private HttpServletResponse response;
+	
+	public PaymentServices(HttpServletRequest request, HttpServletResponse response) {
+		super();
+		this.request = request;
+		this.response = response;
+	}
+	
+	public void authorizePayment(BookOrder order) {
+		/*
+		 * Payer payer = getPayerInformation(order); RedirectUrls redirectUrls =
+		 * getRedirectURLs();
+		 * 
+		 * List<Transaction> transactions = getTransactionInformation(order);
+		 * 
+		 * Payment requestPayment = new Payment(); requestPayment.setPayer(payer)
+		 * .setRedirectUrls(redirectUrls) .setIntent("authorize")
+		 * .setTransactions(transactions);
+		 * 
+		 * System.out.println("====== REQUEST PAYMENT: ======");
+		 * System.out.println(requestPayment);
+		 * 
+		 * APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, mode);
+		 * 
+		 * try { Payment authorizedPayment = requestPayment.create(apiContext);
+		 * System.out.println("====== AUTHORIZED PAYMENT: ======");
+		 * System.out.println(authorizedPayment);
+		 * 
+		 * String approvalURL = getApprovalURL(authorizedPayment);
+		 * 
+		 * response.sendRedirect(approvalURL);
+		 * 
+		 * } catch (PayPalRESTException e) { e.printStackTrace(); throw new
+		 * ServletException("Error in authorizing payment."); }
+		 */
+		
+		// get approval link
+		
+		// redirect to Paypal's payment page
+	}
 }

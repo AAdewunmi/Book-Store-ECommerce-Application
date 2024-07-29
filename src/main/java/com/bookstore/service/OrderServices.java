@@ -84,12 +84,13 @@ public class OrderServices {
 
 	public void placeOrder() throws ServletException, IOException {
 		String paymentMethod = request.getParameter("paymentMethod");
-	
+		BookOrder order = readOrderInfo();
+		
 		if (paymentMethod.equals("paypal")) {
 			PaymentServices paymentServices = new PaymentServices(request, response);
 			paymentServices.authorizePayment(order);
 		} else {
-			placeOrderCOD();
+			placeOrderCOD(order);
 		}
 		
 	}
@@ -156,15 +157,13 @@ public class OrderServices {
 		return order;
 	}
 
-	private void placeOrderCOD() {
-		
-		
+	private void placeOrderCOD(BookOrder order) throws ServletException, IOException {
 		orderDAO.create(order);
-		shoppingCart.clear();
+		ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute("cart");
+		//shoppingCart.clear();
 		String message = "Thank you. Your order has been received. "
 				+ " We will deliver your books within a few days.";
 		CommonUtility.showMessageFrontend(message, request, response);
-		
 	}
 
 	public void listOrderByCustomer() throws ServletException, IOException {
