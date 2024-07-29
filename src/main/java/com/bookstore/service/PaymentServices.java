@@ -69,4 +69,23 @@ public class PaymentServices {
 	 * 
 	 * return payer; }
 	 */
+	
+	// getRedirectURLs() method
+	/*
+	 * private RedirectUrls getRedirectURLs() { String requestURL =
+	 * request.getRequestURL().toString(); String requestURI =
+	 * request.getRequestURI(); String baseURL = requestURL.replace(requestURI,
+	 * "").concat(request.getContextPath());
+	 * 
+	 * RedirectUrls redirectUrls = new RedirectUrls(); String cancelUrl =
+	 * baseURL.concat("/view_cart"); String returnUrl =
+	 * baseURL.concat("/review_payment");
+	 * 
+	 * System.out.println("Return URL: " + returnUrl);
+	 * System.out.println("Cancel URL: " + cancelUrl);
+	 * 
+	 * redirectUrls.setCancelUrl(cancelUrl); redirectUrls.setReturnUrl(returnUrl);
+	 * 
+	 * return redirectUrls; }
+	 */
 }
