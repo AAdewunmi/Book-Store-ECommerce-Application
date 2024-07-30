@@ -88,6 +88,7 @@ public class OrderServices {
 		
 		if (paymentMethod.equals("paypal")) {
 			PaymentServices paymentServices = new PaymentServices(request, response);
+			request.getSession().setAttribute("order4Paypal", order);
 			paymentServices.authorizePayment(order);
 		} else {
 			placeOrderCOD(order);
@@ -116,6 +117,15 @@ public class OrderServices {
 	 * 
 	 * return saveOrder(order); }
 	 */
+	
+	private Integer saveOrder(BookOrder order) {
+		BookOrder savedOrder = orderDAO.create(order);
+		
+		ShoppingCart shoppingCart = (ShoppingCart) request.getSession().getAttribute("cart");
+		shoppingCart.clear();	
+		
+		return savedOrder.getOrderId();
+	}
 	
 	private BookOrder readOrderInfo() {
 		String paymentMethod = request.getParameter("paymentMethod");
