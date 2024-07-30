@@ -95,6 +95,28 @@ public class OrderServices {
 		
 	}
 	
+	// placeOrderPaypal() method
+	/*
+	 * public Integer placeOrderPaypal(Payment payment) { BookOrder order =
+	 * (BookOrder) request.getSession().getAttribute("order4Paypal"); ItemList
+	 * itemList = payment.getTransactions().get(0).getItemList(); ShippingAddress
+	 * shippingAddress = itemList.getShippingAddress(); String shippingPhoneNumber =
+	 * itemList.getShippingPhoneNumber();
+	 * 
+	 * String recipientName = shippingAddress.getRecipientName(); String[] names =
+	 * recipientName.split(" ");
+	 * 
+	 * order.setFirstname(names[0]); order.setLastname(names[1]);
+	 * order.setAddressLine1(shippingAddress.getLine1());
+	 * order.setAddressLine2(shippingAddress.getLine2());
+	 * order.setCity(shippingAddress.getCity());
+	 * order.setState(shippingAddress.getState());
+	 * order.setCountry(shippingAddress.getCountryCode());
+	 * order.setPhone(shippingPhoneNumber);
+	 * 
+	 * return saveOrder(order); }
+	 */
+	
 	private BookOrder readOrderInfo() {
 		String paymentMethod = request.getParameter("paymentMethod");
 		String firstname = request.getParameter("firstname");
