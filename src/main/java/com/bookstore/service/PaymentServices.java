@@ -197,5 +197,21 @@ public class PaymentServices {
 		// TODO Auto-generated method stub
 	}
 	
+	// executePayment()
+	/*
+	 * public Payment executePayment() throws PayPalRESTException { String paymentId
+	 * = request.getParameter("paymentId"); String payerId =
+	 * request.getParameter("PayerID");
+	 * 
+	 * PaymentExecution paymentExecution = new PaymentExecution();
+	 * paymentExecution.setPayerId(payerId);
+	 * 
+	 * Payment payment = new Payment().setId(paymentId);
+	 * 
+	 * APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, mode);
+	 * 
+	 * return payment.execute(apiContext, paymentExecution); }
+	 */
+	
 	
 }
