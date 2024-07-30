@@ -56,8 +56,7 @@ public class PaymentServices {
 		
 		// redirect to Paypal's payment page
 	}
-	
-	
+
 	// getPayerInformation() method
 	/*
 	 * private Payer getPayerInformation(BookOrder order) { Payer payer = new
@@ -193,4 +192,10 @@ public class PaymentServices {
 	 * } catch (PayPalRESTException | IOException e) { e.printStackTrace(); throw
 	 * new ServletException("Error in getting payment details from PayPal."); } }
 	 */
+	
+	public void reviewPayment() {
+		// TODO Auto-generated method stub
+	}
+	
+	
 }
