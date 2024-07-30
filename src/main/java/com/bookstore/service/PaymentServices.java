@@ -3,6 +3,7 @@ package com.bookstore.service;
 import com.bookstore.entity.BookOrder;
 import com.bookstore.entity.Customer;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -163,5 +164,33 @@ public class PaymentServices {
 	 * link.getHref(); break; } }
 	 * 
 	 * return approvalURL; }
+	 */
+	
+	// reviewPayment()	
+	/*
+	 * public void reviewPayment() throws ServletException { String paymentId =
+	 * request.getParameter("paymentId"); String payerId =
+	 * request.getParameter("PayerID");
+	 * 
+	 * if (paymentId == null || payerId == null) { throw new
+	 * ServletException("Error in displaying payment review"); }
+	 * 
+	 * APIContext apiContext = new APIContext(CLIENT_ID, CLIENT_SECRET, mode);
+	 * 
+	 * try { Payment payment = Payment.get(apiContext, paymentId);
+	 * 
+	 * PayerInfo payerInfo = payment.getPayer().getPayerInfo(); Transaction
+	 * transaction = payment.getTransactions().get(0); ShippingAddress
+	 * shippingAddress = transaction.getItemList().getShippingAddress();
+	 * 
+	 * request.setAttribute("payer", payerInfo); request.setAttribute("recipient",
+	 * shippingAddress); request.setAttribute("transaction", transaction);
+	 * 
+	 * String reviewPage = "frontend/review_payment.jsp?paymentId=" + paymentId +
+	 * "&PayerID=" + payerId;
+	 * request.getRequestDispatcher(reviewPage).forward(request, response);
+	 * 
+	 * } catch (PayPalRESTException | IOException e) { e.printStackTrace(); throw
+	 * new ServletException("Error in getting payment details from PayPal."); } }
 	 */
 }
