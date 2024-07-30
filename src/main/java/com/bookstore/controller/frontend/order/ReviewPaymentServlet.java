@@ -2,6 +2,8 @@ package com.bookstore.controller.frontend.order;
 
 import java.io.IOException;
 
+import com.bookstore.service.PaymentServices;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +20,8 @@ public class ReviewPaymentServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		
+		PaymentServices paymentServices = new PaymentServices(request, response);
+		paymentServices.reviewPayment();
 	}
 
 }
