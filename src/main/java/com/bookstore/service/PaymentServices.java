@@ -10,6 +10,8 @@ public class PaymentServices {
 	private static final String CLIENT_ID = "";
 	private static final String CLIENT_SECRET = "";
 	
+	private String mode = "";
+	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	
@@ -146,5 +148,20 @@ public class PaymentServices {
 	 * listTransaction.add(transaction);
 	 * 
 	 * return listTransaction; }
+	 */
+	
+	
+	// getApprovalURL()
+	/*
+	 * private String getApprovalURL(Payment authorizedPayment) { String approvalURL
+	 * = null;
+	 * 
+	 * List<Links> links = authorizedPayment.getLinks();
+	 * 
+	 * for (Links link : links) { if
+	 * (link.getRel().equalsIgnoreCase("approval_url")) { approvalURL =
+	 * link.getHref(); break; } }
+	 * 
+	 * return approvalURL; }
 	 */
 }
