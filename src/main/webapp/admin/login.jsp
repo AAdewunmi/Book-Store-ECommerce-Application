@@ -1,61 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>Administrator Login</title>
-	<style><%@include file="../css/style.css"%></style>
-	<script src="<c:url value="../js/jquery-3.7.0.min.js" />"></script>
-	<script src="<c:url value="../js/jquery.validate.min.js" />"></script>
-</head>
+	<jsp:include page="page_head.jsp">
+		<jsp:param name="pageTitle" value="Admin Login" />
+	</jsp:include>
 <body>
-	<div align="center">
-		<h1>Book Store Administration</h1>
-	<h2>Administrator Login</h2>
-	<div>
-		<c:if test="${message != null}">
-		<div align="center">
-			<h4 class="message">${message}</h4>
+<div class="container">
+	<div class="row">
+		<div class="col text-center">
+			<h2>Book Store Administration</h2>
+			<h3>Admin Login</h3>
+		</div>		
+	</div>
+	
+	<c:if test="${message != null}">
+		<div class="row">
+			<div class="col text-center text-danger"><h4>${message}</h4></div>
 		</div>
 	</c:if>
-	</div>
-	<form id="loginForm" action="login" method="post">
-		<table>
-			<tr>
-				<td>Email: </td>
-				<td><input type="text" name="email" id="email" size="20"></td>
-			</tr>
-			<tr>
-				<td>Password: </td>
-				<td><input type="password" name="password" id="password" size="20"></td>
-			</tr>
-			<tr>
-				<td colspan="10" align="center"><button type="submit">Login</button></td>
-			</tr>
-		</table>
+	
+	<form id="loginForm" action="login" method="post" style="max-width: 400px; margin: 0 auto;">
+		<div class="border border-secondary rounded p-3">
+			<div class="form-group row">
+				<label class="col-sm-4 col-form-label">Email:</label>
+				<div class="col-sm-8">
+					<input type="email" name="email" size="20" required minlength="5" maxlength="30" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-4 col-form-label">Password:</label>
+				<div class="col-sm-8">
+					<input type="password" name="password" size="20" required minlength="4" maxlength="32" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col text-center">
+					<button type="submit" class="btn btn-primary">Login</button>
+				</div>
+			</div>
+		</div>		
 	</form>
-	</div>
+</div>		
 </body>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$("#loginForm").validate({
-				rules:{
-					email: {
-						required: true,
-						email: true,
-					},
-					password: "required",
-				},
-				messages:{
-					email: {
-						required: "Please enter email",
-						email: "Please enter a valid email address",
-					},
-					password: "Enter password",
-				}
-			});
-		});
-	</script>
 </html>
