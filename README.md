@@ -23,9 +23,13 @@ Program a complete e-commerce bookstore website that sells books using Java 17, 
 - Maven
 - Paypal Payments REST API 
 
+---------
+
 * PayPal payment integration (including credit card payment): Classes and methods for payment have been coded up but commented. 
- 
- This has been done because a business Paypal account is required to access Paypal Payments REST API and sandbox.
+  This has been done because a business Paypal account is required to access Paypal Payments REST API and sandbox.
+
+---------
+
 
 ## 4. What is the MVP?
 
