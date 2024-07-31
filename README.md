@@ -21,7 +21,11 @@ Program a complete e-commerce bookstore website that sells books using Java 17, 
 - JavaScript & jQuery
 - MySQL Database
 - Maven
-- Paypal Payments API
+- Paypal Payment API 
+
+* Classes and methods for payment have been coded up but commented. 
+* This has been done because a business Paypal account is required
+* to access Paypal Payment API and sandbox.
 
 ## 4. What is the MVP?
 
