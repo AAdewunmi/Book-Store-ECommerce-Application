@@ -34,11 +34,11 @@
 
 	<div align="center">
 		<c:if test="${category != null}">
-			<form action="update_category" method="post" id="categoryForm">
+			<form action="update_category" method="post" id="categoryForm" style="max-width: 300px; margin: 0 auto;">
 			<input type="hidden" name="categoryId" value=${category.categoryId}>
 		</c:if>
 		<c:if test="${category == null}">
-			<form action="create_category" method="post" id="categoryForm">
+			<form action="create_category" method="post" id="categoryForm" style="max-width: 300px; margin: 0 auto;">
 		</c:if>
 			<table class="form">
 				<tr>
@@ -52,7 +52,7 @@
 				<tr>
 					<td colspan="2" align="center">
 						<button type="submit">Save</button> &nbsp;&nbsp;&nbsp;
-						<button id="buttonCancel">Cancel</button>
+						<button type="button" onclick="history.go(-1);">Cancel</button>
 						
 					</td>
 				</tr>

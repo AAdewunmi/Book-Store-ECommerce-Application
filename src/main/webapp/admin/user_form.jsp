@@ -26,11 +26,11 @@
 
 	<div align="center">
 		<c:if test="${user != null}">
-			<form action="update_user" method="post" id="userForm">
+			<form action="update_user" method="post" id="userForm" style="max-width: 400px; margin: 0 auto;">
 			<input type="hidden" name="userId" value=${user.userId}>
 		</c:if>
 		<c:if test="${user == null}">
-			<form action="create_user" method="post"id="userForm">
+			<form action="create_user" method="post"id="userForm" style="max-width: 400px; margin: 0 auto;">
 		</c:if>
 			<table class="form">
 				<tr>
