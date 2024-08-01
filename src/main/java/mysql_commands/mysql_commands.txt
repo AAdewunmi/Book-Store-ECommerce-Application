@@ -96,3 +96,115 @@ CREATE TABLE `order_detail` (
   CONSTRAINT `book_fk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `order_fk` FOREIGN KEY (`order_id`) REFERENCES `book_order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+=============== Amend Database ============
+
+=====
+
+ALTER TABLE bookstoredb.customer
+CHANGE COLUMN fullname firstname VARCHAR(30) NOT NULL,
+CHANGE COLUMN address address_line1 VARCHAR(128) NOT NULL,
+ADD COLUMN lastname VARCHAR(30) NULL AFTER register_date,
+ADD COLUMN address_line2 VARCHAR(128) NULL AFTER lastname,
+ADD COLUMN state VARCHAR(45) NULL AFTER address_line2;
+
+ALTER TABLE `bookstoredb`.`customer`
+RENAME COLUMN `fullname` to `firstname` VARCHAR(30) NOT NULL,
+RENAME COLUMN `address` to `address_line1` VARCHAR(128) NOT NULL,
+ADD COLUMN `lastname` VARCHAR(30) NULL AFTER `register_date`,
+ADD COLUMN `address_line2` VARCHAR(128) NULL AFTER `lastname`,
+ADD COLUMN `state` VARCHAR(45) NULL AFTER `address_line2`;
+
+ALTER TABLE customer
+CHANGE fullname firstname VARCHAR(30) NOT NULL,
+CHANGE address address_line1 VARCHAR(128) NOT NULL;
+
+ALTER TABLE customer
+ADD COLUMN lastname VARCHAR(30) NULL AFTER register_date,
+
+ALTER TABLE customer
+ADD COLUMN address_line2 VARCHAR(128) NULL AFTER lastname;
+
+ALTER TABLE customer
+ADD COLUMN state VARCHAR(45) NULL AFTER address_line2;
+
+ALTER TABLE customer
+CHANGE lastname lastname VARCHAR(30) NOT NULL;
+
+ALTER TABLE customer
+CHANGE address_line2 address_line2 VARCHAR(128) NOT NULL,
+
+CHANGE state state VARCHAR(45) NOT NULL;
+
+ALTER TABLE customer
+CHANGE COLUMN password password VARCHAR(128) NOT NULL;
+=======
+ALTER TABLE book_order
+CHANGE COLUMN shipping_address r_address_line1 VARCHAR(256) NOT NULL;
+
+ALTER TABLE book_order
+CHANGE COLUMN recipient_name r_firstname VARCHAR(30) NOT NULL;
+
+ALTER TABLE book_order
+CHANGE COLUMN recipient_phone r_phone VARCHAR(15) NOT NULL;
+=======
+ALTER TABLE book_order
+ADD COLUMN r_lastname VARCHAR(30) NOT NULL AFTER status;
+
+ALTER TABLE book_order
+ADD COLUMN r_address_line2 VARCHAR(256) NOT NULL AFTER r_lastname;
+
+ALTER TABLE book_order
+ADD COLUMN r_country VARCHAR(4) NOT NULL AFTER r_address_line2;
+
+ALTER TABLE book_order
+ADD COLUMN r_state VARCHAR(45) NOT NULL AFTER r_country;
+
+ALTER TABLE book_order
+ADD COLUMN r_zipcode VARCHAR(24) NOT NULL AFTER r_state;
+
+ALTER TABLE book_order
+ADD COLUMN shipping_fee FLOAT NOT NULL AFTER r_zipcode;
+
+ALTER TABLE book_order
+ADD COLUMN tax FLOAT NOT NULL AFTER shipping_fee;
+
+ALTER TABLE book_order
+ADD COLUMN subtotal FLOAT NOT NULL AFTER tax;
+
+ALTER TABLE book_order
+ADD COLUMN r_city VARCHAR(32) NOT NULL AFTER r_country;
+====
+ALTER TABLE book_order
+CHANGE COLUMN r_address_line1 r_address_line1 VARCHAR(256) NOT NULL;
+
+ALTER TABLE book_order
+CHANGE COLUMN r_address_line2 r_address_line2 VARCHAR(256) NOT NULL AFTER r_address_line1;
+
+ALTER TABLE book_order
+CHANGE COLUMN r_firstname r_firstname VARCHAR(30) NOT NULL AFTER r_address_line2;
+
+ALTER TABLE book_order
+CHANGE COLUMN r_lastname r_lastname VARCHAR(30) NOT NULL AFTER r_firstname;
+==
+ALTER TABLE book_order
+CHANGE COLUMN r_country r_country VARCHAR(4) NOT NULL AFTER r_phone;
+
+ALTER TABLE book_order
+CHANGE COLUMN r_state r_state VARCHAR(45) NOT NULL AFTER r_country;
+
+ALTER TABLE book_order
+CHANGE COLUMN r_zipcode r_zipcode VARCHAR(24) NOT NULL AFTER r_state;
+
+ALTER TABLE book_order
+CHANGE COLUMN shipping_fee shipping_fee FLOAT NOT NULL AFTER payment_method;
+
+ALTER TABLE book_order
+CHANGE COLUMN tax tax FLOAT NOT NULL AFTER shipping_fee;
+
+ALTER TABLE book_order
+CHANGE COLUMN subtotal subtotal FLOAT NOT NULL AFTER tax;
+
+ALTER TABLE book_order
+CHANGE COLUMN total total FLOAT NOT NULL AFTER subtotal;
+
